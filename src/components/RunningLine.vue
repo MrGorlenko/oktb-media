@@ -3,7 +3,7 @@
       <div 
       class="wrapper w-100 justify-content-end d-flex align-items-center"
       >
-        <p 
+        <p class='line__p'
         v-for='Info in Information' 
         :key='Info.general' 
         >
@@ -44,7 +44,7 @@ export default {
   },
   mounted() {
     anime({
-        targets: 'p',
+        targets: '.line__p',
         translateX: ['50em', '-100em'],
         duration: 12800,
         easing: 'linear',

@@ -1,84 +1,86 @@
 <template>
   <div class="main-wrapper">
     <div class="main ">
-      <div class="w-100 main__wrap container-xl d-flex justify-content-center flex-column">
+      <div
+        class="w-100 main__wrap container-xl d-flex justify-content-center flex-column"
+      >
         <!-- <div class="main__top container-xl align-items-center"> -->
-          <h2 class="main__title">
-            Что такое <br />
-            "Медиа Будущего"?
-          </h2>
+        <h2 class="main__title">
+          Что такое <br />
+          "Медиа Будущего"?
+        </h2>
         <!-- </div> -->
 
         <!-- <div class="main__wrapp d-flex container-fluid"> -->
-          <div class="container-fluid d-flex justify-content-center">
-            <ul class="main__items">
-              <li class="main__item" v-for="(item, index) in items" :key="index">
-                {{ item.title }}
-              </li>
-              <button class="btn btn-success " style="margin-left:32px">
-                Подробнее
-              </button>
-            </ul>
+        <div class="container-fluid d-flex justify-content-center">
+          <ul class="main__items">
+            <li class="main__item" v-for="(item, index) in items" :key="index">
+              {{ item.title }}
+            </li>
+            <button class="btn btn-success btn-lg " style="margin-left:32px">
+              Подробнее
+            </button>
+          </ul>
 
-            <p class="main__content">
-              Приглашение спикеров для <br />
-              проведения<b style="color:#66B42F"> мастер-классов</b>, <br />
-              организация фестиваля "Точка <br />
-              Будущего" раз в год
-            </p>
-          </div>
+          <p class="main__content">
+            Приглашение спикеров для <br />
+            проведения<b style="color:#66B42F"> мастер-классов</b>, <br />
+            организация фестиваля "Точка <br />
+            Будущего" раз в год
+          </p>
+        </div>
         <!-- </div> -->
       </div>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MainMedia",
+  name: 'MainMedia',
   data() {
     return {
       items: [
         {
-          title: "ЛЕКТОРИИ И ФЕСТИВАЛИ"
+          title: 'ЛЕКТОРИИ И ФЕСТИВАЛИ',
         },
         {
-          title: "УЧИТЕЛЯМ"
+          title: 'УЧИТЕЛЯМ',
         },
         {
-          title: "ПРЕСС-СЛУЖБА"
-        }
-      ]
+          title: 'ПРЕСС-СЛУЖБА',
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss" scope>
-
-.main-wrapper{
-  background-color:#F2F4F9;
+.main-wrapper {
+  background-color: #f2f4f9;
   padding-top: 20vh;
+  // padding-bottom: 20vh;
 }
 
 .main {
-  background-image: url("~@/assets/backgroundMain.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-.main__wrap {
-  // height: 700px;
-  height: 80vh;
-  background-image: url("~@/assets/Group.svg");
+  background-image: url('~@/assets/backgroundMain.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 0 0;
+  background-position: 50% 37%;
+}
+.main__wrap {
+  height: 800px;
+  //height: 80vh;
+  background-image: url('~@/assets/Group.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .main__title {
   // margin-top: 126px;
   margin-bottom: 80px;
-  font-family: "San-Francisco", sans-serif;
+  font-family: 'San-Francisco', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 80px;
@@ -90,7 +92,7 @@ export default {
   list-style: none;
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 251px;
     height: 0px;
@@ -98,7 +100,7 @@ export default {
     left: -187px;
     width: 251px;
     mix-blend-mode: multiply;
-    border: 3px solid #6fcf97;
+    border: 1px solid #6fcf97;
   }
 }
 .main__item {
@@ -108,16 +110,19 @@ export default {
   margin-right: 32px;
   margin-left: 32px;
   margin-bottom: 32px;
-  font-family: "San-Francisco", sans-serif;
+  font-family: 'San-Francisco', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 32px;
-
   color: #000000;
+  &:hover {
+    cursor: pointer;
+    color: #219653;
+  }
 }
 .main__content {
-  font-family: "San-Francisco", sans-serif;
+  font-family: 'San-Francisco', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 44px;

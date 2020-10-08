@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Hero from "@/components/Hero.vue";
-import RunningLine from "@/components/RunningLine.vue";
-import MainMedia from "@/components/MainMedia";
-import NewsMain from '@/components/News-main'
+import Header from '@/components/Header.vue';
+import Hero from '@/components/Hero.vue';
+import RunningLine from '@/components/RunningLine.vue';
+import MainMedia from '@/components/MainMedia';
+import NewsMain from '@/components/News-main';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Header,
     Hero,
     RunningLine,
     MainMedia,
-    NewsMain
-  }
+    NewsMain,
+  },
 };
 </script>

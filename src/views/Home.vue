@@ -7,6 +7,7 @@
     <RunningLine />
     <MainMedia />
     <News-main />
+    <Articles />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import Hero from '@/components/Hero.vue';
 import RunningLine from '@/components/RunningLine.vue';
 import MainMedia from '@/components/MainMedia';
 import NewsMain from '@/components/News-main';
+import Articles from '@/components/Articles';
 
 export default {
   name: 'Home',
@@ -25,6 +27,7 @@ export default {
     RunningLine,
     MainMedia,
     NewsMain,
+    Articles,
   },
 };
 </script>

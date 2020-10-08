@@ -1,11 +1,17 @@
 <template>
-  <div class="running-line d-flex align-items-center justify-content-end">
-    <div class="wrapper w-100 justify-content-end d-flex align-items-center">
-      <p class="line__p" v-for="Info in Information" :key="Info.general">
-        {{ Info.general }}
-        <span>{{ Info.amount }}</span>
-      </p>
-    </div>
+
+  <div class='running-line d-flex align-items-center justify-content-end'>
+      <div 
+      class="wrapper w-100 justify-content-end d-flex align-items-center"
+      >
+        <p class='line_p'
+        v-for='Info in Information' 
+        :key='Info.general' 
+        >
+        {{Info.general}} 
+        <span>{{Info.amount}}</span> 
+        </p>
+      </div>
   </div>
 </template>
 
@@ -39,7 +45,8 @@ export default {
   },
   mounted() {
     anime({
-      targets: ".line__p",
+
+      targets: ".line_p",
       translateX: ["50em", "-100em"],
       duration: 12800,
       easing: "linear",

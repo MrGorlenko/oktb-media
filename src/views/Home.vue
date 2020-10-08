@@ -6,16 +6,16 @@
     <Hero />
     <RunningLine />
     <MainMedia />
+    <News-main />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import Header from "@/components/Header.vue";
 import Hero from "@/components/Hero.vue";
 import RunningLine from "@/components/RunningLine.vue";
 import MainMedia from "@/components/MainMedia";
+import NewsMain from '@/components/News-main'
 
 export default {
   name: "Home",
@@ -23,7 +23,8 @@ export default {
     Header,
     Hero,
     RunningLine,
-    MainMedia
+    MainMedia,
+    NewsMain
   }
 };
 </script>

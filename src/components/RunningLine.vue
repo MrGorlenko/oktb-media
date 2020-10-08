@@ -1,17 +1,52 @@
 <template>
 
-  <div class='running-line d-flex align-items-center justify-content-end'>
+  <div class="line-container">
+    <div class='running-line d-flex align-items-center justify-content-end'>
       <div 
-      class="wrapper w-100 justify-content-end d-flex align-items-center"
+      class="wrapper w-lg-100 justify-content-around d-flex align-items-center"
       >
         <p class='line_p'
         v-for='Info in Information' 
         :key='Info.general' 
         >
-        {{Info.general}} 
+        {{Info.general}}
+        
         <span>{{Info.amount}}</span> 
         </p>
+        <p class='line_p'
+        v-for='Info in Information' 
+        :key='Info.general' 
+        >
+        {{Info.general}}
+        
+        <span>{{Info.amount}}</span> 
+        </p>
+
+
       </div>
+      <div 
+      class="wrapper wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
+      >
+        <p class='line_p'
+        v-for='Info in Information' 
+        :key='Info.general' 
+        >
+        {{Info.general}}
+        
+        <span>{{Info.amount}}</span> 
+        </p>
+        <p class='line_p'
+        v-for='Info in Information' 
+        :key='Info.general' 
+        >
+        {{Info.general}}
+        
+        <span>{{Info.amount}}</span> 
+        </p>
+
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,19 +80,25 @@ export default {
   },
   mounted() {
     anime({
-
-      targets: ".line_p",
-      translateX: ["50em", "-100em"],
-      duration: 12800,
+      targets: ".wrapper",
+      translateX: ["0", "-100%"],
+      duration: 10800,
       easing: "linear",
       loop: true
-    });
+    })
   }
 };
 </script>
 
 <style lang='scss'>
+
+.line-container{
+  overflow: hidden;
+  width: 100%;
+}
+
 .running-line {
+  width: 200%;
   height: 10vh;
   box-shadow: 0px -1px 24px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -67,6 +108,7 @@ export default {
     margin-bottom: 0;
     span {
       color: #219653;
+      font-weight: bold;
     }
     &:nth-child(2n) {
       span {
@@ -76,6 +118,22 @@ export default {
     &:nth-child(3n) {
       span {
         color: #9b51e0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .running-line{
+    p{
+      &:first-child{
+        width: 170px;
+      }
+      &:nth-child(2){
+        width: 250px;
+      }
+      &:last-child{
+        width: 230px;
       }
     }
   }

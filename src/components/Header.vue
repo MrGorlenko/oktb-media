@@ -1,6 +1,6 @@
 <template>
   <div class="header d-flex container-xl align-items-center">
-    <div class="w-100 row justify-content-between">
+    <div class="w-100 d-flex justify-content-between">
       <div class="social d-flex justify-content-between">
         <a v-for="link in links" :key="link.title" v-bind:href="link.url">
           <img :src="link.icon" alt="" />
@@ -48,4 +48,23 @@ export default {
 .burger {
   cursor: pointer;
 }
+
+@media (max-width: 1200px){
+  .social{
+    width: 7%;
+  }
+}
+
+@media (max-width: 768px){
+  .header{
+    height: 15vh;
+  }
+}
+
+@media (max-width: 576px){
+  .social{
+    width: 20%;
+  }
+}
+
 </style>

@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-      <!-- <router-link to="/">Home</router-link> | -->
-      <!-- <router-link to="/about">About</router-link> -->
     <router-view/>
   </div>
 </template>
@@ -27,9 +25,23 @@
   }
 }
 
+.w-90{
+  width: 90%;
+}
+
+.w-98{
+  width: 98%;
+}
+
 @media (min-width: 1200px){
   .container-xl{
     max-width: 1440px !important;
+  }
+}
+
+@media (min-width: 992px){
+  .w-lg-100{
+    width: 100% !important;
   }
 }
 </style>

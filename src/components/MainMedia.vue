@@ -57,15 +57,11 @@ export default {
 <style lang="scss" scope>
 
 .main-wrapper{
-  background-color: #e5e5e5;
+  background-color:#F2F4F9;
   padding-top: 20vh;
 }
 
 .main {
-  // background-color: #e5e5e5;
-  //background-image: url("~@/assets/Group.svg");
-  //  background-color: rgba(255, 255, 255, 0.8);
-  // margin-top: 132px;
   background-image: url("~@/assets/backgroundMain.svg");
   background-size: cover;
   background-repeat: no-repeat;

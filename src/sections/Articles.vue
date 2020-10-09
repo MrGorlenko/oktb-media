@@ -11,21 +11,20 @@
           class="articles__items col-lg-4 offset-lg-2 d-flex justify-content-between"
         >
           <li 
-          v-for='theme in ThemeArticles' 
+          v-for='(theme, i) in ThemeArticles' 
           :key="theme.title" 
-          class="articles__item ">
-            {{theme.title}}
+          >
+            <p v-if='theme.isActive' class='active-button articles__item w-100 h-100'>{{theme.title}}</p>
+            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 h-100'>{{theme.title}}</p>
           </li>
         </ul>
       </div>
-      <div class="article__card--wrap">
-        <div
-          class="articles__card offset-lg-2 d-flex flex-column mb-1"
-          style="top:0px; left:10px"
-        >
-          <span class="card__subject offset-lg-2">Наука</span>
-          <span class="card__date offset-lg-2">15 фераля 2020</span>
-          <p class="card__text offset-lg-2 mb-lg-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst </p>
+        <div  class="article__card--wrap">
+          <div class="articles__card offset-lg-2 d-flex flex-column mb-1"
+            style="top:0px; left:10px">
+            <span class="card__subject offset-lg-2">{{themeDefault}}</span>
+            <span class="card__date offset-lg-2">{{dateDefault}}</span>
+            <p class="card__text offset-lg-2 mb-lg-3">{{contentDefault}}</p>
         </div>
 
         <img
@@ -34,6 +33,7 @@
           alt=""
         />
       </div>
+
     </div>
     <ArticlesCard />
   </div>
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      activeClass: 'active-button',
+
       ThemeArticles: [
         {
           title: 'Наука',
@@ -67,13 +67,45 @@ export default {
           title: 'Досуг',
           isActive: false
         }
-      ]
+      ],
+      ArticleItems: [
+        {
+          date: '15 февраля 2020',
+          content: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
+          isActive: true
+        },
+        {
+          date: '16 января 2020',
+          content: 'Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника',
+          isActive: false
+        },
+        {
+          date: '17 декабря 2019',
+          content: 'Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа',
+          isActive: false
+        },
+        {
+          date: '18 февраля 2020',
+          content: 'Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг',
+          isActive: false
+        }
+      ],
+      themeDefault: 'Наука',
+      dateDefault: '15 февраля 2020',
+      contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука'
     };
   },
   methods: {
-    getClass() {
-      return {
-
+    activateTheme(event, i) {
+      this.ThemeArticles[i].isActive = true;
+      this.themeDefault = this.ThemeArticles[i].title;
+      this.dateDefault = this.ArticleItems[i].date;
+      this.contentDefault = this.ArticleItems[i].content;
+      for (let j=i+1; j<4; j++) {
+        this.ThemeArticles[j].isActive = false;
+      }
+      for (let j=i-1; j>-1; j--) {
+        this.ThemeArticles[j].isActive = false;
       }
     }
   }
@@ -89,6 +121,15 @@ export default {
   background-repeat: no-repeat;
   background-color: #f2f4f9;
   padding-bottom: 130px;
+  ul{
+    li{
+      list-style-type:none ;
+      cursor: pointer;
+      p{
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .articles__title {
@@ -116,8 +157,7 @@ export default {
   text-align: center;
   list-style: none;
   box-sizing: border-box;
-  padding-top: 8px;
-  // background-color: #fff;
+  padding: 6px 4px;
   height: 48px;
   width: 112px;
 
@@ -137,7 +177,7 @@ export default {
   top: 0px;
   left: 10px;
   z-index: 5;
-  height: 284px;
+  height: auto;
   width: 642px;
   left: 325px;
   top: 3088px;
@@ -156,7 +196,9 @@ export default {
 }
 .card__subject {
   height: 28px;
-  width: 52px;
+  width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-top: 32px;
   padding-top: 3px;
   text-align: center;

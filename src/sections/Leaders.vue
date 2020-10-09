@@ -14,6 +14,7 @@
         class="human col-3"
         >
           <img class='w-100' v-bind:src="leader.img" alt="">
+          <div class="green-filter"></div>
           <div class="info d-flex flex-column ">
             <span>{{leader.name}}</span>
             <a v-bind:href="leader.link" > {{leader.link}} </a>
@@ -91,7 +92,7 @@ export default {
       .dots{
         position: absolute;
         left: 0;
-        top: -10%;  
+        top: -20%;  
       }
     .title{
       h3{
@@ -108,6 +109,18 @@ export default {
       position: relative;
       cursor: pointer;
       margin-top: 60px;
+      .green-filter{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 15px;
+        width: calc(100% - 30px);
+        content: '';
+        height: 100%;
+        background: linear-gradient(180deg, rgba(73, 147, 80, 0) 0%, #499350 100%);
+        opacity: 0;
+        transition: opacity .3s ease;
+      }
       .info{
         position: absolute;
         bottom: 10px;
@@ -139,7 +152,7 @@ export default {
         }
       }
       &:hover{
-        .info{
+        .info, .green-filter{
           opacity: 1;
           transition: opacity .3s ease;
         }

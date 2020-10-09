@@ -36,6 +36,10 @@ button{
   outline: none !important;
 }
 
+.w-48{
+  width: 48%;
+}
+
 .w-90{
   width: 90%;
 }

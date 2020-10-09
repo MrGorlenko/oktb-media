@@ -1,14 +1,14 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header />
     <Hero />
     <RunningLine />
     <MainMedia />
     <News-main />
     <Articles />
+    <Video />
     <Leaders />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -20,6 +20,8 @@ import MainMedia from '@/sections/MainMedia';
 import NewsMain from '@/sections/News-main';
 import Articles from '@/sections/Articles';
 import Leaders from '@/sections/Leaders'
+import Video from '@/sections/Video';
+// import Footer from '@/components/Footer';
 
 export default {
   name: 'Home',
@@ -30,7 +32,9 @@ export default {
     MainMedia,
     NewsMain,
     Articles,
-    Leaders
+    Leaders,
+    Video,
+    // Footer
   },
 };
 </script>

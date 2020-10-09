@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +24,16 @@
       color: #42b983;
     }
   }
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+button{
+  border: none;
+  cursor: pointer;
+  outline: none !important;
 }
 
 .w-90{

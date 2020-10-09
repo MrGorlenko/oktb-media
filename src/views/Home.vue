@@ -8,16 +8,18 @@
     <MainMedia />
     <News-main />
     <Articles />
+    <Leaders />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Hero from '@/components/Hero.vue';
+import Header from '@/components/Header';
+import Hero from '@/sections/Hero'
 import RunningLine from '@/components/RunningLine.vue';
-import MainMedia from '@/components/MainMedia';
-import NewsMain from '@/components/News-main';
-import Articles from '@/components/Articles';
+import MainMedia from '@/sections/MainMedia';
+import NewsMain from '@/sections/News-main';
+import Articles from '@/sections/Articles';
+import Leaders from '@/sections/Leaders'
 
 export default {
   name: 'Home',
@@ -28,6 +30,7 @@ export default {
     MainMedia,
     NewsMain,
     Articles,
+    Leaders
   },
 };
 </script>

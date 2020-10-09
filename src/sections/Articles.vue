@@ -10,22 +10,22 @@
         <ul
           class="articles__items col-lg-4 offset-lg-2 d-flex justify-content-between"
         >
-          <li class="articles__item ">Статьи</li>
-          <li class="articles__item ">Статьи</li>
-          <li class="articles__item ">Статьи</li>
-          <li class="articles__item ">Статьи</li>
+          <li 
+          v-for='theme in ThemeArticles' 
+          :key="theme.title" 
+          class="articles__item ">
+            {{theme.title}}
+          </li>
         </ul>
       </div>
       <div class="article__card--wrap">
         <div
           class="articles__card offset-lg-2 d-flex flex-column mb-1"
           style="top:0px; left:10px"
-          v-for="(article, index) in articles.slice(1)"
-          :key="index"
         >
-          <span class="card__subject offset-lg-2">{{ article.subject }}</span>
-          <span class="card__date offset-lg-2">{{ article.date }}</span>
-          <p class="card__text offset-lg-2 mb-lg-3">{{ article.title }}</p>
+          <span class="card__subject offset-lg-2">Наука</span>
+          <span class="card__date offset-lg-2">15 фераля 2020</span>
+          <p class="card__text offset-lg-2 mb-lg-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst </p>
         </div>
 
         <img
@@ -49,40 +49,46 @@ export default {
   },
   data() {
     return {
-      articles: [
+      activeClass: 'active-button',
+      ThemeArticles: [
         {
-          subject: 'Наука',
-          title:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/articles1.png'),
-          date: '15 фераля 2020',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est a auctor ut in maecenas id. Sollicitudin egestas id quis sed viverra ut pellentesque.',
-          url: '#',
+          title: 'Наука',
+          isActive: true
         },
-
         {
-          subject: 'Наука',
-          title:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/articles2.png'),
-          date: '15 фераля 2020',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est a auctor ut in maecenas id. Sollicitudin egestas id quis sed viverra ut pellentesque.',
-          url: '#',
+          title: 'Техника',
+          isActive: false
         },
-      ],
+        {
+          title: 'Медиа',
+          isActive: false
+        },
+        {
+          title: 'Досуг',
+          isActive: false
+        }
+      ]
     };
   },
+  methods: {
+    getClass() {
+      return {
+
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss" scope>
+
+@import '../scss/variables';
+
 .articles {
   background-image: url('~@/assets/dots-articles.svg');
   background-repeat: no-repeat;
   background-color: #f2f4f9;
-  padding-bottom: 30px;
+  padding-bottom: 130px;
 }
 
 .articles__title {
@@ -98,6 +104,11 @@ export default {
   font-size: 16px;
   line-height: 32px;
   letter-spacing: 1px;
+}
+
+.active-button{
+  color: #fff;
+  background-color: rgba(102, 209, 131, 1);
 }
 
 .articles__item {
@@ -118,6 +129,7 @@ export default {
 }
 .article__card--wrap {
   position: relative;
+  height: 420px;
 }
 
 .articles__card {

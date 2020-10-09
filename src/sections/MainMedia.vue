@@ -1,9 +1,12 @@
 <template>
   <div class="main-wrapper">
     <div class="main ">
+      <img class='ellipse' src="../assets/Ellipse.svg" alt="">
       <div
         class="w-100 main__wrap container-xl d-flex justify-content-center flex-column"
       >
+      <!-- Group.svg -->
+        <img class='dots' src="../assets/Group.svg" alt="">
         <!-- <div class="main__top container-xl align-items-center"> -->
         <h2 class="main__title">
           Что такое <br />
@@ -60,7 +63,6 @@ export default {
 .main-wrapper {
   background-color: #f2f4f9;
   padding-top: 20vh;
-  // padding-bottom: 20vh;
 }
 
 .main {
@@ -68,17 +70,29 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 37%;
+
+  position: relative;
+  .ellipse{
+    position: absolute;
+    top: -5%;
+    left: -5%;
+  }
+
+  @media screen and (min-width: 1550px){
+    background-size: cover;
+  }
 }
 .main__wrap {
   height: 800px;
-  //height: 80vh;
-  background-image: url('~@/assets/Group.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+
+  position: relative;
+  .dots{
+    position: absolute;
+    width:100%;
+    top: 0;
+  }
 }
 .main__title {
-  // margin-top: 126px;
   margin-bottom: 80px;
   font-family: 'San-Francisco', sans-serif;
   font-style: normal;
@@ -87,6 +101,7 @@ export default {
   line-height: 88px;
   letter-spacing: 2px;
   color: #1c1642;
+  z-index: 3;
 }
 .main__items {
   list-style: none;

@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath:':/testJ/'
+    publicPath:':/router-view/'
   }

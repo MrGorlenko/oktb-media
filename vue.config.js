@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath:':/router-view/'
+    publicPath:'/router-view/'
   }

@@ -5,7 +5,7 @@
     <RunningLine />
     <MainMedia />
     <News-main />
-    <!-- <Articles /> -->
+    <Articles />
     <Video />
     <!-- <Leaders /> -->
     <!-- <Footer /> -->
@@ -18,7 +18,7 @@ import Hero from '@/sections/Hero'
 import RunningLine from '@/components/RunningLine.vue';
 import MainMedia from '@/sections/MainMedia';
 import NewsMain from '@/sections/News-main';
-// import Articles from '@/sections/Articles';
+import Articles from '@/sections/Articles';
 // import Leaders from '@/sections/Leaders'
 import Video from '@/sections/Video';
 // import Footer from '@/components/Footer';
@@ -31,7 +31,7 @@ export default {
     RunningLine,
     MainMedia,
     NewsMain,
-    // Articles,
+    Articles,
     // Leaders,
     Video,
     // Footer

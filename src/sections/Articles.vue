@@ -9,7 +9,7 @@
       </div>
       <div class="row justify-content-between">
         <ul
-          class="articles__items col-lg-4 offset-lg-2 d-flex justify-content-between"
+          class="articles__items col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
         >
           <li 
           v-for='(theme, i) in ThemeArticles' 
@@ -19,6 +19,14 @@
             <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 h-100'>{{theme.title}}</p>
           </li>
         </ul>
+        <swiper class='articles__items slider d-lg-none d-block' ref="mySwiper"  >
+          <swiper-slide 
+          v-for='(theme, i) in ThemeArticles' 
+          :key="theme.title">
+            <p v-if='theme.isActive' class='active-button articles__item w-100 p-0 d-flex h-100'>{{theme.title}}</p>
+            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 p-0 d-flex h-100'>{{theme.title}}</p>
+          </swiper-slide>
+        </swiper>
       </div>
         <div  class="article__card--wrap">
           <div class="articles__card offset-lg-2 d-flex flex-column mb-1"
@@ -42,11 +50,15 @@
 
 <script>
 import ArticlesCard from '@/components/Articles-Card';
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 
 export default {
   name: 'Articles',
   components: {
     ArticlesCard,
+    Swiper,
+    SwiperSlide
   },
   data() {
     return {
@@ -93,8 +105,22 @@ export default {
       ],
       themeDefault: 'Наука',
       dateDefault: '15 февраля 2020',
-      contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука'
+      contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
+      swiperOptions: {
+        slidesPerView: 2
+      }
     };
+  },
+  computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+  },
+  directives: {
+    swiper: directive
+  },
+  mounted() {
+   this.swiper.slideTo(0, 1000, false)
   },
   methods: {
     activateTheme(event, i) {
@@ -234,7 +260,7 @@ export default {
   border-radius: 15px;
 }
 
-@media (max-width:375px) {
+@media (max-width:576px) {
   .articles__title{
   font-size: 32px;
   line-height: 120%;

@@ -11,6 +11,10 @@
           "Медиа Будущего"?
         </h2>
 
+
+        <swiper class='slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
+          <swiper-slide class='main__item' v-for="(item, index) in items" :key="index">{{ item.title }}</swiper-slide>
+        </swiper>
         <div class="container-fluid d-flex flex-lg-row flex-column justify-content-center">
           <ul class="main__items d-lg-block d-none justify-content-between flex-wrap">
             <li class="main__item" v-for="(item, index) in items" :key="index">
@@ -21,10 +25,6 @@
             </button>
           </ul>
 
-            <swiper class='slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions">
-              <swiper-slide class='main__item' v-for="(item, index) in items" :key="index">{{ item.title }}</swiper-slide>
-            </swiper>
-
 
 
           <p class="main__content">
@@ -34,6 +34,9 @@
             Будущего" раз в год
           </p>
 
+            <button class="btn btn-success btn-lg " >
+              Подробнее
+            </button>
            
         </div>
         <!-- </div> -->
@@ -64,9 +67,8 @@ export default {
         },
       ],
       swiperOptions: {
-          pagination: {
-            el: '.swiper-pagination'
-          },
+          slidesPerView:2,
+          spaceBetween: 0
         }
     };
   },
@@ -191,6 +193,7 @@ export default {
 
     .slider{
       margin-bottom: 24px;
+      height: 75px;
     }
    
   }
@@ -229,9 +232,7 @@ font-size: 14px;
 line-height: 32px;
   }
   .btn{
-    position: relative;
-    top: 245px;
-    left: -176px;
+    // width: 
   }
 br{
   display: none;

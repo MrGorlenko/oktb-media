@@ -1,15 +1,17 @@
 <template>
-  <div class="video-item w-48">
-    <div class='content h-100'>
+  <div class="bord video-item w-100 w-sm-48">
+    <div class='content__video content h-100'>
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
         <img class='w-100 main-pic h-100' src="../assets/video-1.png" alt="">
         <div class="darken w-100 h-100"></div>
       </div>
-      <span>15.03.2020</span>
+      <span class='art__date'>15.03.2020</span>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst
       </p>
+            <button class=" btn-lg">Все статьи <img src="../assets/button-arrow.svg" alt=""> </button>
+
     </div>
   </div>
 </template>
@@ -18,11 +20,10 @@
 export default {
   name: 'videoItem'
 }
+
 </script>
-
-<style lang='scss' scoped>
-
-  @import '../scss/variables';
+<style lang="scss" >
+@import '../scss/variables';
 
   .video-item{
     background: #FFFFFF;
@@ -87,7 +88,24 @@ export default {
         border-radius: 15px;
       }
     }
-
-
   }
+  @media (max-width: 375px) {
+    .video-item .content{
+      padding-left: 0;
+      border-left: none;
+    }
+    .video-item .content p{
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 28px;
+      margin-top: 0;
+    }
+    .video-item .content span{
+      font-size: 16px;
+      line-height: 24px;
+      color:  rgba(0, 0, 0, 1);
+} 
+  }
+ 
 </style>
+

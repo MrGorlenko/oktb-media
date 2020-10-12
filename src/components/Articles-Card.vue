@@ -1,11 +1,11 @@
 <template>
   <div class="article__card mt-10">
   <div class="container-lg d-flex flex-column align-items-end">
-    <div class="w-100 card__wrapp d-flex justify-content-around align-items-center"
+    <div class="w-100 card__wrapp d-flex flex-column-reverse flex-sm-row justify-content-around align-items-center"
          v-for="(article, index) in articles" :key="index">
 
       <div class="article__item d-flex justify-content-between flex-column col-xl-6" >
-        <span class="w-100 art__date"> {{article.date}}</span>
+        <span class="w-100 art__date pt-5 pt-sm-0"> {{article.date}}</span>
         <p class="w-100 art__card">{{article.title}}</p>
         <p class="w-100 art__content">{{article.content}}</p>
         <div class="w-100 art__item--link col-lg-6 pl-0">
@@ -161,11 +161,39 @@ color: rgba(79, 79, 79, 1);
       }
     }
 }
-
 .art__img {
- height: 438px;
-width: 356px;
-border-radius: 15px;
+  height: 438px;
+  width: 356px;
+  border-radius: 15px;
+}
 
+@media (max-width:375px) {
+  .card__wrapp{
+  padding: 0;
+  border-radius: 0;
+  border-left: 4px solid $base-green;
+
+  }
+  .article__item{
+    //width: 324px;
+    border: none;
+  }
+.art__img{
+  width: 324px;
+  height: 322px;
+}
+.art__img>img{
+  width: 324px;
+  height: 322px;
+  }
+.art__date{
+  font-size: 16px;
+  line-height: 24px;
+  color:  rgba(0, 0, 0, 1);
+} 
+.art__card{
+  font-size: 24px;
+line-height: 32px;
+} 
 }
 </style>

@@ -1,16 +1,15 @@
 <template>
-  <div class="bord video-item w-100 w-sm-48">
-    <div class='content__video content h-100'>
+  <div class="bord video-item col-lg-5-8 h-auto col-12">
+    <div class='content__video content h-lg-100'>
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
-        <img class='w-100 main-pic h-100' src="../assets/video-1.png" alt="">
+        <img class='w-98 main-pic h-100 h-lg-100' src="../assets/video-1.png" alt="">
         <div class="darken w-100 h-100"></div>
       </div>
       <span class='art__date'>15.03.2020</span>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst
       </p>
-            <button class=" btn-lg">Все статьи <img src="../assets/button-arrow.svg" alt=""> </button>
 
     </div>
   </div>
@@ -89,22 +88,38 @@ export default {
       }
     }
   }
-  @media (max-width: 375px) {
-    .video-item .content{
-      padding-left: 0;
-      border-left: none;
+  @media (max-width: 576px) {
+
+    .bord{
+      margin: auto;
     }
-    .video-item .content p{
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 28px;
-      margin-top: 0;
+
+    .video-item{
+      background: none;
+      margin-left: 15px;
+      width: 95%;
+      margin-bottom: 20px;
+      box-shadow: none;
+      padding: 10px;
+      .picture-wrapper{
+        height: 193px;
+      }
+      .content{
+        padding-left: 0;
+        border-left: none;
+        p{
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 28px;
+          margin-top: 0;
+        }
+        span{
+          font-size: 16px;
+          line-height: 24px;
+          color:  rgba(0, 0, 0, 1);
+        }
+      }
     }
-    .video-item .content span{
-      font-size: 16px;
-      line-height: 24px;
-      color:  rgba(0, 0, 0, 1);
-} 
   }
  
 </style>

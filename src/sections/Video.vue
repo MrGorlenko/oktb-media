@@ -1,10 +1,10 @@
 <template>
   <div class="video">
-    <div class="container-lg">
+    <div class="container-lg pl-lg-1 pr-lg-1 pl-0 pr-0">
 <!--       <div class="row justify-content-between">
  -->        
- <div class="d-flex flex-column flex-sm-row justify-content-between">
- <videoItem/>
+ <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-between">
+        <videoItem/>
         <videoItem/>
         <videoItem/>
         <videoItem/>
@@ -34,7 +34,11 @@ export default {
   padding-bottom: 160px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 576px) {
+
+.video{
+  overflow: hidden;
+}
 .bord{
   padding-left: 15px;
   padding-right: 15px;

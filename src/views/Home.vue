@@ -5,9 +5,9 @@
     <RunningLine />
     <MainMedia />
     <News-main />
-    <Articles />
+    <!-- <Articles /> -->
     <Video />
-    <Leaders />
+    <!-- <Leaders /> -->
     <!-- <Footer /> -->
   </div>
 </template>
@@ -18,8 +18,8 @@ import Hero from '@/sections/Hero'
 import RunningLine from '@/components/RunningLine.vue';
 import MainMedia from '@/sections/MainMedia';
 import NewsMain from '@/sections/News-main';
-import Articles from '@/sections/Articles';
-import Leaders from '@/sections/Leaders'
+// import Articles from '@/sections/Articles';
+// import Leaders from '@/sections/Leaders'
 import Video from '@/sections/Video';
 // import Footer from '@/components/Footer';
 
@@ -31,8 +31,8 @@ export default {
     RunningLine,
     MainMedia,
     NewsMain,
-    Articles,
-    Leaders,
+    // Articles,
+    // Leaders,
     Video,
     // Footer
   },

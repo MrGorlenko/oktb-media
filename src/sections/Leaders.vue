@@ -1,7 +1,7 @@
 <template>
   <div class="leaders">
     <img class='ellipse' src="../assets/Ellipse.svg" alt="">
-    <img class='dots' src="../assets/dots-bg-1.svg" alt="">
+    <img class='w-100 dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">
       <div class="w-100 title d-flex align-items-center">
         <h3 class='col-6'>Лидеры мнений</h3>

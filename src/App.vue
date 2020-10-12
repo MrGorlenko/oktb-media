@@ -58,5 +58,24 @@ button{
   .w-lg-100{
     width: 100% !important;
   }
+  .w-lg-48{
+    width: 48% !important;
+  }
+  .h-lg-100{
+    height: 100% !important;
+  }
+  .col-lg-5-8{
+    flex: 0 0 48% !important;
+    max-width: 48% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .w-mob-100{
+    width: 100% !important; 
+  }
+  .w-mob-98{
+    width: 98% !important;
+  }
 }
 </style>

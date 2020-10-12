@@ -5,18 +5,14 @@
       <div
         class="w-100 main__wrap container-xl d-flex justify-content-start justify-content-lg-center flex-column"
       >
-      <!-- Group.svg -->
         <img class='dots' src="../assets/Group.svg" alt="">
-        <!-- <div class="main__top container-xl align-items-center"> -->
         <h2 class="main__title">
           Что такое <br />
           "Медиа Будущего"?
         </h2>
-        <!-- </div> -->
 
-        <!-- <div class="main__wrapp d-flex container-fluid"> -->
         <div class="container-fluid d-flex flex-lg-row flex-column justify-content-center">
-          <ul class="main__items d-flex d-sm-block justify-content-between flex-wrap">
+          <ul class="main__items d-lg-block d-none justify-content-between flex-wrap">
             <li class="main__item" v-for="(item, index) in items" :key="index">
               {{ item.title }}
             </li>
@@ -25,12 +21,19 @@
             </button>
           </ul>
 
+            <swiper class='slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions">
+              <swiper-slide class='main__item' v-for="(item, index) in items" :key="index">{{ item.title }}</swiper-slide>
+            </swiper>
+
+
+
           <p class="main__content">
             Приглашение спикеров для <br />
             проведения<b style="color:#66B42F"> мастер-классов</b>, <br />
             организация фестиваля "Точка <br />
             Будущего" раз в год
           </p>
+
            
         </div>
         <!-- </div> -->
@@ -40,6 +43,11 @@
 </template>
 
 <script>
+
+
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+
 export default {
   name: 'MainMedia',
   data() {
@@ -55,8 +63,29 @@ export default {
           title: 'ПРЕСС-СЛУЖБА',
         },
       ],
+      swiperOptions: {
+          pagination: {
+            el: '.swiper-pagination'
+          },
+        }
     };
   },
+  computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+    },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
+  },
+  mounted() {
+      this.swiper.slideTo(-3, 1000, false)
+    }
+  
 };
 </script>
 
@@ -64,6 +93,10 @@ export default {
 .main-wrapper {
   background-color: #f2f4f9;
   padding-top: 20vh;
+}
+
+.swiper-container {
+    width: 100%;
 }
 
 .main {
@@ -91,6 +124,7 @@ export default {
     position: absolute;
     width:100%;
     top: 0;
+    left: 0;
   }
 }
 .main__title {
@@ -133,20 +167,6 @@ export default {
   font-size: 18px;
   line-height: 32px;
   color: #000000;
-/*   @media(max-width:567px) {
-     
-    &::before {
-    
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 0px;
-    top: 14px;
-   // width: 251px;
-    mix-blend-mode: multiply;
-    border: 1px solid #6fcf97;
-    } }
-     */
   
   &:hover {
     cursor: pointer;
@@ -163,11 +183,15 @@ export default {
   color: #000000;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 576px) {
   .main{
     background-image: url('~@/assets/backgroundMainES.svg');
     background-size: cover;
     background-position: 50% 37%;
+
+    .slider{
+      margin-bottom: 24px;
+    }
    
   }
   .main-wrapper{

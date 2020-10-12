@@ -1,6 +1,7 @@
 <template>
   <div class="articles ">
     <div class="articles__wrapp container-xl ">
+    
       <div class="row justify-content-between">
         <div class="col-lg-2 col-sm-12">
           <h3 class="articles__title">Статьи</h3>
@@ -231,5 +232,23 @@ export default {
   height: 271px;
   width: 584px;
   border-radius: 15px;
+}
+
+@media (max-width:375px) {
+  .articles__title{
+  font-size: 32px;
+  line-height: 120%;
+  }
+  .articles__items{
+    margin-top: 40px;
+    margin-bottom: 60px;  
+    }
+    .article__card--wrap{
+      display: none;
+    }
+    .card__wrapp{
+      background-color:  transparent;
+      box-shadow: none;
+    }
 }
 </style>

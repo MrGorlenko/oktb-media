@@ -15,7 +15,7 @@
         <swiper class='slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
           <swiper-slide class='main__item' v-for="(item, index) in items" :key="index">{{ item.title }}</swiper-slide>
         </swiper>
-        <div class="container-fluid d-flex flex-lg-row flex-column justify-content-center">
+        <div class="container-fluid d-flex flex-lg-row flex-wrap flex-column justify-content-center">
           <ul class="main__items d-lg-block d-none justify-content-between flex-wrap">
             <li class="main__item" v-for="(item, index) in items" :key="index">
               {{ item.title }}
@@ -34,7 +34,7 @@
             Будущего" раз в год
           </p>
 
-            <button class="btn btn-success btn-lg " >
+            <button class="btn btn-success btn-lg d-lg-none" >
               Подробнее
             </button>
            

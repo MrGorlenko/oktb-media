@@ -149,6 +149,7 @@ export default {
   background-repeat: no-repeat;
   background-color: #f2f4f9;
   padding-bottom: 130px;
+  overflow: hidden;
   ul{
     li{
       list-style-type:none ;

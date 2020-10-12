@@ -1,7 +1,7 @@
 <template>
   <div class="leaders">
     <img class='ellipse' src="../assets/Ellipse.svg" alt="">
-    <img class='w-100 dots' src="../assets/dots-bg-1.svg" alt="">
+    <img class=' dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">
       <div class="w-100 title d-flex align-items-center flex-wrap justify-content-end">
         <h3 class='col-lg-6 col-12'>Лидеры мнений</h3>
@@ -216,6 +216,14 @@ export default {
       &:hover{
         background-color: darken($color: $base-green, $amount: 10);
         transition: color .3s ease;
+      }
+    }
+  }
+
+  @media (max-width: 1550px){
+    .leaders{
+      .dots{
+        width: 100%;
       }
     }
   }

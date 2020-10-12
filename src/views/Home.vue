@@ -8,7 +8,7 @@
     <Articles />
     <Video />
     <Leaders />
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
@@ -19,9 +19,9 @@ import RunningLine from '@/components/RunningLine.vue';
 import MainMedia from '@/sections/MainMedia';
 import NewsMain from '@/sections/News-main';
 import Articles from '@/sections/Articles';
-import Leaders from '@/sections/Leaders'
 import Video from '@/sections/Video';
-// import Footer from '@/components/Footer';
+import Leaders from '@/sections/Leaders'
+import Footer from '@/components/Footer';
 
 export default {
   name: 'Home',
@@ -32,9 +32,9 @@ export default {
     MainMedia,
     NewsMain,
     Articles,
-    Leaders,
     Video,
-    // Footer
+    Leaders,
+    Footer
   },
 };
 </script>

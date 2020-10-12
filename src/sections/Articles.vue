@@ -19,12 +19,12 @@
             <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 h-100'>{{theme.title}}</p>
           </li>
         </ul>
-        <swiper class='articles__items slider d-lg-none d-block' ref="mySwiper"  >
+        <swiper class='articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
           <swiper-slide 
           v-for='(theme, i) in ThemeArticles' 
           :key="theme.title">
-            <p v-if='theme.isActive' class='active-button articles__item w-100 p-0 d-flex h-100'>{{theme.title}}</p>
-            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 p-0 d-flex h-100'>{{theme.title}}</p>
+            <p v-if='theme.isActive' class='active-button articles__item w-100 p-0 d-flex h-100 justify-content-center align-items-center'>{{theme.title}}</p>
+            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 p-0 d-flex h-100 justify-content-center align-items-center'>{{theme.title}}</p>
           </swiper-slide>
         </swiper>
       </div>
@@ -107,7 +107,8 @@ export default {
       dateDefault: '15 февраля 2020',
       contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
       swiperOptions: {
-        slidesPerView: 2
+        slidesPerView: 3,
+        spaceBetween: 15
       }
     };
   },
@@ -265,6 +266,11 @@ export default {
   font-size: 32px;
   line-height: 120%;
   }
+
+  .active-button{
+    padding: 24px 8px;
+  }
+  
   .articles__items{
     margin-top: 40px;
     margin-bottom: 60px;  

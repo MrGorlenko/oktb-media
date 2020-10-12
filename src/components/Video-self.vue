@@ -4,7 +4,7 @@
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
         <img class='w-98 main-pic h-100 h-lg-100' src="../assets/video-1.png" alt="">
-        <div class="darken w-100 h-100"></div>
+        <div class="darken w-98 h-100"></div>
       </div>
       <span class='art__date'>15.03.2020</span>
       <p>

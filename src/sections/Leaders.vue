@@ -3,11 +3,11 @@
     <img class='ellipse' src="../assets/Ellipse.svg" alt="">
     <img class='w-100 dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">
-      <div class="w-100 title d-flex align-items-center">
-        <h3 class='col-6'>Лидеры мнений</h3>
-        <div class="col-6 green"></div>
+      <div class="w-100 title d-flex align-items-center flex-wrap justify-content-end">
+        <h3 class='col-lg-6 col-12'>Лидеры мнений</h3>
+        <div class="col-lg-6 col-6 green"></div>
       </div>
-      <div class="w-100 people d-flex">
+      <div class="w-100 people d-lg-flex d-none">
         <div 
         v-for='leader in leaders' 
         :key='leader.name' 
@@ -25,6 +25,24 @@
           </div>
         </div>
       </div>
+
+      <swiper class='d-lg-none d-block' ref="mySwiper" :options="swiperOptions">
+        <swiper-slide
+        v-for='leader in leaders' 
+        :key='leader.name' 
+        class="human">
+        <img class='w-100' v-bind:src="leader.img" alt="">
+        <div class="green-filter w-100"></div>
+        <div class="info d-flex flex-column ">
+          <span>{{leader.name}}</span>
+          <a v-bind:href="leader.link" > {{leader.link}} </a>
+          <div class="audit d-flex align-items-center">
+            <img src="../assets/user.svg" alt="">
+            <span>{{leader.audience}}</span>
+          </div>
+        </div>
+        </swiper-slide>
+      </swiper>
       <a class='d-flex' href="#">
         <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button>
       </a>
@@ -35,6 +53,8 @@
 
 <script>
 
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 export default {
   name: 'leaders',
   data() {
@@ -64,15 +84,32 @@ export default {
           img: require('../assets/leader-4.png'),
           audience: 1000
         }
-
-      ]
+      ],
+      swiperOptions: {
+          pagination: {
+            el: '.swiper-pagination'
+          },
+          slidesPerView: 2,
+          spaceBetween: 20,
+          loop: true
+        }
     }
   },
-  methods: {
-    mouseOver: function() {
-      
-    }
-  }
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+  },
+  directives: {
+    swiper: directive
+  },
+  mounted() {
+   this.swiper.slideTo(0, 1000, false)
+  },
 }
 </script>
 
@@ -179,6 +216,26 @@ export default {
       &:hover{
         background-color: darken($color: $base-green, $amount: 10);
         transition: color .3s ease;
+      }
+    }
+  }
+
+  @media (max-width: 576px){
+    .leaders .human .green-filter{
+      left:0;
+    }
+
+    .leaders{
+      .ellipse{
+        top:-8%;
+      }
+      .title{
+        h3{
+          font-size: 32px;
+        }
+        .green{
+          height: 4px;
+        }
       }
     }
   }

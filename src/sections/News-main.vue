@@ -143,6 +143,9 @@ export default {
 
     .News-main{
       height: auto;
+      h3{
+        margin-bottom: 25px;
+      }
     }
 
     .news-wrapper{

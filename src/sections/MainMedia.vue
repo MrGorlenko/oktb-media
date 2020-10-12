@@ -231,9 +231,9 @@ line-height: 120%;
 font-size: 14px;
 line-height: 32px;
   }
-  .btn{
-    // width: 
-  }
+  // .btn{
+  //   // width: 
+  // }
 br{
   display: none;
 }

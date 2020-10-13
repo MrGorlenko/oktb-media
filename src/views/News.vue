@@ -2,19 +2,22 @@
   <div class="news">
   <Header />
   <Search />
+  <NewsCard />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
 import Search from '@/components/Search'
+import NewsCard from '@/components/News-Card'
 
 export default {
   name: 'News',
   components: {
   Header,
-  Search
-  },
+  Search,
+  NewsCard
+    },
 };
 </script>
 

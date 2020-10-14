@@ -13,15 +13,6 @@
         
         <span>{{Info.amount}}</span> 
         </p>
-        <p class='line_p'
-        v-for='Info in Information' 
-        :key='Info.general' 
-        >
-        {{Info.general}}
-        
-        <span>{{Info.amount}}</span> 
-        </p>
-
 
       </div>
       <div 
@@ -35,6 +26,12 @@
         
         <span>{{Info.amount}}</span> 
         </p>
+
+
+      </div>
+            <div 
+      class="wrapper wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
+      >
         <p class='line_p'
         v-for='Info in Information' 
         :key='Info.general' 

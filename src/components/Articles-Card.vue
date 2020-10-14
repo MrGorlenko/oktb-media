@@ -167,7 +167,7 @@ color: rgba(79, 79, 79, 1);
   border-radius: 15px;
 }
 
-@media (max-width:375px) {
+@media (max-width:576px) {
   .card__wrapp{
   padding: 0;
   border-radius: 0;

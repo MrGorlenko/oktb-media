@@ -92,6 +92,8 @@ export default {
 </script>
 
 <style lang="scss" scope>
+@import '../scss/variables';
+
 .main-wrapper {
   background-color: #f2f4f9;
   padding-top: 20vh;
@@ -172,7 +174,7 @@ export default {
   
   &:hover {
     cursor: pointer;
-    color: #219653;
+    color:$base-green;
   }
    
 }
@@ -226,10 +228,10 @@ line-height: 120%;
   }  
   .main__item{
     display: block;
-  padding-top: 0px;
+    padding-top: 0px;
     margin: 0;
-font-size: 14px;
-line-height: 32px;
+    font-size: 14px;
+    line-height: 32px;
   }
   // .btn{
   //   // width: 
@@ -239,8 +241,8 @@ br{
 }
   .main__content{
     font-weight: 600;
-font-size: 24px;
-line-height: 32px;
+    font-size: 24px;
+    line-height: 32px;
   }
   
 }

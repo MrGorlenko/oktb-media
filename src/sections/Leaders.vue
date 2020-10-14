@@ -89,7 +89,7 @@ export default {
           pagination: {
             el: '.swiper-pagination'
           },
-          slidesPerView: 2,
+          slidesPerView: 1.5,
           spaceBetween: 20,
           loop: true
         }

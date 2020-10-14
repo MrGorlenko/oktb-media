@@ -107,7 +107,7 @@ export default {
       dateDefault: '15 февраля 2020',
       contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
       swiperOptions: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 15
       }
     };

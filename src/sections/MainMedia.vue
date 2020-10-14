@@ -68,7 +68,7 @@ export default {
       ],
       swiperOptions: {
           slidesPerView:2,
-          spaceBetween: 0
+          spaceBetween: 20
         }
     };
   },
@@ -85,7 +85,7 @@ export default {
     swiper: directive
   },
   mounted() {
-      this.swiper.slideTo(-3, 1000, false)
+      this.swiper.slideTo(0, 1000, false)
     }
   
 };

@@ -19,7 +19,9 @@
             <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 h-100'>{{theme.title}}</p>
           </li>
         </ul>
+        <!-- шаг 3 - внедряем в вёрстку сам компонент, прописываем swiperOptions как метод options -->
         <swiper class='articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
+          <!--  шаг 4 - вот это сам слайд, его экземпляр. в него контент -->
           <swiper-slide 
           v-for='(theme, i) in ThemeArticles' 
           :key="theme.title">
@@ -49,6 +51,7 @@
 </template>
 
 <script>
+// Шаг 1 - подключаем библиотеку
 import ArticlesCard from '@/components/Articles-Card';
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
@@ -56,6 +59,7 @@ import 'swiper/swiper-bundle.css'
 export default {
   name: 'Articles',
   components: {
+    // Шаг 2 - подключаем компонент
     ArticlesCard,
     Swiper,
     SwiperSlide
@@ -106,20 +110,26 @@ export default {
       themeDefault: 'Наука',
       dateDefault: '15 февраля 2020',
       contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
+      // Шаг 8 - это сами опции слайдера, их большое количество, всё есть в документации. Тут типа видно 4 слайда
+      // и расстояние между ними - 15 пикселей
       swiperOptions: {
         slidesPerView: 4,
         spaceBetween: 15
       }
     };
   },
+  // Шаг 5 - запускаем тот самый метод comtuted
   computed: {
       swiper() {
         return this.$refs.mySwiper.$swiper
       }
   },
+  // Шаг 6 - не знаю зачем надо, но в документации указано как необходимое 
   directives: {
     swiper: directive
   },
+  // Шаг 7 - запуск и инициализация слайдера. slideTo метод принимает в себя 3 аргумента - какой слайд первый по индексу
+  // , с какой сторостью листается, идет ли в обратную сторону (false, если не идёт)
   mounted() {
    this.swiper.slideTo(0, 1000, false)
   },

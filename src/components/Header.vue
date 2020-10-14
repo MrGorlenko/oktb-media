@@ -32,7 +32,7 @@ export default {
         },
           {
           title: "youtube",
-          icon: require("../assets/medium.svg"),
+          icon: require("../assets/youtube.svg"),
           url: "#"
         }
       ]

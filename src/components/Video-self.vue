@@ -1,5 +1,5 @@
 <template>
-  <div class="bord video-item col-lg-5-8 h-auto col-12 pt-0">
+  <div class="bord video-item col-lg-5-8 h-auto col-12 pt-0 pt-sm-4">
     <div class='content__video content h-lg-100'>
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
@@ -88,6 +88,8 @@ export default {
       }
     }
   }
+
+ 
   @media (max-width: 576px) {
 
     .bord{

@@ -8,7 +8,7 @@
         <span class="w-100 art__date pt-5 pt-sm-0"> {{article.date}}</span>
         <p class="w-100 art__card">{{article.title}}</p>
         <p class="w-100 art__content">{{article.content}}</p>
-        <div class="w-100 art__item--link col-lg-6 pl-0">
+        <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
           <a href="#">Узнать больше
               <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19" stroke="#219653" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

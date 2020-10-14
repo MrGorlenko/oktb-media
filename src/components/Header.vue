@@ -29,6 +29,11 @@ export default {
           title: "instagram",
           icon: require("../assets/Instagram.svg"),
           url: "#"
+        },
+          {
+          title: "youtube",
+          icon: require("../assets/medium.svg"),
+          url: "#"
         }
       ]
     };
@@ -44,7 +49,9 @@ export default {
 .social {
   width: 5%;
 }
-
+.social>a{
+  margin-right: 30px;
+}
 .burger {
   cursor: pointer;
 }

@@ -1,9 +1,9 @@
 <template>
 
   <div class="line-container">
-    <div class='running-line d-flex align-items-center justify-content-end'>
+    <div class='running-line d-flex align-items-center justify-content-lg-end'>
       <div 
-      class="wrapper w-lg-100 justify-content-around d-flex align-items-center"
+      class="wrapper w-100 w-lg-100 justify-content-around d-flex align-items-center"
       >
         <p class='line_p'
         v-for='Info in Information' 
@@ -16,7 +16,7 @@
 
       </div>
       <div 
-      class="wrapper wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
+      class="wrapper w-100 wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
       >
         <p class='line_p'
         v-for='Info in Information' 
@@ -29,8 +29,8 @@
 
 
       </div>
-            <div 
-      class="wrapper wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
+      <div 
+      class="wrapper w-100 wrapper_2 w-lg-100 justify-content-around d-flex align-items-center"
       >
         <p class='line_p'
         v-for='Info in Information' 
@@ -122,6 +122,23 @@ export default {
 
 @media (max-width: 768px){
   .running-line{
+    p{
+      &:first-child{
+        width: 170px;
+      }
+      &:nth-child(2){
+        width: 250px;
+      }
+      &:last-child{
+        width: 230px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px){
+  .running-line{
+    width: 200%;
     p{
       &:first-child{
         width: 170px;

@@ -4,10 +4,7 @@
   </div>
 </template>
 
-<script>
-   <router-view/>
-  </div>
-</template>
+
 <script>
 export default {
   components:{

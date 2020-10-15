@@ -54,38 +54,12 @@
 <script>
 
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import {mapState} from 'vuex'
 import 'swiper/swiper-bundle.css'
 export default {
   name: 'leaders',
   data() {
     return {
-      leaders: [
-        {
-          name: 'Nickname1',
-          link: 'url-link-to-her-page',
-          img: require('../assets/leader-1.png'),
-          audience: 1000
-        },
-        {
-          name: 'Nickname2',
-          link: 'url-link-to-his-page',
-          img: require('../assets/leader-2.png'),
-          audience: 1000
-        },
-        {
-          name: 'Nickname3',
-          link: 'url-link-to-her-page',
-          img: require('../assets/leader-3.png'),
-          audience: 1000
-        },
-        {
-          name: 'Nickname4',
-          link: 'url-link-to-his-page',
-          img: require('../assets/leader-4.png'),
-          audience: 1000
-        }
-      ],
-
       swiperOptions: {
           pagination: {
             el: '.swiper-pagination'
@@ -96,6 +70,7 @@ export default {
         }
     }
   },
+  
   components: {
     Swiper,
     SwiperSlide
@@ -103,7 +78,10 @@ export default {
   computed: {
       swiper() {
         return this.$refs.mySwiper.$swiper
-      }
+      },
+      ...mapState({
+        leaders: state => state.leadersInfo.leaders
+      })
   },
   directives: {
     swiper: directive

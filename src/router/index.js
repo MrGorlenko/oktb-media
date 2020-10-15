@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import News from '@/views/News'
 import News_item from '@/views/News_item'
+import Leaders from '@/views/Leaders'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/News_item',
     name:'News_item',
     component: News_item
+  },
+  {
+    path: '/Leaders',
+    name: 'Leaders',
+    component: Leaders
   }
 ]
 

@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-  <Home />
-   <!-- <router-view/> -->
+  <!-- <Home /> -->
+   <router-view/>
   </div>
 </template>
 <script>
-import Home from '@/views/Home'
+// import Home from '@/views/Home'
 export default {
   components:{
-    Home
+    // Home
   }
 }
 </script>
@@ -85,6 +85,9 @@ button{
   }
   .w-mob-98{
     width: 98% !important;
+  }
+  .w-mob-50{
+    width: 50% !important;
   }
 }
 </style>

@@ -21,10 +21,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 @import '../scss/variables';
   .news{
-    background-color: $base-bg-news;
+    background-color: $base-green;
     padding-bottom: 10px;
   }
 

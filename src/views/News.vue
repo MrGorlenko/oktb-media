@@ -3,6 +3,7 @@
   <Header />
   <Search />
   <NewsCard />
+  
   </div>
 </template>
 

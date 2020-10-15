@@ -85,6 +85,7 @@ export default {
           audience: 1000
         }
       ],
+
       swiperOptions: {
           pagination: {
             el: '.swiper-pagination'

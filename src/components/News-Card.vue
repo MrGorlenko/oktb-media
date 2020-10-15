@@ -2,12 +2,14 @@
   <div class="search container-xl align-items-center">  
     <div class="container-lg d-flex flex-column align-items-end">
       <div class="w-100 card__wrapp d-flex flex-column-reverse flex-sm-row justify-content-around align-items-center mb-3"
-        v-for="(article, index) in themeArticles" :key="index">
+        v-for="(article, index) in info" :key="index">
           <div class="article__item d-flex justify-content-between flex-column col-xl-7" >
-              <p class="w-100 art__card mb-1">{{article.text}}</p>
+              <p class="w-100 art__card mb-1">{{article.title}}</p>
               <div class="wrap mb-3">
               <!-- <span><img v-bind:src="article.contImg"></span> -->
-              <span class="w-100 art__content">{{article.content}}</span>
+              <span class="w-100 art__content">{{article.author}}</span>
+              <span class="w-100 art__content">{{article.date}}</span>
+
               </div>
             <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
           <a href="#">Узнать больше
@@ -19,7 +21,7 @@
       </div>
 
       <div class="art__img--news col-lx-6" >
-        <img v-bind:src="article.img" alt="">
+        <img v-bind:src="article.picture" alt="">
       </div>
     </div>
   </div>
@@ -27,48 +29,20 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 
 export default {
     name:"News_Card",
     data() {
       return {
-        themeArticles: [
-        {
-          title: 'Наука',
-          img: require('../assets/Rectangle1.png'),
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          contImg:require('../assets/photo-min.png'),
-          content:'By Maria De La Riva, Updated in June 13th, 2020',
-          isActive: true
-
-        },
-        {
-          title: 'Техника',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/Rectangle2.png'),
-          content:'By Maria De La Riva, Updated in June 13th, 2020',
-          contImg:require('../assets/photo-min.png'),
-          isActive: false
-        },
-        {
-          title: 'Медиа',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/Rectangle3.png'),
-          content:'By Maria De La Riva, Updated in June 13th, 2020',
-          contImg:require('../assets/photo-min.png'),
-          isActive: false
-        },
-        {
-          title: 'Досуг',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/Rectangle4.png'),
-          content:'By Maria De La Riva, Updated in June 13th, 2020',
-          contImg:require('../assets/photo-min.png'),
-          isActive: false
-        }
-      ],
+      
       }
     },
+    computed:{
+      ...mapState({
+        info: state => state.newsInfo.NewsArticle
+      })
+}
 }
 </script>
 

@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-<!--   <Home />
- -->  
   <router-view/> 
   </div>
 </template>
+
 <script>
-/* import Home from '@/views/Home'
- */
- /* export default {
-  
-} */
+   <router-view/>
+  </div>
+</template>
+<script>
+export default {
+  components:{
+  }
+}
 </script>
 
 <style lang="scss">
@@ -85,6 +87,9 @@ button{
   }
   .w-mob-98{
     width: 98% !important;
+  }
+  .w-mob-50{
+    width: 50% !important;
   }
 }
 </style>

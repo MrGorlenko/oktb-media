@@ -60,15 +60,16 @@ export default {
           title: 'ЛЕКТОРИИ И ФЕСТИВАЛИ',
         },
         {
-          title: 'УЧИТЕЛЯМ',
+          title: 'ЛЕКЦИИ',
         },
         {
-          title: 'ПРЕСС-СЛУЖБА',
+          title: 'УЧИТЕЛЯМ',
         },
       ],
       swiperOptions: {
-          slidesPerView:2,
-          spaceBetween: 20
+          slidesPerView: 1.5,
+          spaceBetween: 20,
+          // direction: 'vertical'
         }
     };
   },

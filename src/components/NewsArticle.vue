@@ -1,11 +1,11 @@
 <template>
-  <div class='NewsArticle w-100'>
+  <div class='NewsArticle'>
     <h2>{{NewsArticle[0].title}}</h2>
     <div class="author-info">
       <p>By {{NewsArticle[0].author}}</p>
       <p>Updated in {{NewsArticle[0].date}}</p>
     </div>
-    <img class='w-100 distance' :src='NewsArticle[0].picture' alt="">
+    <img class='distance' :src='NewsArticle[0].picture' alt="">
      <div class="green-line"></div>
      <p class="base-p">
        {{NewsArticle[0].text}}
@@ -13,7 +13,7 @@
      <hr class="distance grey-line">
      <div class="share d-flex justify-content-start align-items-center">
        <span>Поделиться:</span>
-          <div class="share-links d-flex align-items-center justify-content-between">
+          <div class=" d-flex align-items-center justify-content-between">
 
        <a href="#" class="facebook">
 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,19 +68,18 @@ export default {
 
 <style lang="scss" scope>
 
-// @import url(../scss/variables);
-
 .distance{
   margin-top: 32px;
   margin-bottom: 32px;
 }
 
 .NewsArticle{
+  width: 790px;
   padding: 40px;
   background: #FFFFFF;
   box-shadow: 0px 14px 32px rgba(108, 137, 164, 0.15);
   border-radius: 15px;
-  margin-bottom: 24px;
+  margin: auto;
   h2{
     font-size: 40px;
     line-height: 56px;
@@ -113,21 +112,6 @@ export default {
     svg{
       width: 100%;
       height: 100%;
-    }
-    .share-links{
-      width: 82px;
-      margin-left: 10px;
-    }
-  }
-}
-
-@media (max-width: 576px){
-  .NewsArticle{
-    padding: 24px 15px;
-    h2{
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 32px;
     }
   }
 }

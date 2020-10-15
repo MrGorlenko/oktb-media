@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scope>
 @import '../scss/variables';
   .news{
-    background-color: $base-green;
+    background-color: $base-bg-news;
     padding-bottom: 10px;
   }
 

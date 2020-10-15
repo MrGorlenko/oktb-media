@@ -78,7 +78,7 @@ export default {
     swiper: directive
   },
   mounted() {
-   this.swiper.slideTo(this.swipe.length-1, 1000, false)
+   this.swiper.slideTo(-2, 1000, false)
   },
  
 }

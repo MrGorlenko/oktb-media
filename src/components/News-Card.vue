@@ -6,7 +6,7 @@
           <div class="article__item d-flex justify-content-between flex-column col-xl-7" >
               <p class="w-100 art__card mb-1">{{article.text}}</p>
               <div class="wrap mb-3">
-              <span><img v-bind:src="article.contImg"></span>
+              <!-- <span><img v-bind:src="article.contImg"></span> -->
               <span class="w-100 art__content">{{article.content}}</span>
               </div>
             <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">

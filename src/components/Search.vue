@@ -1,29 +1,88 @@
 <template>
     <div class="search container-xl align-items-center">
         <div class="container d-flex flex-column justify-content-between ">
-            <h2 class="search__news mb-4">Новости</h2>
+            <h2 class="search__news mb-4" >Новости</h2>
         <div class="input__wrap w-100">
             <input class="input__news w-100"
             type="text" placeholder="Поиск">
         </div>
-        <ul class="items__hash d-flex col-lg-6 justify-content-between p-0 mt-1">
-            <li class="item__hash">#хэштег</li>
-            <li class="item__hash">#хэштег</li>
-            <li class="item__hash">#хэштег</li>
-            <li class="item__hash">#хэштег</li>
-            <li class="item__hash">#хэштег</li>
-            <li class="item__hash">#хэштег</li>
+        <ul class="items__hash d-lg-flex d-none col-lg-6 justify-content-between p-0 mt-1">
+            <li class="item__hash"
+                v-for="(hashItem,item) in hashs" :key="item"
+                >{{hashItem.hashTag}}</li>
+        </ul>
 
-        </ul> 
+        <swiper 
+        class="items__hash slider d-lg-none d-block mt-3 mb-3" ref="mySwiper" :options="swiperOptions">
+            <swiper-slide class="d-flex justify-content-start"
+                v-for="(hashItem,item) in hashs" :key="item">
+                <li class="item__hash ">{{hashItem.hashTag}}</li>
+            </swiper-slide> 
         
+        </swiper>
     </div>
     </div>
 </template>
 
 <script>
+
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+import 'swiper/swiper-bundle.css'
+
+
 export default {
-    name:"Search"
+    name:"Search",
+    data() {
+        return {
+            hashs:[
+        {
+    hashTag:'#хэштег 1'
+        },
+        {
+    hashTag:'#хэштег 2'
+        },
+        {
+    hashTag:'#хэштег 3'
+        },
+        {
+    hashTag:'#хэштег 4'
+        },
+        {
+    hashTag:'#хэштег 5'
+        },
+        {
+    hashTag:'#хэштег 6'
+        }
+            ],
+
+            swiperOptions: {
+            pagination: {
+            el: '.swiper-pagination'
+          },
+            slidesPerView: 3.5,
+            spaceBetween: 20,
+            loop:true
+        }
+        }
+    },
+    components:{
+    Swiper,
+    SwiperSlide
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+  },
+  directives: {
+    swiper: directive
+  },
+  mounted() {
+   this.swiper.slideTo(this.swipe.length-1, 1000, false)
+  },
+ 
 }
+
 </script>
 
 <style lang="scss">
@@ -39,6 +98,16 @@ export default {
     line-height: 88px;
     margin-top: 56px;
     margin-bottom: 45px;
+    position: relative;
+        &::before{
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: -262px;
+    width: 250px;
+    height: 3px;
+    background-image: url('~@/assets/Vector2.svg');
+    }
     }
 .input__news{
     height: 60px;
@@ -92,6 +161,14 @@ export default {
     margin: 0 auto;
     margin-top: 24px;
     margin-bottom: 25px;
-    }
+       &::before{
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: -258px;
+    width: 250px;
+    height: 3px;
+    background-image: url('~@/assets/Vector2.svg');
+    }}
 }
 </style>

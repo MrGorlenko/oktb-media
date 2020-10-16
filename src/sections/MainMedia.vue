@@ -11,10 +11,13 @@
           "Медиа Будущего"?
         </h2>
 
-
-        <swiper class='slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
-          <swiper-slide class='main__item' v-for="(item, index) in items" :key="index">{{ item.title }}</swiper-slide>
-        </swiper>
+        <div class="switcher-mobile d-lg-none d-flex flex-column ">
+          <button v-for="(item, index) in items" :key="index">
+            <div class='w-100 h-100'> <!-- cюда добавляется класс active если состояние активное (категорию смотрят) -->
+              {{ item.title }}
+            </div>
+          </button>
+        </div>
         <div class="container-fluid d-flex flex-lg-row flex-wrap flex-column justify-content-center">
           <ul class="main__items d-lg-block d-none justify-content-between flex-wrap">
             <li class="main__item" v-for="(item, index) in items" :key="index">
@@ -39,7 +42,6 @@
             </button>
            
         </div>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -47,9 +49,8 @@
 
 <script>
 
-
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import '../scss/variables.scss'
 
 export default {
   name: 'MainMedia',
@@ -66,34 +67,56 @@ export default {
           title: 'УЧИТЕЛЯМ',
         },
       ],
-      swiperOptions: {
-          slidesPerView: 1.5,
-          spaceBetween: 20,
-          // direction: 'vertical'
-        }
+      // swiperOptions: {
+      //     slidesPerView: 1.5,
+      //     spaceBetween: 20,
+      //     // direction: 'vertical'
+      //   }
     };
   },
-  computed: {
-      swiper() {
-        return this.$refs.mySwiper.$swiper
-      }
-    },
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive
-  },
-  mounted() {
-      this.swiper.slideTo(0, 1000, false)
-    }
+  // computed: {
+  //     swiper() {
+  //       return this.$refs.mySwiper.$swiper
+  //     }
+  //   },
+  // components: {
+  //   Swiper,
+  //   SwiperSlide
+  // },
+  // directives: {
+  //   swiper: directive
+  // },
+  // mounted() {
+  //     this.swiper.slideTo(0, 1000, false)
+  //   }
   
 };
 </script>
 
 <style lang="scss" scope>
 @import '../scss/variables';
+
+.switcher-mobile{
+  button{
+    background: #F2F2F2;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+    margin-bottom: 8px;
+    padding: 0;
+    div{
+      text-align: start;
+      padding: 20px 18px;
+      border-radius: 8px;
+    }
+    .active{
+      background: $base-green;
+      color: #fff;
+    }
+  }
+}
 
 .main-wrapper {
   background-color: #f2f4f9;
@@ -162,7 +185,6 @@ export default {
 .main__item {
   height: 32px;
   padding-top: 3px;
-  //width: 276px;
   margin-right: 32px;
   margin-left: 32px;
   margin-bottom: 32px;
@@ -204,7 +226,8 @@ export default {
     padding-top: 60px;
   }
   .main__wrap{
-    height: 520px;
+    height: auto;
+    padding-bottom: 60px;
   }
   .main__title{
   margin-top: 50px;
@@ -223,7 +246,6 @@ line-height: 120%;
     left: -9%;
   }
   .main__items{
-    //width: 345px;
     padding: 0;
    
   }  
@@ -234,9 +256,6 @@ line-height: 120%;
     font-size: 14px;
     line-height: 32px;
   }
-  // .btn{
-  //   // width: 
-  // }
 br{
   display: none;
 }

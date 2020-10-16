@@ -1,5 +1,6 @@
 <template>
   <div class="news">
+  <router-view></router-view>
   <Header />
   <Search />
   <NewsCard />

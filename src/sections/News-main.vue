@@ -25,11 +25,13 @@
             </a>
           </div>
           <div class='all-news-link col-5 pl-0'>
+          <router-link to="/News" >
             <a href="#">Все новости 
               <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19" stroke="#219653" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
+          </router-link>
           </div>
           <div class='col-5'></div>
         </div>

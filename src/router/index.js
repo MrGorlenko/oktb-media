@@ -4,7 +4,8 @@ import Home from '../views/Home.vue'
 import News from '@/views/News'
 import News_item from '@/views/News_item'
 import Leaders from '@/views/Leaders'
-
+import NewsArticle from '@/components/NewsArticle'
+import _NewsArtic from '@/components/_NewsArtic'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,6 +18,18 @@ const routes = [
     path: '/News',
     name: 'News',
     component: News 
+  },
+  {
+    path: '/NewsArticle',
+    name: 'NewsArticle',
+    component: NewsArticle,
+    //props:true
+  },
+  {
+    path: '/_NewsArtic/:id',
+    name: 'NewsArtic',
+    component: _NewsArtic,
+    //props:true
   },
   {
     path: '/about',

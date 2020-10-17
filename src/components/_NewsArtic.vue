@@ -1,26 +1,18 @@
 <template>
   <div class='NewsArticle'>
-    <h2>{{info.title}}</h2>
     <div class="author-info">
-<!--     <p>By {{NewsArticle[0].author}}</p>
-      <p>Updated in {{NewsArticle[0].date}}</p>
- -->    
-      <p>By {{info.author}}</p>
-      <p>Updated in {{info.date}}</p>
-    </div>
-<!--     <img class='distance' :src='NewsArticle[0].picture' alt="">
- -->     
-       <img class='distance' :src='info.img' alt="">
-  <div class="green-line"></div>
-     <p class="base-p">
-<!--        {{NewsArticle[0].text}}
- -->     
-      {{info.text}}
-      </p>
-     <hr class="distance grey-line">
-     <div class="share d-flex justify-content-start align-items-center">
-       <span>Поделиться:</span>
-          <div class=" d-flex align-items-center justify-content-between">
+      <p>By {{info[id].author}}</p>
+      <p>Updated in {{info[id].date}}</p>
+    </div>    
+      <img :src="info.img" class='distance' alt="q">
+
+
+ <div class="green-line"></div>
+      <p class="base-p">{{info[id].text}}</p>
+      <hr class="distance grey-line">
+  <div class="share d-flex justify-content-start align-items-center">
+      <span>Поделиться:</span>
+    <div class=" d-flex align-items-center justify-content-between">
 
        <a href="#" class="facebook">
 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,25 +35,26 @@
 </svg>
         </a>
     </div>
-     </div>
+     </div> 
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
 export default {
-  name: 'NewsArticle',
+  name: '_NewsArtic',
   data() {
     return {
-
+     id:this.$router.currentRoute.params['id']
     }
   },
   computed:{
      ...mapState({
-        info: state => state.newsInfo.NewsArticle[0]
-    })
-  }
- 
+        info: state => state.newsInfo.NewsArticle
+    }),
+    }
+
+  
 }
 </script>
 

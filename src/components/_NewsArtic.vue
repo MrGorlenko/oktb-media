@@ -4,7 +4,7 @@
       <p>By {{info[id].author}}</p>
       <p>Updated in {{info[id].date}}</p>
     </div>    
-      <img :src="info.img" class='distance' alt="q">
+      <img class='distance' v-bind:src="'../'+info[id].picture" alt="q">
 
 
  <div class="green-line"></div>
@@ -42,7 +42,7 @@
 <script>
 import {mapState} from 'vuex'
 export default {
-  name: '_NewsArtic',
+  name: 'NewsArtic',
   data() {
     return {
      id:this.$router.currentRoute.params['id']

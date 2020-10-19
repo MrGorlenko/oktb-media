@@ -4,13 +4,11 @@
       <p>By {{info[id].author}}</p>
       <p>Updated in {{info[id].date}}</p>
     </div>    
-      <img class='distance' v-bind:src="'../'+info[id].picture" alt="q">
-
-
- <div class="green-line"></div>
-      <p class="base-p">{{info[id].text}}</p>
-      <hr class="distance grey-line">
-  <div class="share d-flex justify-content-start align-items-center">
+    <img class='distance' v-bind:src="'../'+info[id].picture" alt="q">
+    <div class="green-line"></div>
+    <p class="base-p">{{info[id].text}}</p>
+    <hr class="distance grey-line">
+    <div class="share d-flex justify-content-start align-items-center">
       <span>Поделиться:</span>
     <div class=" d-flex align-items-center justify-content-between">
 
@@ -35,7 +33,7 @@
 </svg>
         </a>
     </div>
-     </div> 
+    </div> 
   </div>
 </template>
 

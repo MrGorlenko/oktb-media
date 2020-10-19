@@ -14,7 +14,7 @@
         <div class='col-lg-10 col-12 order-last order-lg-0'>
 
           <div class="news-container d-flex flex-column align-items-end">
-            <NewsArticle/>
+            <!-- <NewsArticle/> -->
             <a class='d-block back' href="#"><button>Назад к новостям</button></a>
           </div>
 
@@ -34,13 +34,13 @@
 
 <script>
 import Header from '@/components/Header'
-import NewsArticle from '@/components/NewsArticle'
+// import NewsArticle from '@/components/NewsArticle'
 import Footer from '@/components/Footer'
 export default {
   name: 'News_item',
   components: {
     Header, Footer,
-    NewsArticle
+    // NewsArticle
   }
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div class='leaders_page' id="app">
-    <Header></Header>
     <div class="container-fluid p-0">
       <div class="title d-flex align-items-center justify-content-start">
         <div class="green"></div>
@@ -25,18 +24,17 @@
         </div>
       </div>
     </div>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 export default {
   name: 'Leaders',
   components: {
-    Header, Footer
+    // Header, Footer
   },
   computed:{
     ...mapState({

@@ -1,5 +1,5 @@
 <template>
-  <div class='NewsArticle'>
+  <div class='NewsArticle distance'>
     <div class="author-info">
       <p>By {{info[id].author}}</p>
       <p>Updated in {{info[id].date}}</p>
@@ -47,22 +47,21 @@ export default {
      id:this.$router.currentRoute.params['id']
     }
   },
+  components: {
+  },
   computed:{
      ...mapState({
         info: state => state.newsInfo.NewsArticle
     }),
     },
-     
-
-  
 }
 </script>
 
 <style lang="scss" scope>
 
 .distance{
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
 }
 
 .NewsArticle{
@@ -77,6 +76,9 @@ export default {
     line-height: 56px;
     letter-spacing: 2px;
     color: #1C1642;
+  }
+  img{
+    width: 100%;
   }
   .author-info{
     p{
@@ -104,6 +106,20 @@ export default {
     svg{
       width: 100%;
       height: 100%;
+    }
+    div{
+      width: 90px;
+      margin-left: 15px;
+    }
+  }
+}
+
+@media (max-width: 992px){
+  .NewsArticle{
+    width: 95%;
+    padding: 2.5%;
+    img{
+      width: 100%;
     }
   }
 }

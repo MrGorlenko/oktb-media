@@ -1,6 +1,5 @@
 <template>
   <div class='news_item'>
-    <Header/>
 
     <div class="container-fluid">
       <div class="row">
@@ -28,18 +27,17 @@
       </div>
     </div>
 
-    <Footer/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
+// import Header from '@/components/Header'
 // import NewsArticle from '@/components/NewsArticle'
-import Footer from '@/components/Footer'
+// import Footer from '@/components/Footer'
 export default {
   name: 'News_item',
   components: {
-    Header, Footer,
+    // Header, Footer,
     // NewsArticle
   }
 }

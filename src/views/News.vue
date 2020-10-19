@@ -1,7 +1,6 @@
 <template>
   <div class="news">
   <router-view></router-view>
-  <Header />
   <Search />
   <NewsCard />
   
@@ -9,14 +8,13 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
 import Search from '@/components/Search'
 import NewsCard from '@/components/News-Card'
 
 export default {
   name: 'News',
   components: {
-  Header,
+  // Header,
   Search,
   NewsCard
     },

@@ -7,36 +7,35 @@
           <h3>Новости</h3>
         </div>
         <div class="col-lg-10 col-12 d-flex justify-content-around flex-wrap">
-          <div v-for="item in News" :key="item.date" class='col-lg-5 col-12 news-item'>
-            <a class='d-flex flex-column align-items-end w-100 news-link' v-bind:href="item.url">
-              <img class='w-98' v-bind:src="item.img" alt="">
-              <span class="w-98 date">{{item.date}}</span>
+          <div v-for="(article, index) in info" :key="index" class='col-lg-5 col-12 news-item'>
+            
+            <router-link 
+            v-if="index <= 1" class='d-flex flex-column align-items-end w-100 news-link'
+            :to="/nNewsArtic/ + index"
+            :key="index"
+            >
+              <img class='w-98' v-bind:src="article.picture" alt="">
+              <span class="w-98 date">{{article.date}}</span>
               <p class='w-98'>
-                {{item.paragraph}}
+                {{article.title}}
               </p>
 
-              <div class='d-block d-lg-none w-98 all-news-link'>
-                <a href="#">Все новости 
-                  <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19" stroke="#219653" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-            </a>
+            </router-link>
+
           </div>
+
+
           <div class='all-news-link col-5 pl-0'>
           <router-link to="/News" >
-            <a href="#">Все новости 
+              Все новости
               <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19" stroke="#219653" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
           </router-link>
           </div>
           <div class='col-5'></div>
         </div>
 
-        <!-- <div class='col-4'></div> -->
       </div>
 
     </div>
@@ -44,6 +43,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "News-main",
   data() {
@@ -63,8 +63,12 @@ export default {
         }
       ]
     }
-  }
-
+  },
+  computed:{
+      ...mapState({
+        info: state => state.newsInfo.NewsArticle
+      }),
+    },
 }
 </script>
 

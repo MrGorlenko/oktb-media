@@ -18,6 +18,7 @@
 <script>
 import {mapState} from 'vuex'
 import InfoCard from '@/components/subcomponents/InfoCard.vue'
+
 export default {
     name:"News_Card",
     data() {

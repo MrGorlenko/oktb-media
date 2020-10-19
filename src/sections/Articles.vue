@@ -52,7 +52,7 @@
 
 <script>
 // Шаг 1 - подключаем библиотеку
-import ArticlesCard from '@/components/Articles-Card';
+import ArticlesCard from '@/components/subcomponents/Articles-Card';
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 

@@ -22,7 +22,7 @@
       </div>
     </div>
     <a class='articles-all' href="#">
-      <button class=" btn-lg">Все статьи <img src="../assets/button-arrow.svg" alt=""> </button>
+      <button class=" btn-lg">Все статьи <img src="../../assets/button-arrow.svg" alt=""> </button>
     </a>
   </div>
   </div>
@@ -38,7 +38,7 @@ export default {
           subject: 'Наука',
           title:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/articles1.png'),
+          img: require('../../assets/articles1.png'),
           date: '15 фераля 2020',
           content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi eros venenatis fames sit. Facilisis nunc fringilla aliquam lectus proin elit aliquam. Nulla nunc sit arcu duis porta porttitor non fermentum, quisque.' ,
           url: '#',
@@ -49,7 +49,7 @@ export default {
           subject: 'Наука',
           title:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../assets/articles2.png'),
+          img: require('../../assets/articles2.png'),
           date: '15 фераля 2020',
           content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi eros venenatis fames sit. Facilisis nunc fringilla aliquam lectus proin elit aliquam. Nulla nunc sit arcu duis porta porttitor non fermentum, quisque.' ,
           url: '#',
@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss" scope>
 
-@import '../scss/variables';
+@import '../../scss/variables';
 
 .article__card{
     a{

@@ -45,6 +45,7 @@ export default {
   name: 'NewsArtic',
   data() {
     return {
+      post:'',
      id:this.$router.currentRoute.params['id']
     }
   },
@@ -52,7 +53,8 @@ export default {
      ...mapState({
         info: state => state.newsInfo.NewsArticle
     }),
-    }
+    },
+     
 
   
 }

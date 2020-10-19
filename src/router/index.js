@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 import News from '@/views/News'
 import News_item from '@/views/News_item'
 import Leaders from '@/views/Leaders'
 import NewsArticle from '@/components/NewsArticle'
-import _NewsArtic from '@/components/_NewsArtic'
+import nNewsArtic from '@/components/nNewsArtic'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,9 +27,9 @@ const routes = [
     //props:true
   },
   {
-    path: '/_NewsArtic/:id',
-    name: 'NewsArtic',
-    component: _NewsArtic,
+    path: '/nNewsArtic/:id',
+    name: 'nNewsArtic',
+    component: nNewsArtic,
     //props:true
   },
   {
@@ -54,7 +55,14 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }, 
 })
 
 export default router

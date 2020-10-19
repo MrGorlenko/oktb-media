@@ -2,15 +2,15 @@ const leadersInfo = {
   namespaced: true,
 
   state: {
-    leaders: [
-      {
+     leaders: [
+     {
         name: 'Nickname1',
         link: 'url-link-to-her-page',
         img: require('../assets/leader-1.png'),
         audience: 1000,
         category: 'leader'
       },
-      {
+       {
         name: 'Nickname2',
         link: 'url-link-to-his-page',
         img: require('../assets/leader-2.png'),
@@ -23,7 +23,7 @@ const leadersInfo = {
         img: require('../assets/leader-3.png'),
         audience: 1000,
         category: 'leader'
-      },
+      }, 
       {
         name: 'Nickname4',
         link: 'url-link-to-his-page',
@@ -43,7 +43,7 @@ const leadersInfo = {
         label: 'Блоггеры',
         active: false
       }
-    ]
+    ] 
   },
   mutations: {
     

@@ -1,5 +1,7 @@
 <template>
-  <div class="leaders">
+  <div class="leaders" 
+    v-if="leaders.length>0"
+  >
     <img class='ellipse' src="../assets/Ellipse.svg" alt="">
     <img class=' dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">

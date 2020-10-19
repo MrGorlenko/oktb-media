@@ -2,10 +2,10 @@
   <div class="leaders" 
     v-if="leaders.length>0"
   >
-    <img class='ellipse' src="../assets/Ellipse.svg" alt="">
+<img class='ellipse' src="../assets/Ellipse.svg" alt="">
     <img class=' dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">
-      <div class="w-100 title d-flex align-items-center flex-wrap justify-content-end">
+        <div class="w-100 title d-flex align-items-center flex-wrap justify-content-end">
         <h3 class='col-lg-6 col-12'>Лидеры Мнений</h3>
         <div class="col-lg-6 col-6 green"></div>
       </div>

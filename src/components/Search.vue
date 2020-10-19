@@ -4,6 +4,8 @@
             <h2 class="search__news mb-4" >Новости</h2>
         <div class="input__wrap w-100">
             <input class="input__news w-100"
+            v-model="search"
+            @input="searchNews"
             type="text" placeholder="Поиск">
         </div>
         <ul class="items__hash d-lg-flex d-none col-lg-6 justify-content-between p-0 mt-1">
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css'
 
@@ -34,6 +36,8 @@ export default {
     name:"Search",
     data() {
         return {
+        
+        search:'',
             hashs:[
         {
     hashTag:'#хэштег 1'
@@ -72,10 +76,18 @@ export default {
     computed: {
       swiper() {
         return this.$refs.mySwiper.$swiper
-      }
+      },
+      ...mapState({
+      infoN: state => state.newsInfo.NewsArticle
+    })
   },
   directives: {
     swiper: directive
+  },
+  methods:{
+      searchNews(){
+        this.$store.commit('newsInfo/CHANGE_FILTER',this.search)      
+        }
   },
   mounted() {
    this.swiper.slideTo(-2, 1000, false)

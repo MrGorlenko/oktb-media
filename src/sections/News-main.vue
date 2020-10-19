@@ -19,11 +19,8 @@
               <p class='w-98'>
                 {{article.title}}
               </p>
-
             </router-link>
-
           </div>
-
 
           <div class='all-news-link col-5 pl-0'>
           <router-link to="/News" >

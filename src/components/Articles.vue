@@ -1,40 +1,49 @@
 <template>
 <div class='articles'>  
-  <h3 class="articles__title">Статьи</h3>
-    <ul
-    class="articles__items col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
-    >
-    <li 
-    v-for='(theme, index) in themes' 
-    :key="index" >
+      <ul
+      class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
+      >
+      <li 
+      v-for='(theme, index) in themes' 
+      :key="index" >
       <p
-        class='articles__item w-100 h-100 '>
+        class='articles__item w-100 h-100 '
+        :class="{'active-button': index==0}">
         {{theme.theme}}
       </p>
 
     </li>
     </ul>
-    <!-- <div  class="article__card--wrap">
-      <div class="articles__card offset-lg-2 d-flex flex-column mb-1"
-        style="top:0px; left:10px">
-        <span class="card__subject offset-lg-2">{{articles[0].theme}}</span>
-        <span class="card__date offset-lg-2">{{articles[0].date}}</span>
-        <p class="card__text offset-lg-2 mb-lg-3">{{articles[0].content}}</p>
+    <div
+    v-for='(theme, index) in themes' :key=theme.theme
+    class='themes'
+    >
+      <div v-for='(article) in articles' :key='article.title'
+      class=themesTwo
+      >
+        <div
+        v-if='article.theme==theme.theme'
+        :class="{'d-none': index != 0}"
+        class='art-cat'
+        >
+          <ArticleCard
+          :title = article.title
+          :content = article.content
+          :date = article.date
+          :author = article.author
+          :img = article.img
+          />
+        </div>
       </div>
-
-      <img
-        class="articles__img offset-lg-6"
-        src="../assets/articles-boy.png"
-        alt=""
-      />
-    </div> -->
+    </div>
 
 </div>
 </template>
 
 
 <script>
-// import $ from 'jquery';
+import ArticleCard from '@/components/subcomponents/Article-Card';
+import $ from 'jquery';
 import {mapState} from 'vuex'
 export default {
 name: 'ArticlesComponent',
@@ -44,21 +53,53 @@ data(){
       id:this.$router.currentRoute.params['id']
     }
   },
-computed:{
+  computed:{
   ...mapState({
         articles: state => state.articlesInfo.Articles,
         themes: state => state.articlesInfo.Themes
     }),
   },
+components: {
+  ArticleCard
+},
+mounted(){
+  let len = this.themes.length;
+  // switcher
+  $('.switcher li').each(function(i){
+    $(this).click(function(){
+      $(this).children('p').addClass('active-button')
+      $(this).siblings().children('p').removeClass('active-button')
+      $(this).parent().parent().children('.themes').eq(i).children('.themesTwo').children('.art-cat').removeClass('d-none')
+      for (let j=1; j<len;j++){
+        $(this).parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
+        $(this).parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
+      }
+    })
+  })
+}
 }
 </script>
 
 <style lang='scss'>
+@import '../scss/variables';
+$distance: 250px;
+
+
+
 .articles__items {
   font-size: 16px;
   line-height: 32px;
   letter-spacing: 1px;
 }
+
+.green {
+  width: $distance;
+  height: 8px;
+  content: '';
+  z-index: 1;
+  background-color: $base-green;
+}
+
 
 .active-button{
   color: #fff;

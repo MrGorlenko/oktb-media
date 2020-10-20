@@ -19,7 +19,7 @@
               <button
                 v-for="(category, index) in leadersCategories"
                 :key="category.type"
-                v-bind:class="{ active: index==0 }"
+                :class="{ active: index==0 }"
                 class="w-100 mb-3"
               >
                 {{ category.label }}

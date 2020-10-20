@@ -25,6 +25,20 @@ const leadersInfo = {
         category: 'leader'
       }, 
       {
+        name: 'Nickname8',
+        link: 'url-link-to-her-page',
+        img: require('../assets/leader-3.png'),
+        audience: 1000,
+        category: 'acrobats'
+      }, 
+      {
+        name: 'Nickname10',
+        link: 'url-link-to-her-page',
+        img: require('../assets/leader-3.png'),
+        audience: 1000,
+        category: 'acrobats'
+      }, 
+      {
         name: 'Nickname4',
         link: 'url-link-to-his-page',
         img: require('../assets/leader-4.png'),
@@ -41,6 +55,11 @@ const leadersInfo = {
       {
         type: 'blogger',
         label: 'Блоггеры',
+        active: false
+      },
+      {
+        type: 'acrobats',
+        label: 'Акробаты',
         active: false
       }
     ] 

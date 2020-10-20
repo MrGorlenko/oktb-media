@@ -8,11 +8,18 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
+
+
 new Vue({
   store,
   router,
+  $,
   render: h => h(App),
 }).$mount('#app')
+
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);

@@ -3,49 +3,58 @@
     <div class="container-fluid p-0">
       <div class="title d-flex align-items-center justify-content-start">
         <div class="green"></div>
-        <div class="white">
-          <h2>Лидеры мнений</h2>
+        <div class="container">
+          <div class="white">
+            <h2>Лидеры мнений</h2>
+          </div>
         </div>
       </div>
-      <div class="container content">
-        <div class="col-3">
+      <div class="container content d-flex flex-lg-row">
+        <div class="col-3 pl-0">
           <div class="select">
             <div
-              v-for="(category, index) in leadersCategories"
-              :key="category.type"
               class="w-100"
             >
+
               <button
-                v-bind:class="{ active: activeIndex === index }"
-                @click="onClickBlock(index)"
+                v-for="(category, index) in leadersCategories"
+                :key="category.type"
+                v-bind:class="{ active: index==0 }"
+
                 class="w-100 mb-3"
               >
                 {{ category.label }}
               </button>
-
-              <!--  <button v-if="category.active == true" class="active w-100">
-                {{ category.label }}
-              </button> 
-              <button
-                v-on:click="ActivateCategory($event, i)"
-                v-else
-                class="w-100"
-              >
-                {{ category.label }}
-              </button> -->
             </div>
           </div>
         </div>
-        <div class="col-9"></div>
+        <div class="col-9">
+          <div class="row">
+            <div
+              v-for='leader in leaders' 
+              :key='leader.name' 
+              class="human">
+              <img class='w-100' v-bind:src="leader.img" alt="">
+              <div class="green-filter w-100"></div>
+              <div class="info d-flex flex-column ">
+                <span>{{leader.name}}</span>
+                <a v-bind:href="leader.link" > {{leader.link}} </a>
+              <div class="audit d-flex align-items-center">
+              <img src="../assets/user.svg" alt="">
+              <span>{{leader.audience}}</span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery';
 import { mapState } from 'vuex';
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
 export default {
   name: 'Leaders',
   data() {
@@ -55,10 +64,12 @@ export default {
   },
   components: {
     // Header, Footer
+    // $
   },
   computed: {
     ...mapState({
       leadersCategories: state => state.leadersInfo.categories,
+      leaders: state => state.leadersInfo.leaders
     }),
   },
   methods: {
@@ -80,6 +91,14 @@ export default {
       }
     },
   },
+  mounted() {
+    $(".select button").each(function(){
+      $(this).click(function(){
+        $(this).addClass('active')
+        $(this).siblings().removeClass('active')
+      })
+    })
+  }
 };
 </script>
 

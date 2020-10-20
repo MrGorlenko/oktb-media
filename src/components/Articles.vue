@@ -14,6 +14,13 @@
 
     </li>
     </ul>
+    <swiper class='switcher articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
+      <swiper-slide 
+      v-for='(theme, index) in themes' 
+      :key="index" >
+        <p :class="{'active-button': index==0}" class='articles__item w-100 d-flex h-100 justify-content-center align-items-center'>{{theme.theme}}</p>
+      </swiper-slide>
+    </swiper>
     <div
     v-for='(theme, index) in themes' :key=theme.theme
     class='themes'
@@ -44,24 +51,37 @@
 <script>
 import ArticleCard from '@/components/subcomponents/Article-Card';
 import $ from 'jquery';
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 import {mapState} from 'vuex'
 export default {
 name: 'ArticlesComponent',
-data(){
-  return {
-      post:'',
-      id:this.$router.currentRoute.params['id']
-    }
-  },
+
   computed:{
   ...mapState({
         articles: state => state.articlesInfo.Articles,
         themes: state => state.articlesInfo.Themes
     }),
+    swiper() {
+      return this.$refs.mySwiper.$swiper
+    }
+  },
+directives: {
+    swiper: directive
   },
 components: {
-  ArticleCard
+  ArticleCard,
+  Swiper,
+  SwiperSlide
 },
+data() {
+    return{
+      swiperOptions: {
+        slidesPerView: 4,
+        spaceBetween: 15
+      }
+    }
+  },
 mounted(){
   let len = this.themes.length;
   // switcher
@@ -73,6 +93,17 @@ mounted(){
       for (let j=1; j<len;j++){
         $(this).parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
         $(this).parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
+      }
+    })
+  })
+  $('.swiper-slide').each(function(i){
+    $(this).click(function(){
+      $(this).children('p').addClass('active-button')
+      $(this).siblings().children('p').removeClass('active-button')
+      $(this).parent().parent().parent().children('.themes').eq(i).children('.themesTwo').children('.art-cat').removeClass('d-none')
+      for (let j=1; j<len;j++){
+        $(this).parent().parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
+        $(this).parent().parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
       }
     })
   })

@@ -8,42 +8,52 @@ const leadersInfo = {
         link: 'url-link-to-her-page',
         img: require('../assets/leader-1.png'),
         audience: 1000,
-        category: 'leader'
+        category: 'leader',
+        top: true
+        
       },
        {
         name: 'Nickname2',
         link: 'url-link-to-his-page',
         img: require('../assets/leader-2.png'),
         audience: 1000,
-        category: 'blogger'
+        category: 'blogger',
+        top: true
+        
       },
       {
         name: 'Nickname3',
         link: 'url-link-to-her-page',
         img: require('../assets/leader-3.png'),
         audience: 1000,
-        category: 'leader'
+        category: 'leader',
+        top: true
+        
       }, 
       {
         name: 'Nickname8',
         link: 'url-link-to-her-page',
         img: require('../assets/leader-3.png'),
         audience: 1000,
-        category: 'acrobats'
+        category: 'acrobats',
+        top: true
+        
       }, 
       {
         name: 'Nickname10',
         link: 'url-link-to-her-page',
         img: require('../assets/leader-3.png'),
         audience: 1000,
-        category: 'acrobats'
+        category: 'acrobats',
+        top: false
       }, 
       {
         name: 'Nickname4',
         link: 'url-link-to-his-page',
         img: require('../assets/leader-4.png'),
         audience: 1000,
-        category: 'leader'
+        category: 'leader',
+        top: false
       }
     ],
     categories: [

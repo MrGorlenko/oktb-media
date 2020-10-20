@@ -9,13 +9,14 @@
         <h3 class='col-lg-6 col-12'>Лидеры Мнений</h3>
         <div class="col-lg-6 col-6 green"></div>
       </div>
-      <div class="w-100 people d-lg-flex d-none">
+      <div class="w-100 people d-lg-flex d-none flex-wrap">
         <div 
         v-for='leader in leaders' 
         :key='leader.name' 
         class="human col-3"
+        :class="{ 'd-none': !leader.top }"
         >
-          <img class='w-100' v-bind:src="leader.img" alt="">
+          <img class='w-100'  v-bind:src="leader.img" alt="">
           <div class="green-filter"></div>
           <div class="info d-flex flex-column ">
             <span>{{leader.name}}</span>
@@ -33,7 +34,7 @@
         v-for='leader in leaders' 
         :key='leader.name' 
         class="human">
-        <img class='w-100' v-bind:src="leader.img" alt="">
+        <img class='w-100' :class="{ dblock: leader.top==true }" v-bind:src="leader.img" alt="">
         <div class="green-filter w-100"></div>
         <div class="info d-flex flex-column ">
           <span>{{leader.name}}</span>
@@ -45,7 +46,7 @@
         </div>
         </swiper-slide>
       </swiper>
-      <a class='d-flex' href="#">
+      <a class='d-flex' href="/Leades">
         <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button>
       </a>
     </div>

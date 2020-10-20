@@ -19,7 +19,7 @@
       </p>
     </li>
     </ul>
-    <div  class="article__card--wrap">
+    <!-- <div  class="article__card--wrap">
       <div class="articles__card offset-lg-2 d-flex flex-column mb-1"
         style="top:0px; left:10px">
         <span class="card__subject offset-lg-2">{{articles[0].theme}}</span>
@@ -32,7 +32,7 @@
         src="../assets/articles-boy.png"
         alt=""
       />
-    </div>
+    </div> -->
 
 </div>
 </template>

@@ -9,7 +9,7 @@
           </div>
         </div>
       </div>
-      <div class="container content d-flex flex-lg-row">
+      <div class="container pl-0 content d-flex flex-lg-row">
         <div class="col-3 pl-0">
           <div class="select">
             <div

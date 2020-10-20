@@ -19,6 +19,26 @@ export default {
 
 <style lang="scss">
 
+@import '@/scss/variables';
+
+.link-to-all{
+  background-color: $base-green;
+  color: #fff;
+  padding: 16px 24px;
+  width: 226px;
+  float: right;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 32px;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  a{
+    color: #fff;
+  }
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,6 +59,7 @@ export default {
     }
   }
 }
+
 
 a:hover{
   text-decoration: none;
@@ -93,6 +114,17 @@ button{
   }
   .w-mob-50{
     width: 50% !important;
+  }
+}
+
+@media (max-width: 576px){
+  .link-to-all{
+  float: initial;
+  margin: auto;
+  margin-top: 25px;
+  a{
+    color: #fff;
+  }
   }
 }
 </style>

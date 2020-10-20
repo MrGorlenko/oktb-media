@@ -6,7 +6,7 @@
     <img class=' dots' src="../assets/dots-bg-1.svg" alt="">
     <div class="container-lg d-flex justify-content-center flex-column">
         <div class="w-100 title d-flex align-items-center flex-wrap justify-content-end">
-        <h3 class='col-lg-6 col-12'>Лидеры Мнений</h3>
+        <h3 class='col-lg-6 col-12 p-0'>Лидеры Мнений</h3>
         <div class="col-lg-6 col-6 green"></div>
       </div>
       <div class="w-100 people d-lg-flex d-none flex-wrap">
@@ -48,8 +48,12 @@
         </div>
         </swiper-slide>
       </swiper>
-      <router-link class='d-flex' to="/Leaders">
-      <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button></router-link>
+      <div class="link-to-all">
+        <router-link class='w-100 d-flex align-items-center justify-content-between' to="/Leaders">
+        Все Лидеры <img src="../assets/button-arrow.svg" alt="">
+        </router-link>
+      </div>
+      
     </div>
 
   </div>
@@ -99,7 +103,6 @@ export default {
 <style lang="scss" scope>
 
 @import '../scss/variables';
-
   .leaders{
     background-color: #f2f4f9;
     padding-bottom: 80px;

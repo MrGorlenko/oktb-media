@@ -157,17 +157,7 @@ export default {
   }
 }
 
-.link-to-all{
-  background-color: $base-green;
-  color: #fff;
-  padding: 16px 24px;
-  width: 226px;
-  float: right;
-  border-radius: 10px;
-  a{
-    color: #fff;
-  }
-}
+
 
 
 .articles__title {
@@ -272,6 +262,11 @@ export default {
 }
 
 @media (max-width:576px) {
+
+  .articles{
+    padding-bottom: 70px;
+  }
+
   .articles__title{
   font-size: 32px;
   line-height: 120%;
@@ -301,5 +296,7 @@ export default {
       }
     }
   }
+
+
 }
 </style>

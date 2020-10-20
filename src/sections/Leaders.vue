@@ -48,9 +48,8 @@
         </div>
         </swiper-slide>
       </swiper>
-      <a class='d-flex' href="/Leaders">
-        <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button>
-      </a>
+      <router-link class='d-flex' to="/Leaders">
+      <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button></router-link>
     </div>
 
   </div>

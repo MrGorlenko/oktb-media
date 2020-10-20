@@ -1,12 +1,12 @@
 <template>
   <div class="articles">
-    <div class="articles__wrapp container-xl ">
-    
-      <div class="row justify-content-between">
+      <div class="row justify-content-between container-xl m-auto">
         <div class="col-lg-2 col-sm-12">
           <h3 class="articles__title">Статьи</h3>
         </div>
       </div>
+    <div class="articles__wrapp  ">
+    
 
       <ul
       class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
@@ -22,6 +22,15 @@
 
     </li>
     </ul>
+
+    <swiper class='switcher articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
+      <swiper-slide 
+      v-for='(theme, index) in themes' 
+      :key="index" >
+        <p :class="{'active-button': index==0}" class='articles__item w-100 d-flex h-100 justify-content-center align-items-center'>{{theme.theme}}</p>
+      </swiper-slide>
+    </swiper>
+
     <div
     v-for='(theme, index) in themes' :key=theme.theme
     class='themes'
@@ -65,6 +74,7 @@
 
 // import Articles from '@/components/Articles'
 import ArticleCard from '@/components/subcomponents/Article-Card';
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import {mapState} from 'vuex'
 import $ from 'jquery';
@@ -73,17 +83,33 @@ export default {
   name: 'Articles1',
   components: {
     // Articles
-    ArticleCard
+    ArticleCard,
+    Swiper,
+    SwiperSlide
   },
   computed:{
   ...mapState({
         articles: state => state.articlesInfo.Articles,
         themes: state => state.articlesInfo.Themes
     }),
+    swiper() {
+      return this.$refs.mySwiper.$swiper
+    }
+  },
+  directives: {
+    swiper: directive
+  },
+  data() {
+    return{
+      swiperOptions: {
+        slidesPerView: 4,
+        spaceBetween: 15
+      }
+    }
   },
   mounted(){
   let len = this.themes.length;
-  // switcher
+  this.swiper.slideTo(0, 1000, false)
   $('.switcher li').each(function(i){
     $(this).click(function(){
       $(this).children('p').addClass('active-button')
@@ -92,6 +118,17 @@ export default {
       for (let j=1; j<len;j++){
         $(this).parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
         $(this).parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
+      }
+    })
+  })
+  $('.swiper-slide').each(function(i){
+    $(this).click(function(){
+      $(this).children('p').addClass('active-button')
+      $(this).siblings().children('p').removeClass('active-button')
+      $(this).parent().parent().parent().children('.themes').eq(i).children('.themesTwo').children('.art-cat').removeClass('d-none')
+      for (let j=1; j<len;j++){
+        $(this).parent().parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
+        $(this).parent().parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
       }
     })
   })
@@ -255,5 +292,14 @@ export default {
       background-color:  transparent;
       box-shadow: none;
     }
+
+  .articles__wrapp{
+    ul{
+      display: flex;
+      li{
+        width: 25%;
+      }
+    }
+  }
 }
 </style>

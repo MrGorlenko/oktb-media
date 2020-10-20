@@ -33,8 +33,10 @@
         <swiper-slide
         v-for='leader in leaders' 
         :key='leader.name' 
-        class="human">
-        <img class='w-100' :class="{ 'd-none': !leader.top }" v-bind:src="leader.img" alt="">
+        class="human"
+        :class="{ 'd-none': !leader.top }"
+        >
+        <img class='w-100' v-bind:src="leader.img" alt="">
         <div class="green-filter w-100"></div>
         <div class="info d-flex flex-column ">
           <span>{{leader.name}}</span>

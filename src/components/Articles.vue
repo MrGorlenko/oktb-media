@@ -8,15 +8,10 @@
     v-for='(theme, index) in themes' 
     :key="index" >
       <p
-        v-if='theme.isActive'
-        class='articles__item active-button w-100 h-100 '>
-        {{theme.theme}}
-      </p>
-      <p
-        v-else
         class='articles__item w-100 h-100 '>
         {{theme.theme}}
       </p>
+
     </li>
     </ul>
     <!-- <div  class="article__card--wrap">
@@ -39,6 +34,7 @@
 
 
 <script>
+// import $ from 'jquery';
 import {mapState} from 'vuex'
 export default {
 name: 'ArticlesComponent',

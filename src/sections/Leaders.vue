@@ -34,7 +34,7 @@
         v-for='leader in leaders' 
         :key='leader.name' 
         class="human">
-        <img class='w-100' :class="{ dblock: leader.top==true }" v-bind:src="leader.img" alt="">
+        <img class='w-100' :class="{ 'd-none': !leader.top }" v-bind:src="leader.img" alt="">
         <div class="green-filter w-100"></div>
         <div class="info d-flex flex-column ">
           <span>{{leader.name}}</span>
@@ -46,7 +46,7 @@
         </div>
         </swiper-slide>
       </swiper>
-      <a class='d-flex' href="/Leades">
+      <a class='d-flex' href="/Leaders">
         <button>Все Лидеры <img src="../assets/button-arrow.svg" alt=""></button>
       </a>
     </div>

@@ -6,15 +6,20 @@
         <div
         v-for='(video, index) in videos' :key=index
         class='col-lg-5-8 h-auto col-12 video-wrapper'>
-        <videoItem
+        <VideoItem
         :img=video.picture
         :uploadDate=video.date
-        :title=video.title
+        :title=video.Title
         :path='/nVideo/'
         :index=index
         v-if="index<=4"
         />
         </div>
+      </div>
+      <div class="link-to-all">
+        <router-link class='w-100 d-flex align-items-center justify-content-between' to="/Videos">
+        Все Видео <img src="../assets/button-arrow.svg" alt="">
+        </router-link>
       </div>
     </div>
   </div>
@@ -22,12 +27,12 @@
 
 <script>
 
-import videoItem from '@/components/Video-self'
+import VideoItem from '@/components/Video-self'
 import {mapState} from 'vuex'
 export default {
   name: 'Video',
   components: {
-    videoItem
+    VideoItem
   },
   computed: {
     ...mapState({
@@ -44,6 +49,12 @@ export default {
 .video{
   background-color: #f2f4f9;
   padding-bottom: 160px;
+
+  .link-to-all{
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 576px) {

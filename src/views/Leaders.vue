@@ -1,18 +1,18 @@
 <template>
   <div class="leaders_page" id="app">
-    <Modal :leader="leader" v-if="modalShow" @closeModal="closeMod" />
+    <Modal  :leader="leader" v-if="modalShow" @closeModal="closeMod" />
 
     <div class="container-fluid p-0">
       <div class="title d-flex align-items-center justify-content-start">
         <div class="green"></div>
-        <div class="container">
+        <div class="container p-mob-0">
           <div class="white">
             <h2>Лидеры мнений</h2>
           </div>
         </div>
       </div>
-      <div class="container pl-0 content d-flex flex-lg-row">
-        <div class="col-3 pl-0">
+      <div class="container pl-lg-0 content d-flex flex-lg-row flex-wrap">
+        <div class="col-lg-3 col-12 pl-lg-0">
           <div class="select">
             <div class="w-100">
               <button
@@ -27,22 +27,23 @@
             </div>
           </div>
         </div>
-        <div class="col-9">
+        <div class="col-lg-9 col-12">
           <div class="row">
             <div
               v-for="(category, index) in leadersCategories"
               :key="category.type"
-              class="d-none w-100 cat"
+              class="d-none  w-100 cat justify-content-between flex-wrap"
               v-bind:class="{ 'd-flex': index == 0 }"
             >
-              <div v-for="leader in leaders" :key="leader.name">
+              <div class='leaderItem' v-for="leader in leaders" :key="leader.name"
+              >
                 <div
-                  class="human w-100"
+                  class="human"
                   @click="openModal(leader)"
                   v-if="leader.category == category.type"
                 >
-                  <img style="width:95%;" v-bind:src="leader.img" alt="" />
-                  <div style="width:95%; left:0;" class="green-filter "></div>
+                  <img class=photo  v-bind:src="leader.img" alt="" />
+                  <div  class="green-filter "></div>
                   <div class="info d-flex flex-column ">
                     <span>{{ leader.name }}</span>
                     <a v-bind:href="leader.link"> {{ leader.link }} </a>
@@ -65,6 +66,8 @@
 import Modal from '@/components/Modal';
 import $ from 'jquery';
 import { mapState } from 'vuex';
+// import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+import 'swiper/swiper-bundle.css';
 export default {
   name: 'Leaders',
   data() {
@@ -72,6 +75,15 @@ export default {
       leader: {},
       modalShow: false,
       activeIndex: -1,
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+        loop: true,
+        initialSlide: 1
+      },
     };
   },
 
@@ -82,27 +94,9 @@ export default {
     openModal(leader) {
       this.modalShow = !this.modalShow;
       this.leader = leader;
-      //console.log(this.leader);
     },
     closeMod() {
       this.modalShow = false;
-    },
-    onClickBlock(index) {
-      if (this.activeIndex == index) {
-        this.activeIndex = -1;
-      } else {
-        this.activeIndex = index;
-      }
-    },
-
-    ActivateCategory($event, i) {
-      this.leadersCategories[i].active = true;
-      for (let j = 1; j < 20; j++) {
-        this.leadersCategories[i + j].active = false;
-      }
-      for (let j = 20; j > -1; j--) {
-        this.leadersCategories[i - j].active = false;
-      }
     },
   },
   computed: {
@@ -110,51 +104,23 @@ export default {
       leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
     }),
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
 
+
   mounted() {
-    // console.log(this.leadersCategories.length)
     let len = this.leadersCategories.length;
     $('.select button').each(function(index) {
       $(this).click(function() {
         $(this).addClass('active');
-        $(this)
-          .siblings()
-          .removeClass('active');
-        $(this)
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .children('.col-9')
-          .children('.row')
-          .children('.cat')
-          .eq(index)
-          .removeClass('d-none')
-          .addClass('d-flex');
+        $(this).siblings().removeClass('active');
+        console.log($(this).parent().parent().parent().parent())
+        $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index).removeClass('d-none').addClass('d-flex');
         for (let j = 1; j < len; j++) {
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index + j)
-            .removeClass('d-flex')
-            .addClass('d-none');
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index - j)
-            .removeClass('d-flex')
-            .addClass('d-none');
+          $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index + j).removeClass('d-flex').addClass('d-none');
+          $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index - j).removeClass('d-flex').addClass('d-none');
         }
       });
     });
@@ -165,6 +131,10 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/variables';
 $distance: 250px;
+
+.leaderItem{
+  max-width: 33.3%
+}
 
 .green {
   width: $distance;
@@ -223,12 +193,16 @@ $distance: 250px;
   position: relative;
   cursor: pointer;
   margin-bottom: 60px;
+  .photo{
+    width: 95%;
+  }
   .green-filter {
     display: block;
     position: absolute;
     top: 0;
-    left: 15px;
-    width: calc(100% - 30px);
+    width: 95%;
+    left: 0;
+    // width: calc(100% - );
     content: '';
     height: 100%;
     background: linear-gradient(180deg, rgba(73, 147, 80, 0) 0%, #499350 100%);
@@ -272,5 +246,64 @@ $distance: 250px;
       transition: opacity 0.3s ease;
     }
   }
+}
+
+@media (max-width: 992px){
+  .green{
+    display: none;
+  }
+
+  .p-mob-0{
+    padding: 0 !important;
+  }
+
+  .white {
+  width: 100%;
+  background-color: $base-bg-news;
+  margin-left:0;
+  box-shadow: none;
+  position: relative;
+  height: auto;
+  h2 {
+    font-size: 50px;
+    line-height: 56px;  
+    letter-spacing: 2px;
+    position: relative;
+    right: initial;
+    width: auto;
+  }
+}
+
+.leaders_page{
+  .select{
+    margin-bottom: 35px;
+  }
+  .content{
+    margin-top: 0;
+  }
+}
+}
+
+@media (max-width: 576px){
+.leaderItem{
+  max-width: 49%;
+}
+.white{
+  h2{
+    text-align: center;
+  }
+}
+.human{
+  margin-bottom: 5px;
+  .photo{
+    width: 100%;
+  }
+  .green-filter{
+    width: 100%;
+  }
+  .info{
+    left:5px;
+  }
+}
 }
 </style>

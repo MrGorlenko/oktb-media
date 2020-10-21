@@ -2,18 +2,19 @@
   <div class="video">
     <div class="container-lg pl-lg-1 pr-lg-1 pl-0 pr-0">
        
- <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-between">
+      <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-between">
         <div
-        v-for='(video, index) in videos' :key=video.date
+        v-for='(video, index) in videos' :key=index
         class='col-lg-5-8 h-auto col-12 video-wrapper'>
         <videoItem
         :img=video.picture
         :uploadDate=video.date
-        :about=video.description
+        :title=video.title
+        :path='/nVideo/'
+        :index=index
         v-if="index<=4"
         />
         </div>
-
       </div>
     </div>
   </div>

@@ -6,6 +6,8 @@ import News_item from '@/views/News_item'
 import Leaders from '@/views/Leaders'
 import nNewsArtic from '@/components/nNewsArtic'
 import Articles from '@/views/Articles'
+import Videos from '@/views/Videos'
+import nVideo from '@/views/nVideo'
 
 Vue.use(VueRouter)
 
@@ -32,6 +34,12 @@ const routes = [
     props:true
   },
   {
+    path: '/nVideo/:id',
+    name: 'nVideo',
+    component: nVideo,
+    props: true
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -48,6 +56,11 @@ const routes = [
     path: '/Leaders',
     name: 'Leaders',
     component: Leaders
+  },
+  {
+    path: '/Videos',
+    name: 'Videos',
+    component: Videos
   }
 ]
 

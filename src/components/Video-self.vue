@@ -1,5 +1,8 @@
 <template>
   <div class="bord video-item h-auto w-100 pt-0 pt-sm-4">
+    <router-link 
+    :to="path + index"
+    :key="index">
     <div class='content__video content h-lg-100'>
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
@@ -8,10 +11,11 @@
       </div>
       <span class='art__date'>{{uploadDate}}</span>
       <p>
-        {{about}}
+        {{title}}
       </p>
 
     </div>
+    </router-link>
   </div>
 </template>
 
@@ -20,8 +24,10 @@ export default {
   name: 'videoItem',
   props: [
     'uploadDate',
-    'about',
-    'img'
+    'title',
+    'img',
+    'path',
+    'index'
   ]
 }
 
@@ -38,6 +44,10 @@ export default {
     min-height: 645px;
     padding: 40px;
     margin-bottom: 44px;
+
+    a:hover{
+      text-decoration: none;
+    }
 
     &:hover{
       .content .picture-wrapper{

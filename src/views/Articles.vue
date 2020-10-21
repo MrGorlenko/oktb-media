@@ -5,7 +5,7 @@
         <div class="container">
           <h2>Статьи</h2>
         </div>
-      </div>
+    </div>
 
     <ArticlesComponent/>
   </div>

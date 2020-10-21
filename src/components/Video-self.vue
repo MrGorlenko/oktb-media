@@ -1,14 +1,14 @@
 <template>
-  <div class="bord video-item col-lg-5-8 h-auto col-12 pt-0 pt-sm-4">
+  <div class="bord video-item h-auto w-100 pt-0 pt-sm-4">
     <div class='content__video content h-lg-100'>
       <div class="picture-wrapper d-flex justify-content-center align-items-center flex-column">
         <img class='run' src="../assets/start-video.svg" alt="">
-        <img class='w-98 main-pic h-100 h-lg-100' src="../assets/video-1.png" alt="">
+        <img class='w-98 main-pic h-100 h-lg-100' :src='img'  alt="">
         <div class="darken w-98 h-100"></div>
       </div>
-      <span class='art__date'>15.03.2020</span>
+      <span class='art__date'>{{uploadDate}}</span>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst
+        {{about}}
       </p>
 
     </div>
@@ -17,19 +17,25 @@
 
 <script>
 export default {
-  name: 'videoItem'
+  name: 'videoItem',
+  props: [
+    'uploadDate',
+    'about',
+    'img'
+  ]
 }
 
 </script>
 <style lang="scss" >
 @import '../scss/variables';
 
+
   .video-item{
     background: #FFFFFF;
     box-shadow: 20px 24px 32px rgba(108, 137, 164, 0.15);
     border-radius: 15px;
     cursor: pointer;
-    height: 582px;
+    min-height: 645px;
     padding: 40px;
     margin-bottom: 44px;
 
@@ -98,11 +104,13 @@ export default {
 
     .video-item{
       background: none;
-      margin-left: 15px;
+      // margin-left: 15px;
       width: 95%;
       margin-bottom: 20px;
       box-shadow: none;
-      padding: 10px;
+      // padding: 10px;
+      min-height: initial;
+      padding-bottom: 0;
       .picture-wrapper{
         height: 193px;
       }

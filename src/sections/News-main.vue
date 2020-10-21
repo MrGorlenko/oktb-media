@@ -57,26 +57,6 @@
 import { mapState } from 'vuex';
 export default {
   name: 'News-main',
-  data() {
-    return {
-      News: [
-        {
-          img: require('../assets/news-item.png'),
-          date: '15 фераля 2020',
-          paragraph:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est a auctor ut in maecenas id. Sollicitudin egestas id quis sed viverra ut pellentesque.',
-          url: '#',
-        },
-        {
-          img: require('../assets/news-item.png'),
-          date: '20 фераля 2020',
-          paragraph:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est a auctor ut in maecenas id. Sollicitudin egestas id quis sed viverra ut pellentesque.',
-          url: '#',
-        },
-      ],
-    };
-  },
   computed: {
     ...mapState({
       info: state => state.newsInfo.NewsArticle,

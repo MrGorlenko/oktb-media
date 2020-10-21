@@ -7,6 +7,7 @@
         class="w-100 title d-flex align-items-center flex-wrap justify-content-end"
       >
         <h3 class="col-lg-6 col-12">Лидеры Мнений</h3>
+
         <div class="col-lg-6 col-6 green"></div>
       </div>
       <div class="w-100 people d-lg-flex d-none flex-wrap">
@@ -31,6 +32,7 @@
 
       <swiper class="d-lg-none d-block" ref="mySwiper" :options="swiperOptions">
         <swiper-slide
+
           v-for="leader in leaders"
           :key="leader.name"
           class="human"
@@ -49,14 +51,16 @@
               <img src="../assets/user.svg" alt="" />
               <span>{{ leader.audience }}</span>
             </div>
+
           </div>
         </swiper-slide>
       </swiper>
-      <a class="d-flex" href="/Leaders">
-        <button>
-          Все Лидеры <img src="../assets/button-arrow.svg" alt="" />
-        </button>
-      </a>
+
+      <div class="link-to-all">
+        <router-link class='w-100 d-flex align-items-center justify-content-between' to="/Leaders">
+        Все Лидеры <img src="../assets/button-arrow.svg" alt="">
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -103,7 +107,6 @@ export default {
 
 <style lang="scss" scope>
 @import '../scss/variables';
-
 .leaders {
   background-color: #f2f4f9;
   padding-bottom: 80px;
@@ -126,6 +129,7 @@ export default {
     .green {
       height: 8px;
       background-color: $base-green;
+
     }
   }
 

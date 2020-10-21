@@ -1,13 +1,12 @@
 <template>
   <div class="article__card mt-10">
   <div class="container-lg d-flex flex-column align-items-end">
-    <div class="w-100 card__wrapp d-flex flex-column-reverse flex-sm-row justify-content-around align-items-center"
-         v-for="(article, index) in articles" :key="index">
+    <div class="w-100 card__wrapp d-flex flex-column-reverse flex-sm-row justify-content-around align-items-center">
 
       <div class="article__item d-flex justify-content-between flex-column col-xl-6" >
-        <span class="w-100 art__date pt-5 pt-sm-0"> {{article.date}}</span>
-        <p class="w-100 art__card">{{article.title}}</p>
-        <p class="w-100 art__content">{{article.content}}</p>
+        <span class="w-100 art__date pt-5 pt-sm-0"> {{date}}</span>
+        <p class="w-100 art__card">{{title}}</p>
+        <p class="w-100 art__content">{{content}}</p>
         <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
           <a href="#">Узнать больше
               <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,12 +17,9 @@
       </div>
 
       <div class="art__img col-lx-6 alert-dark" >
-        <img v-bind:src="article.img" alt="">
+        <img v-bind:src="img" alt="">
       </div>
     </div>
-    <a class='articles-all' href="#">
-      <button class=" btn-lg">Все статьи <img src="../../assets/button-arrow.svg" alt=""> </button>
-    </a>
   </div>
   </div>
 </template>
@@ -31,32 +27,13 @@
 <script>
 export default {
   name: 'ArticlesCard',
-  data() {
-    return {
-      articles: [
-        {
-          subject: 'Наука',
-          title:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../../assets/articles1.png'),
-          date: '15 фераля 2020',
-          content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi eros venenatis fames sit. Facilisis nunc fringilla aliquam lectus proin elit aliquam. Nulla nunc sit arcu duis porta porttitor non fermentum, quisque.' ,
-          url: '#',
-          
-        },
+  props: [
+    'title',
+    'date',
+    'content',
+    'img'
 
-        {
-          subject: 'Наука',
-          title:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-          img: require('../../assets/articles2.png'),
-          date: '15 фераля 2020',
-          content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi eros venenatis fames sit. Facilisis nunc fringilla aliquam lectus proin elit aliquam. Nulla nunc sit arcu duis porta porttitor non fermentum, quisque.' ,
-          url: '#',
-        },
-      ],
-    };
-  },
+  ],
 };
 </script>
 
@@ -89,28 +66,15 @@ export default {
 }
 
 .card__wrapp{
-  padding: 40px;
-  width: 1060px;
-  margin: 0 auto;
-  border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 20px 24px 32px 0px rgba(108, 137, 164, 0.15);
-  &:first-child{
-    margin-bottom: 32px;
-  }
+  background: #FFFFFF;
+/* Drop Shadow */
+
+box-shadow: 20px 24px 32px rgba(108, 137, 164, 0.15);
+border-radius: 15px;
+margin-bottom: 32px;
+padding: 40px;
 }
 
-.card__subject {
-  height: 28px;
-  width: 52px;
-  margin-top: 32px;
-  padding-top: 3px;
-  text-align: center;
-  box-sizing: border-box;
-  border-radius: 10px;
-  color: #fff;
-  background: black;
-}
 
 .art__date {
   margin-bottom: 26px;
@@ -129,7 +93,7 @@ margin-bottom: 40px;
  
 }
 .art__content{
-  height: 120px;
+  height:auto;
 //width: 572px;
 font-size: 16px;
 font-style: normal;
@@ -143,6 +107,7 @@ color: rgba(79, 79, 79, 1);
   position: relative;
   border-left: 4px solid $base-green;
   padding-left: 24px;
+  
 }
 .art__item--link{
     a{

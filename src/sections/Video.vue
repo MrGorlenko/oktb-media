@@ -1,13 +1,19 @@
 <template>
   <div class="video">
     <div class="container-lg pl-lg-1 pr-lg-1 pl-0 pr-0">
-<!--       <div class="row justify-content-between">
- -->        
+       
  <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-between">
-        <videoItem/>
-        <videoItem/>
-        <videoItem/>
-        <videoItem/>
+        <div
+        v-for='(video, index) in videos' :key=video.date
+        class='col-lg-5-8 h-auto col-12 video-wrapper'>
+        <videoItem
+        :img=video.picture
+        :uploadDate=video.date
+        :about=video.description
+        v-if="index<=4"
+        />
+        </div>
+
       </div>
     </div>
   </div>
@@ -16,12 +22,17 @@
 <script>
 
 import videoItem from '@/components/Video-self'
-
+import {mapState} from 'vuex'
 export default {
   name: 'Video',
   components: {
     videoItem
   },
+  computed: {
+    ...mapState({
+        videos: state => state.Videos.videos,
+    }),
+  }
 }
 </script>
 
@@ -44,6 +55,12 @@ export default {
   padding-right: 15px;
   border-radius: 0;
   border-left: 4px solid $base-green;
-    }
+}
+.video-wrapper{
+    &:nth-child(3), &:nth-child(4){
+    display: none;
+  }
+}
+
 }
 </style>

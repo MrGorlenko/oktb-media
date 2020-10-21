@@ -6,7 +6,7 @@
       <div
         class="w-100 title d-flex align-items-center flex-wrap justify-content-end"
       >
-        <h3 class="col-lg-6 col-12">Лидеры Мнений</h3>
+        <h3 class="col-lg-6 col-12 p-0">Лидеры Мнений</h3>
 
         <div class="col-lg-6 col-6 green"></div>
       </div>
@@ -80,6 +80,7 @@ export default {
         slidesPerView: 1.5,
         spaceBetween: 20,
         loop: true,
+        initialSlide: 1
       },
     };
   },
@@ -100,7 +101,7 @@ export default {
     swiper: directive,
   },
   mounted() {
-    this.swiper.slideTo(0, 1000, false);
+    this.swiper.slideTo(2, 1000, false);
   },
 };
 </script>
@@ -111,6 +112,13 @@ export default {
   background-color: #f2f4f9;
   padding-bottom: 80px;
   position: relative;
+
+  .link-to-all{
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+  }
+
   .ellipse {
     position: absolute;
     top: -30%;
@@ -124,7 +132,7 @@ export default {
   .title {
     h3 {
       font-weight: bold;
-      font-size: 65px;
+      font-size: 55px;
     }
     .green {
       height: 8px;

@@ -1,14 +1,14 @@
 <template>
   <div class="container d-flex">
-    <div class="popup d-flex" ref="popup_p">
+    <div class="popup d-flex align-items-center justify-content-center" ref="popup_p">
       <!-- <div class=" modal-dialog-lg modal-dialog-centered ">-->
       <div class="popup__content pt-3">
-        <div class="modal-body d-flex ">
-          <div class="ml-3">
+        <div class="modal-body d-flex flex-wrap">
+          <div class=" col-lg-6 col-12">
             <!-- <slot></slot> -->
             <img class="modal__img" ref="modal__img" :src="leader.img" alt="" />
           </div>
-          <div class="ml-3">
+          <div class=" col-lg-6 col-12 p-lg-0">
             <h2 class="modal__title">{{ leader.name }}</h2>
             <p class="modal__job">{{ leader.job }}</p>
             <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
@@ -75,9 +75,9 @@ export default {
 
 .popup {
   z-index: 100;
-  height: 150vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -85,15 +85,11 @@ export default {
 }
 
 .popup__content {
-  //padding: 32px 0px 0px 32px;
-  position: absolute;
+
   width: 918px;
   height: 561px;
-  left: 261px;
-  top: 10%;
   border-radius: 16px;
   background-color: #ffffff;
-  //background-color: #e7e7e7;
   &__job {
     font-weight: normal;
     font-size: 27px;
@@ -123,16 +119,41 @@ export default {
 }
 .btn {
   position: absolute;
-  right: 15px;
+  right: 35px;
   bottom: 15px;
-  //background: rgba(55, 63, 65, 1);
-  //color: #ffffff;
-  //font-family: Inter;
-  //font-size: 18px;
-  //font-style: normal;
-  //font-weight: 600;
-  //line-height: 27px;
   letter-spacing: 0.02em;
   //text-align: left;
+}
+
+@media (max-width: 992px){
+  .popup{
+    height: 102vh;
+    h2, p{
+      text-align: center;
+    }
+  }
+  .popup__content{
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    border-radius: 0px;
+  }
+  .modal-body{
+    height: 100%;
+    padding-top: 0;
+  }
+  .btn{
+    position: relative;
+    margin: auto;
+    display: block;
+    right:0;
+    margin-top: 25px;
+  }
+  .modal__img{
+    margin:auto;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 </style>

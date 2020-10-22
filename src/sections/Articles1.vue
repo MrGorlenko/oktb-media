@@ -1,82 +1,93 @@
 <template>
   <div class="articles">
-      <div class="row justify-content-between container-xl m-auto">
-        <div class="col-lg-2 col-sm-12">
-          <h3 class="articles__title">Статьи</h3>
-        </div>
+    <img class="ellipse" src="../assets/Ellipse.svg" alt="" />
+
+    <div class="row justify-content-between container-xl m-auto">
+      <div class="col-lg-2 col-sm-12">
+        <h3 class="articles__title">Статьи</h3>
       </div>
+    </div>
     <div class="articles__wrapp  ">
-    
-
       <ul
-      class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
+        class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
       >
-      <li 
-      v-for='(theme, index) in themes' 
-      :key="index" >
-      <p
-        class='articles__item w-100 h-100 '
-        :class="{'active-button': index==0}">
-        {{theme.theme}}
-      </p>
+        <li v-for="(theme, index) in themes" :key="index">
+          <p
+            class="articles__item w-100 h-100 "
+            :class="{ 'active-button': index == 0 }"
+          >
+            {{ theme.theme }}
+          </p>
+        </li>
+      </ul>
 
-    </li>
-    </ul>
-
-    <swiper class='switcher articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
-      <swiper-slide 
-      v-for='(theme, index) in themes' 
-      :key="index" >
-        <p :class="{'active-button': index==0}" class='articles__item w-100 d-flex h-100 justify-content-center align-items-center'>{{theme.theme}}</p>
-      </swiper-slide>
-    </swiper>
-
-    <div
-    v-for='(theme, index) in themes' :key=theme.theme
-    class='themes'
-    >
-      <div v-for='(article) in articles' :key='article.title'
-      class=themesTwo
+      <swiper
+        class="switcher articles__items slider d-lg-none d-block"
+        ref="mySwiper"
+        :options="swiperOptions"
       >
-        <div
-        v-if='article.theme==theme.theme && article.hot==true'
-        :class="{'d-none': index != 0}"
-        class='art-cat'
-        >
-          <ArticleCard
-          :title = article.title
-          :content = article.content
-          :date = article.date
-          :author = article.author
-          :img = article.img
-          />
+        <swiper-slide v-for="(theme, index) in themes" :key="index">
+          <p
+            :class="{ 'active-button': index == 0 }"
+            class="articles__item w-100 d-flex h-100 justify-content-center align-items-center"
+          >
+            {{ theme.theme }}
+          </p>
+        </swiper-slide>
+      </swiper>
+
+      <div v-for="(theme, index) in themes" :key="theme.theme" class="themes">
+        <div v-for="article in articles" :key="article.title" class="themesTwo">
+          <div
+            v-if="article.theme == theme.theme && article.hot == true"
+            :class="{ 'd-none': index != 0 }"
+            class="art-cat"
+          >
+            <ArticleCard
+              :title="article.title"
+              :content="article.content"
+              :date="article.date"
+              :author="article.author"
+              :img="article.img"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="container-lg">
+        <div class="link-to-all">
+          <router-link
+            to="/Articles"
+            class="w-100 d-flex align-items-center justify-content-between"
+          >
+            Все статьи
+            <svg
+              width="44"
+              height="20"
+              viewBox="0 0 44 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </router-link>
         </div>
       </div>
     </div>
-    <div class="container-lg">
-      <div class="link-to-all">
-      <router-link to="/Articles" class='w-100 d-flex align-items-center justify-content-between'>
-         Все статьи
-      <svg width="44" height="20" viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      </router-link>
-    </div>
-    </div>
-
-    </div>
-
-
   </div>
 </template>
 
 <script>
-
 // import Articles from '@/components/Articles'
 import ArticleCard from '@/components/subcomponents/Article-Card';
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
-import {mapState} from 'vuex'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+import 'swiper/swiper-bundle.css';
+import { mapState } from 'vuex';
 import $ from 'jquery';
 
 export default {
@@ -85,81 +96,137 @@ export default {
     // Articles
     ArticleCard,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
-  computed:{
-  ...mapState({
-        articles: state => state.articlesInfo.Articles,
-        themes: state => state.articlesInfo.Themes
+  computed: {
+    ...mapState({
+      articles: state => state.articlesInfo.Articles,
+      themes: state => state.articlesInfo.Themes,
     }),
     swiper() {
-      return this.$refs.mySwiper.$swiper
-    }
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   directives: {
-    swiper: directive
+    swiper: directive,
   },
   data() {
-    return{
+    return {
       swiperOptions: {
         slidesPerView: 4,
-        spaceBetween: 15
-      }
-    }
+        spaceBetween: 15,
+      },
+    };
   },
-  mounted(){
-  let len = this.themes.length;
-  this.swiper.slideTo(0, 1000, false)
-  $('.switcher li').each(function(i){
-    $(this).click(function(){
-      $(this).children('p').addClass('active-button')
-      $(this).siblings().children('p').removeClass('active-button')
-      $(this).parent().parent().children('.themes').eq(i).children('.themesTwo').children('.art-cat').removeClass('d-none')
-      for (let j=1; j<len;j++){
-        $(this).parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
-        $(this).parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
-      }
-    })
-  })
-  $('.swiper-slide').each(function(i){
-    $(this).click(function(){
-      $(this).children('p').addClass('active-button')
-      $(this).siblings().children('p').removeClass('active-button')
-      $(this).parent().parent().parent().children('.themes').eq(i).children('.themesTwo').children('.art-cat').removeClass('d-none')
-      for (let j=1; j<len;j++){
-        $(this).parent().parent().parent().children('.themes').eq(i+j).children('.themesTwo').children('.art-cat').addClass('d-none')
-        $(this).parent().parent().parent().children('.themes').eq(i-j).children('.themesTwo').children('.art-cat').addClass('d-none')
-      }
-    })
-  })
-}
+  mounted() {
+    let len = this.themes.length;
+    this.swiper.slideTo(0, 1000, false);
+    $('.switcher li').each(function(i) {
+      $(this).click(function() {
+        $(this)
+          .children('p')
+          .addClass('active-button');
+        $(this)
+          .siblings()
+          .children('p')
+          .removeClass('active-button');
+        $(this)
+          .parent()
+          .parent()
+          .children('.themes')
+          .eq(i)
+          .children('.themesTwo')
+          .children('.art-cat')
+          .removeClass('d-none');
+        for (let j = 1; j < len; j++) {
+          $(this)
+            .parent()
+            .parent()
+            .children('.themes')
+            .eq(i + j)
+            .children('.themesTwo')
+            .children('.art-cat')
+            .addClass('d-none');
+          $(this)
+            .parent()
+            .parent()
+            .children('.themes')
+            .eq(i - j)
+            .children('.themesTwo')
+            .children('.art-cat')
+            .addClass('d-none');
+        }
+      });
+    });
+    $('.swiper-slide').each(function(i) {
+      $(this).click(function() {
+        $(this)
+          .children('p')
+          .addClass('active-button');
+        $(this)
+          .siblings()
+          .children('p')
+          .removeClass('active-button');
+        $(this)
+          .parent()
+          .parent()
+          .parent()
+          .children('.themes')
+          .eq(i)
+          .children('.themesTwo')
+          .children('.art-cat')
+          .removeClass('d-none');
+        for (let j = 1; j < len; j++) {
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .children('.themes')
+            .eq(i + j)
+            .children('.themesTwo')
+            .children('.art-cat')
+            .addClass('d-none');
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .children('.themes')
+            .eq(i - j)
+            .children('.themesTwo')
+            .children('.art-cat')
+            .addClass('d-none');
+        }
+      });
+    });
+  },
 };
 </script>
 
 <style lang="scss" scope>
-
 @import '../scss/variables';
 
 .articles {
+  position: relative;
   background-image: url('~@/assets/dots-articles.svg');
   background-repeat: no-repeat;
   background-color: #f2f4f9;
   padding-bottom: 130px;
-  overflow: hidden;
-  ul{
-    li{
-      list-style-type:none ;
+  //overflow: hidden;
+  ul {
+    li {
+      list-style-type: none;
       cursor: pointer;
-      p{
+      p {
         margin-bottom: 0;
       }
     }
   }
 }
-
-
-
-
+.ellipse {
+  position: absolute;
+  top: -15%;
+  left: -5%;
+}
 .articles__title {
   font-family: 'San Francisco' sans-serif;
   font-size: 80px;
@@ -175,7 +242,7 @@ export default {
   letter-spacing: 1px;
 }
 
-.active-button{
+.active-button {
   color: #fff;
   background-color: rgba(102, 209, 131, 1);
 }
@@ -261,42 +328,43 @@ export default {
   border-radius: 15px;
 }
 
-@media (max-width:576px) {
-
-  .articles{
+@media (max-width: 576px) {
+  .articles {
     padding-bottom: 70px;
   }
-
-  .articles__title{
-  font-size: 32px;
-  line-height: 120%;
+  .ellipse {
+    //position: absolute;
+    top: -3%;
+    left: -9%;
+  }
+  .articles__title {
+    font-size: 32px;
+    line-height: 120%;
   }
 
-  .active-button{
+  .active-button {
     padding: 24px 8px;
   }
-  
-  .articles__items{
-    margin-top: 40px;
-    margin-bottom: 60px;  
-    }
-    .article__card--wrap{
-      display: none;
-    }
-    .card__wrapp{
-      background-color:  transparent;
-      box-shadow: none;
-    }
 
-  .articles__wrapp{
-    ul{
+  .articles__items {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  .article__card--wrap {
+    display: none;
+  }
+  .card__wrapp {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .articles__wrapp {
+    ul {
       display: flex;
-      li{
+      li {
         width: 25%;
       }
     }
   }
-
-
 }
 </style>

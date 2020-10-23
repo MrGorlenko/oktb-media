@@ -11,7 +11,12 @@
           <p class="w-100 art__card">{{ title }}</p>
           <p class="w-100 art__content">{{ content }}</p>
           <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
-            <router-link :to="/nArticle/ + index" :key="index">
+            <!--  -->
+            <!-- <router-link :to="/nArticle/ + index" :key="index"> -->
+            <router-link
+            :to="path + index"
+            :key="index">
+            <!--  -->
               <a href="#"
                 >Узнать больше
                 <svg

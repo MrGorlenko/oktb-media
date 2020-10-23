@@ -26,11 +26,11 @@
         </p>
       </swiper-slide>
     </swiper>
-    <div v-for="(theme, index) in themes" :key="theme.theme" class="themes">
-      <div v-for="article in articles" :key="article.title" class="themesTwo">
+    <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
+      <div v-for="(article,index) in articles" :key="index" class="themesTwo">
         <div
           v-if="article.theme == theme.theme"
-          :class="{ 'd-none': index != 0 }"
+          :class="{ 'd-none': jindex != 0 }"
           class="art-cat"
         >
           <ArticleCard
@@ -39,6 +39,8 @@
             :date="article.date"
             :author="article.author"
             :img="article.img"
+            :path='/nArticle/'
+            :index=index
           />
         </div>
       </div>

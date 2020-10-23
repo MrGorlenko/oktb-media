@@ -14,7 +14,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit ame, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '15 февраля 2020',
+        date: '16 февраля 2020',
         content: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
         theme: 'Наука',
         img: require('../assets/articles1.png'),
@@ -23,7 +23,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum olor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '15 февраля 2020',
+        date: '17 февраля 2020',
         content: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
         theme: 'Наука',
         img: require('../assets/articles1.png'),
@@ -32,7 +32,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit aet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '15 февраля 2020',
+        date: '18 февраля 2020',
         content: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
         theme: 'Наука',
         img: require('../assets/articles1.png'),
@@ -41,7 +41,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorm ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '16 января 2020',
+        date: '19 января 2020',
         content: 'Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника',
         theme: 'Техника',
         img: require('../assets/articles1.png'),
@@ -50,7 +50,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, vaius leo eu, sagittis, dictumst ',
-        date: '16 января 2020',
+        date: '20 января 2020',
         content: 'Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника',
         theme: 'Техника',
         img: require('../assets/articles1.png'),
@@ -59,7 +59,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscng elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '16 января 2020',
+        date: '21 января 2020',
         content: 'Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника Техника',
         theme: 'Техника',
         img: require('../assets/articles1.png'),
@@ -68,7 +68,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu,sagittis, dictumst ',
-        date: '17 декабря 2019',
+        date: '27 декабря 2019',
         content: 'Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа',
         theme: 'Медиа',
         img: require('../assets/articles1.png'),
@@ -77,7 +77,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, variu leo eu, sagittis, dictumst ',
-        date: '17 декабря 2019',
+        date: '12 декабря 2019',
         content: 'Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа',
         theme: 'Медиа',
         img: require('../assets/articles1.png'),
@@ -86,7 +86,7 @@ const articlesInfo = {
       },
       {
         title: 'orem ipsum dolor sit amet, consectetur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '17 декабря 2019',
+        date: '4 декабря 2019',
         content: 'Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа',
         theme: 'Медиа',
         img: require('../assets/articles1.png'),
@@ -95,7 +95,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscin elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '17 декабря 2019',
+        date: '11 декабря 2019',
         content: 'Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа Медиа',
         theme: 'Медиа',
         img: require('../assets/articles1.png'),
@@ -122,7 +122,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consecteur adipiscing elit. Amet, varius leo eu, sagittis, dictumst ',
-        date: '18 февраля 2020',
+        date: '8 февраля 2020',
         content: 'Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг',
         theme: 'Досуг',
         img: require('../assets/articles1.png'),
@@ -131,7 +131,7 @@ const articlesInfo = {
       },
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amt, varius leo eu, sagittis, dictumst ',
-        date: '18 февраля 2020',
+        date: '1 февраля 2020',
         content: 'Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг Досуг',
         theme: 'Досуг',
         img: require('../assets/articles1.png'),

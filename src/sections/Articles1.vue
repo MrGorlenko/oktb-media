@@ -258,10 +258,12 @@ export default {
   height: 48px;
   width: 112px;
 
-  &:hover {
-    cursor: pointer;
-    color: #fff;
-    background-color: rgba(102, 209, 131, 1);
+  &:hover { 
+    @media screen and (min-width: 576px){
+      cursor: pointer;
+      color: #fff;
+      background-color: rgba(102, 209, 131, 1);   
+    }
   }
 }
 .article__card--wrap {

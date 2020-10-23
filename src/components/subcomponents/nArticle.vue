@@ -10,7 +10,7 @@
     </div>
     <img class="distance" v-bind:src="'../' + info[id].img" alt="q" />
     <div class="green-line"></div>
-    <p class="base-p">{{ info[id].text }}</p>
+    <p class="base-p">{{ info[id].content }}</p>
     <hr class="distance grey-line" />
     <div class="share d-flex justify-content-start align-items-center">
       <span>Поделиться:</span>

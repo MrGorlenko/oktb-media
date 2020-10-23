@@ -2,27 +2,28 @@
   <div>
     <div class="title d-flex align-items-center justify-content-start">
       <div class="green"></div>
-        <div class="container">
-          <h2>Статьи</h2>
-        </div>
+      <div class="container">
+        <h2>Статьи</h2>
+      </div>
     </div>
+    <router-view></router-view>
 
-    <ArticlesComponent/>
+    <ArticlesComponent />
   </div>
 </template>
 
 <script>
-import ArticlesComponent from '@/components/Articles.vue'
+import ArticlesComponent from '@/components/Articles.vue';
 export default {
   name: 'Articles',
   components: {
-    ArticlesComponent
-  }
-}
+    ArticlesComponent,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.title{
+.title {
   h2 {
     font-weight: bold;
     font-size: 80px;

@@ -56,9 +56,30 @@
         </swiper-slide>
       </swiper>
 
-      <div class="link-to-all">
-        <router-link class='w-100 d-flex align-items-center justify-content-between' to="/Leaders">
-        Все Лидеры <img src="../assets/button-arrow.svg" alt="">
+
+      <div class="container-lg d-flex justify-content-center" style='z-index: 10;'>
+        <router-link
+          to="/Leaders"
+          class=" d-flex align-items-center justify-content-between"
+        >
+        <div class="link-to-all">
+            Все лидеры
+            <svg
+              width="44"
+              height="20"
+              viewBox="0 0 44 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 10H43M43 10L35.6111 1M43 10L35.6111 19"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+        </div>
         </router-link>
       </div>
     </div>

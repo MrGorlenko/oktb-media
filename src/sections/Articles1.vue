@@ -53,12 +53,12 @@
           </div>
         </div>
       </div>
-      <div class="container-lg">
-        <div class="link-to-all">
+      <div class="container-lg d-flex justify-content-lg-end justify-content-center">
           <router-link
             to="/Articles"
-            class="w-100 d-flex align-items-center justify-content-between"
+            class=" d-flex align-items-center justify-content-between"
           >
+          <div class="link-to-all">
             Все статьи
             <svg
               width="44"
@@ -75,8 +75,8 @@
                 stroke-linejoin="round"
               />
             </svg>
+          </div>
           </router-link>
-        </div>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@
     <!-- МЕСТО ДЛЯ ПОИСКА -->
     <div class="container">
       <div class="row">
-        <div class="col-6"
+        <div class="col-lg-6 col-12"
         v-for="(video,index) in Videos" :key='index'>
           <VideoItem
           :img=video.picture

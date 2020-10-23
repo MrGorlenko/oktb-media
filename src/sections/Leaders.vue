@@ -1,5 +1,34 @@
 <template>
   <div class="leaders" v-if="leaders.length > 0">
+    <modal :leader="leader" v-if="modalShow" @closeModal="closeModal">
+      <div
+        class="popup d-flex align-items-center justify-content-center"
+        ref="popup_p"
+      >
+        <div class="popup__content pt-3">
+          <div class="modal-body d-flex flex-wrap">
+            <div class=" col-lg-6 col-12">
+              <img
+                class="modal__img"
+                ref="modal__img"
+                :src="leader.img"
+                alt=""
+              />
+            </div>
+            <div class=" col-lg-6 col-12 p-lg-0">
+              <h2 class="modal__title">{{ leader.name }}</h2>
+              <p class="modal__job">{{ leader.job }}</p>
+              <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
+              <p class="modal__contact"><b> E-mail: </b> {{ leader.mail }}</p>
+              <button class="btn btn-secondary" @click="closeModal">
+                Закрыть
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </modal>
+
     <img class="ellipse" src="../assets/Ellipse.svg" alt="" />
     <img class=" dots" src="../assets/dots-bg-1.svg" alt="" />
     <div class="container-lg d-flex justify-content-center flex-column">
@@ -16,6 +45,7 @@
           :key="leader.name"
           class="human col-3"
           :class="{ 'd-none': !leader.top }"
+          @click="openM(leader)"
         >
           <img class="w-100" v-bind:src="leader.img" alt="" />
           <div class="green-filter"></div>
@@ -32,7 +62,6 @@
 
       <swiper class="d-lg-none d-block" ref="mySwiper" :options="swiperOptions">
         <swiper-slide
-
           v-for="leader in leaders"
           :key="leader.name"
           class="human"
@@ -51,18 +80,19 @@
               <img src="../assets/user.svg" alt="" />
               <span>{{ leader.audience }}</span>
             </div>
-
           </div>
         </swiper-slide>
       </swiper>
 
-
-      <div class="container-lg d-flex justify-content-center" style='z-index: 10;'>
+      <div
+        class="container-lg d-flex justify-content-center"
+        style="z-index: 10;"
+      >
         <router-link
           to="/Leaders"
           class=" d-flex align-items-center justify-content-between"
         >
-        <div class="link-to-all">
+          <div class="link-to-all">
             Все лидеры
             <svg
               width="44"
@@ -79,7 +109,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-        </div>
+          </div>
         </router-link>
       </div>
     </div>
@@ -89,11 +119,14 @@
 <script>
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import { mapState } from 'vuex';
+import Modal from '@/components/Modal';
 import 'swiper/swiper-bundle.css';
 export default {
   name: 'leaders',
   data() {
     return {
+      leader: {},
+      modalShow: false,
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination',
@@ -101,7 +134,7 @@ export default {
         slidesPerView: 1.5,
         spaceBetween: 20,
         loop: true,
-        initialSlide: 1
+        initialSlide: 1,
       },
     };
   },
@@ -109,12 +142,24 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    Modal,
+  },
+  methods: {
+    openM(leader) {
+      this.modalShow = true;
+      this.leader = leader;
+      console.log(leader);
+    },
+    closeModal() {
+      this.modalShow = false;
+    },
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },
     ...mapState({
+      leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
     }),
   },
@@ -123,6 +168,14 @@ export default {
   },
   mounted() {
     this.swiper.slideTo(2, 1000, false);
+
+    let vm = this;
+    document.addEventListener('click', function(item) {
+      if (item.target === vm.$refs['popup_p']) {
+        vm.closeModal();
+        //console.log(123);
+      }
+    });
   },
 };
 </script>
@@ -134,7 +187,7 @@ export default {
   padding-bottom: 80px;
   position: relative;
 
-  .link-to-all{
+  .link-to-all {
     display: block;
     margin: auto;
     margin-top: 50px;
@@ -158,7 +211,6 @@ export default {
     .green {
       height: 8px;
       background-color: $base-green;
-
     }
   }
 
@@ -228,6 +280,7 @@ export default {
   }
 
   button {
+    border: none;
     width: 234px;
     height: 64px;
     background-color: $base-green;

@@ -1,5 +1,5 @@
 <template>
-  <div class="leaders">
+  <div class="leaders ">
     <img class="ellipse__video" src="../assets/Ellipse.svg" alt="" />
     <div class="container-lg d-flex justify-content-center flex-column">
       <div

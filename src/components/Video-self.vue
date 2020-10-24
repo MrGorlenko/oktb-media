@@ -1,5 +1,6 @@
 <template>
-  <div class="col-lg-5 col-12 bord video-item h-auto w-95 pt-0 pt-sm-4">
+  <!-- <div class="video__self"> -->
+  <div class="bord video-item h-auto w-95 pt-0 pt-sm-4">
     <router-link :to="path + index" :key="index">
       <div class="content__video content h-lg-100">
         <div

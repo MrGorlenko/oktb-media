@@ -21,7 +21,6 @@ const newsInfo = {
       {
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non.',
         author: 'Maria De La Riva',
-        theme: 'Наука',
         date: 'June 12th, 2020',
         picture: require('@/assets/Rectangle1.png'),
         // img: require('@/img/NewsItem1.png'),

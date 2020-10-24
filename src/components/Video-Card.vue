@@ -2,12 +2,11 @@
   <div class="search container-xl align-items-center">
     <div class="container-lg d-flex flex-column align-items-end">
       <InfoCard
-        v-for="(article, index) in News"
-        :key="index"
+        v-for="(article, i) in info"
+        :key="i"
         :title="article.title"
         :author="article.author"
         :date="article.date"
-        :path="/nNewsArtic/"
         :index="index"
         :picture="article.picture"
       >
@@ -21,7 +20,7 @@ import { mapState, mapGetters } from 'vuex';
 import InfoCard from '@/components/subcomponents/InfoCard.vue';
 
 export default {
-  name: 'News_Card',
+  name: 'Video__Card',
   data() {
     return {};
   },
@@ -33,7 +32,7 @@ export default {
       info: state => state.newsInfo.NewsArticle,
     }),
     ...mapGetters({
-      News: 'newsInfo/filterNews',
+      correctVideo: 'Videos/filterVideo',
     }),
   },
 };

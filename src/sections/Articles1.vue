@@ -37,7 +37,11 @@
       </swiper>
 
       <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
-        <div v-for="(article, index) in articles" :key="article.title" class="themesTwo">
+        <div
+          v-for="(article, index) in articles"
+          :key="article.title"
+          class="themesTwo"
+        >
           <div
             v-if="article.theme == theme.theme && article.hot == true"
             :class="{ 'd-none': jindex != 0 }"
@@ -49,17 +53,19 @@
               :date="article.date"
               :author="article.author"
               :img="article.img"
-              :path='/nArticle/'
-              :index=index
+              :path="/nArticle/"
+              :index="index"
             />
           </div>
         </div>
       </div>
-      <div class="container-lg d-flex justify-content-lg-end justify-content-center">
-          <router-link
-            to="/Articles"
-            class=" d-flex align-items-center justify-content-between"
-          >
+      <div
+        class="container-lg d-flex justify-content-lg-end justify-content-center"
+      >
+        <router-link
+          to="/Articles"
+          class=" d-flex align-items-center justify-content-between"
+        >
           <div class="link-to-all">
             Все статьи
             <svg
@@ -78,7 +84,7 @@
               />
             </svg>
           </div>
-          </router-link>
+        </router-link>
       </div>
     </div>
   </div>
@@ -212,7 +218,7 @@ export default {
   background-image: url('~@/assets/dots-articles.svg');
   background-repeat: no-repeat;
   background-color: #f2f4f9;
-  padding-bottom: 130px;
+  padding-bottom: 100px;
   //overflow: hidden;
   ul {
     li {
@@ -258,11 +264,11 @@ export default {
   height: 48px;
   width: 112px;
 
-  &:hover { 
-    @media screen and (min-width: 576px){
+  &:hover {
+    @media screen and (min-width: 576px) {
       cursor: pointer;
       color: #fff;
-      background-color: rgba(102, 209, 131, 1);   
+      background-color: rgba(102, 209, 131, 1);
     }
   }
 }

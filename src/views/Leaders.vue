@@ -1,7 +1,24 @@
 <template>
   <div class="leaders_page" id="app">
-    <Modal  :leader="leader" v-if="modalShow" @closeModal="closeMod" />
+    <modal :leader="leader" v-if="modalShow" @closeModal="closeModal">
+      <div class="popup__content pt-3">
+        <div class="modal-body d-flex flex-wrap">
+          <div class=" col-lg-6 col-12">
+            <img class="modal__img" ref="modal__img" :src="leader.img" alt="" />
+          </div>
+          <div class=" col-lg-6 col-12 p-lg-0">
+            <h2 class="modal__title">{{ leader.name }}</h2>
+            <p class="modal__job">{{ leader.job }}</p>
+            <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
+            <p class="modal__contact"><b> E-mail: </b> {{ leader.mail }}</p>
 
+            <button class="btn btn-secondary" @click="closeModal">
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </div>
+    </modal>
     <div class="container-fluid p-0">
       <div class="title d-flex align-items-center justify-content-start">
         <div class="green"></div>
@@ -19,7 +36,6 @@
                 v-for="(category, index) in leadersCategories"
                 :key="category.type"
                 v-bind:class="{ active: index == 0 }"
-
                 class="w-100 mb-3"
               >
                 {{ category.label }}
@@ -35,15 +51,18 @@
               class="d-none  w-100 cat justify-content-between flex-wrap"
               v-bind:class="{ 'd-flex': index == 0 }"
             >
-              <div class='leaderItem' v-for="leader in leaders" :key="leader.name"
+              <div
+                class="leaderItem"
+                v-for="leader in leaders"
+                :key="leader.name"
               >
                 <div
                   class="human"
                   @click="openModal(leader)"
                   v-if="leader.category == category.type"
                 >
-                  <img class=photo  v-bind:src="leader.img" alt="" />
-                  <div  class="green-filter "></div>
+                  <img class="photo" v-bind:src="leader.img" alt="" />
+                  <div class="green-filter "></div>
                   <div class="info d-flex flex-column ">
                     <span>{{ leader.name }}</span>
                     <a v-bind:href="leader.link"> {{ leader.link }} </a>
@@ -82,7 +101,7 @@ export default {
         slidesPerView: 1.5,
         spaceBetween: 20,
         loop: true,
-        initialSlide: 1
+        initialSlide: 1,
       },
     };
   },
@@ -94,7 +113,7 @@ export default {
       this.modalShow = !this.modalShow;
       this.leader = leader;
     },
-    closeMod() {
+    closeModal() {
       this.modalShow = false;
     },
   },
@@ -108,18 +127,63 @@ export default {
     },
   },
 
-
   mounted() {
+    let vm = this;
+    document.addEventListener('click', function(item) {
+      if (item.target === vm.$refs['leaders_page']) {
+        vm.closeModal();
+        //console.log(123);
+      }
+    });
+
     let len = this.leadersCategories.length;
     $('.select button').each(function(index) {
       $(this).click(function() {
         $(this).addClass('active');
-        $(this).siblings().removeClass('active');
-        console.log($(this).parent().parent().parent().parent())
-        $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index).removeClass('d-none').addClass('d-flex');
+        $(this)
+          .siblings()
+          .removeClass('active');
+        console.log(
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+        );
+        $(this)
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .children('.col-lg-9')
+          .children('.row')
+          .children('.cat')
+          .eq(index)
+          .removeClass('d-none')
+          .addClass('d-flex');
         for (let j = 1; j < len; j++) {
-          $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index + j).removeClass('d-flex').addClass('d-none');
-          $(this).parent().parent().parent().parent().children('.col-lg-9').children('.row').children('.cat').eq(index - j).removeClass('d-flex').addClass('d-none');
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .children('.col-lg-9')
+            .children('.row')
+            .children('.cat')
+            .eq(index + j)
+            .removeClass('d-flex')
+            .addClass('d-none');
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .children('.col-lg-9')
+            .children('.row')
+            .children('.cat')
+            .eq(index - j)
+            .removeClass('d-flex')
+            .addClass('d-none');
         }
       });
     });
@@ -131,8 +195,8 @@ export default {
 @import '../scss/variables';
 $distance: 250px;
 
-.leaderItem{
-  max-width: 33.3%
+.leaderItem {
+  max-width: 33.3%;
 }
 
 .green {
@@ -192,7 +256,7 @@ $distance: 250px;
   position: relative;
   cursor: pointer;
   margin-bottom: 60px;
-  .photo{
+  .photo {
     width: 95%;
   }
   .green-filter {
@@ -247,62 +311,62 @@ $distance: 250px;
   }
 }
 
-@media (max-width: 992px){
-  .green{
+@media (max-width: 992px) {
+  .green {
     display: none;
   }
 
-  .p-mob-0{
+  .p-mob-0 {
     padding: 0 !important;
   }
 
   .white {
-  width: 100%;
-  background-color: $base-bg-news;
-  margin-left:0;
-  box-shadow: none;
-  position: relative;
-  height: auto;
-  h2 {
-    font-size: 50px;
-    line-height: 56px;  
-    letter-spacing: 2px;
+    width: 100%;
+    background-color: $base-bg-news;
+    margin-left: 0;
+    box-shadow: none;
     position: relative;
-    right: initial;
-    width: auto;
+    height: auto;
+    h2 {
+      font-size: 50px;
+      line-height: 56px;
+      letter-spacing: 2px;
+      position: relative;
+      right: initial;
+      width: auto;
+    }
+  }
+
+  .leaders_page {
+    .select {
+      margin-bottom: 35px;
+    }
+    .content {
+      margin-top: 0;
+    }
   }
 }
 
-.leaders_page{
-  .select{
-    margin-bottom: 35px;
+@media (max-width: 576px) {
+  .leaderItem {
+    max-width: 49%;
   }
-  .content{
-    margin-top: 0;
+  .white {
+    h2 {
+      text-align: center;
+    }
   }
-}
-}
-
-@media (max-width: 576px){
-.leaderItem{
-  max-width: 49%;
-}
-.white{
-  h2{
-    text-align: center;
+  .human {
+    margin-bottom: 5px;
+    .photo {
+      width: 100%;
+    }
+    .green-filter {
+      width: 100%;
+    }
+    .info {
+      left: 5px;
+    }
   }
-}
-.human{
-  margin-bottom: 5px;
-  .photo{
-    width: 100%;
-  }
-  .green-filter{
-    width: 100%;
-  }
-  .info{
-    left:5px;
-  }
-}
 }
 </style>

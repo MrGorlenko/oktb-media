@@ -1,7 +1,6 @@
 <template>
   <div class="search container-xl align-items-center">
     <div class="container d-flex flex-column justify-content-between ">
-      <h2 class="search__news mb-4">Новости</h2>
       <div class="input__wrap w-100">
         <input
           class="input__news w-100"
@@ -95,6 +94,7 @@ export default {
   methods: {
     searchNews() {
       this.$store.commit('newsInfo/CHANGE_FILTER', this.search);
+      this.$store.commit('Videos/CHANGE__FILTER', this.search);
     },
   },
   mounted() {

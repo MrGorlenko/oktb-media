@@ -1,20 +1,29 @@
 <template>
   <div class="leaders_page" id="app">
     <modal :leader="leader" v-if="modalShow" @closeModal="closeModal">
-      <div class="popup__content pt-3">
-        <div class="modal-body d-flex flex-wrap">
-          <div class=" col-lg-6 col-12">
-            <img class="modal__img" ref="modal__img" :src="leader.img" alt="" />
-          </div>
-          <div class=" col-lg-6 col-12 p-lg-0">
-            <h2 class="modal__title">{{ leader.name }}</h2>
-            <p class="modal__job">{{ leader.job }}</p>
-            <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
-            <p class="modal__contact"><b> E-mail: </b> {{ leader.mail }}</p>
-
-            <button class="btn btn-secondary" @click="closeModal">
-              Закрыть
-            </button>
+      <div
+        class="popup d-flex align-items-center justify-content-center"
+        ref="popup_p"
+      >
+        <div class="popup__content pt-3">
+          <div class="modal-body d-flex flex-wrap">
+            <div class=" col-lg-6 col-12">
+              <img
+                class="modal__img"
+                ref="modal__img"
+                :src="leader.img"
+                alt=""
+              />
+            </div>
+            <div class=" col-lg-6 col-12 p-lg-0">
+              <h2 class="modal__title">{{ leader.name }}</h2>
+              <p class="modal__job">{{ leader.job }}</p>
+              <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
+              <p class="modal__contact"><b> E-mail: </b> {{ leader.mail }}</p>
+              <button class="btn btn-secondary" @click="closeModal">
+                Закрыть
+              </button>
+            </div>
           </div>
         </div>
       </div>

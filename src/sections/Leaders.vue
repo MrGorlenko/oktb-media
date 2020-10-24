@@ -279,23 +279,6 @@ export default {
     }
   }
 
-  button {
-    border: none;
-    width: 234px;
-    height: 64px;
-    background-color: $base-green;
-    color: #fff;
-    border-radius: 10px;
-    margin: auto;
-    margin-top: 48px;
-    transition: color 0.3s ease;
-    cursor: pointer;
-    z-index: 3;
-    &:hover {
-      background-color: darken($color: $base-green, $amount: 10);
-      transition: color 0.3s ease;
-    }
-  }
 }
 
 @media (max-width: 1550px) {

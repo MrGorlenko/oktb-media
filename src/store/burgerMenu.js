@@ -23,6 +23,10 @@ const burgerMenu = {
         path: '/Articles'
       },
       {
+        name: 'Видео',
+        path: '/Videos'
+      },
+      {
         name: 'Лидеры мнений',
         path: '/Leaders'
       }

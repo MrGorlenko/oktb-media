@@ -2,7 +2,7 @@ function filterVideo(videos, filter) {
   let _arr = [];
   videos.map(video => {
     if (
-      //video.about.toLowerCase().includes(filter.toLowerCase()) ||
+      video.about.toLowerCase().includes(filter.toLowerCase()) ||
       video.Title.toLowerCase().includes(filter.toLowerCase())
       /*       video.text.toLowerCase().includes(filter.toLowerCase()) ||
       video.date.toLowerCase().includes(filter.toLowerCase())
@@ -11,7 +11,6 @@ function filterVideo(videos, filter) {
       _arr.push(video);
     }
   });
-  console.log(_arr);
   return _arr;
 }
 
@@ -62,7 +61,6 @@ const Videos = {
   mutations: {
     CHANGE__FILTER(state, payload) {
       state.filter = payload;
-      // console.log(payload);
     },
   },
 

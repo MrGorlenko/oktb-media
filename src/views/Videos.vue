@@ -10,10 +10,12 @@
     <Search />
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-12">
+        <div
+          class="col-lg-6 col-12"
+          v-for="(video, index) in corrVideo"
+          :key="index"
+        >
           <VideoItem
-            v-for="(video, index) in corrVideo"
-            :key="index"
             :img="video.picture"
             :uploadDate="video.date"
             :title="video.Title"

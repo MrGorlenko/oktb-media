@@ -1,22 +1,21 @@
 <template>
-  <div class="video__self">
-    <div class="bord video-item h-auto w-95 pt-0 pt-sm-4">
-      <router-link :to="path + index" :key="index">
-        <div class="content__video content h-lg-100">
-          <div
-            class="picture-wrapper d-flex justify-content-center align-items-center flex-column"
-          >
-            <img class="run" src="../assets/start-video.svg" alt="" />
-            <img class="w-90 main-pic h-100 h-lg-100" :src="img" alt="" />
-            <div class="darken w-90 h-100"></div>
-          </div>
-          <span class="art__date">{{ uploadDate }}</span>
-          <p>
-            {{ title }}
-          </p>
+  <!-- <div class="video__self"> -->
+  <div class="bord video-item h-auto w-95 pt-0 pt-sm-4">
+    <router-link :to="path + index" :key="index">
+      <div class="content__video content h-lg-100">
+        <div
+          class="picture-wrapper d-flex justify-content-center align-items-center flex-column"
+        >
+          <img class="run" src="../assets/start-video.svg" alt="" />
+          <img class="w-90 main-pic h-100 h-lg-100" :src="img" alt="" />
+          <div class="darken w-90 h-100"></div>
         </div>
-      </router-link>
-    </div>
+        <span class="art__date">{{ uploadDate }}</span>
+        <p>
+          {{ title }}
+        </p>
+      </div>
+    </router-link>
   </div>
 </template>
 

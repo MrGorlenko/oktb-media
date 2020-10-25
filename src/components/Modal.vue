@@ -1,26 +1,8 @@
 <template>
   <div class="container d-flex">
-    <div class="popup d-flex align-items-center justify-content-center" ref="popup_p">
-      <!-- <div class=" modal-dialog-lg modal-dialog-centered ">-->
-      <div class="popup__content pt-3">
-        <div class="modal-body d-flex flex-wrap">
-          <div class=" col-lg-6 col-12">
-            <!-- <slot></slot> -->
-            <img class="modal__img" ref="modal__img" :src="leader.img" alt="" />
-          </div>
-          <div class=" col-lg-6 col-12 p-lg-0">
-            <h2 class="modal__title">{{ leader.name }}</h2>
-            <p class="modal__job">{{ leader.job }}</p>
-            <p class="modal__contact"><b> Телефон: </b> {{ leader.phone }}</p>
-            <p class="modal__contact"><b> E-mail: </b> {{ leader.mail }}</p>
+    <slot></slot>
 
-            <button class="btn btn-secondary" @click="closeModal">
-              Закрыть
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- <div class=" modal-dialog-lg modal-dialog-centered ">-->
   </div>
 </template>
 
@@ -85,7 +67,6 @@ export default {
 }
 
 .popup__content {
-
   width: 918px;
   height: 561px;
   border-radius: 16px;
@@ -125,32 +106,33 @@ export default {
   //text-align: left;
 }
 
-@media (max-width: 992px){
-  .popup{
+@media (max-width: 992px) {
+  .popup {
     height: 102vh;
-    h2, p{
+    h2,
+    p {
       text-align: center;
     }
   }
-  .popup__content{
+  .popup__content {
     width: 100%;
     height: 100%;
     overflow: scroll;
     border-radius: 0px;
   }
-  .modal-body{
+  .modal-body {
     height: 100%;
     padding-top: 0;
   }
-  .btn{
+  .btn {
     position: relative;
     margin: auto;
     display: block;
-    right:0;
+    right: 0;
     margin-top: 25px;
   }
-  .modal__img{
-    margin:auto;
+  .modal__img {
+    margin: auto;
     display: block;
     width: 100%;
     height: auto;

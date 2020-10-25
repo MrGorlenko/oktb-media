@@ -2,6 +2,7 @@
   <div class="search container-xl align-items-center">
     <div class="container-lg d-flex flex-column align-items-end">
       <InfoCard
+
           v-for="(article, index) in newsCard" :key="index"
           :title=article.title
           :author=article.author
@@ -45,5 +46,3 @@ export default {
 
 }
 </script>
-
-

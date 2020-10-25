@@ -1,6 +1,7 @@
 <template>
   <div id="app">
   <Header/>  
+  <BurgerMenu/>
   <router-view/> 
   <Footer/>
   </div>
@@ -10,9 +11,11 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import BurgerMenu from '@/components/Burger_menu'
 export default {
   components:{
-    Header, Footer
+    Header, Footer,
+    BurgerMenu
   }
 }
 </script>

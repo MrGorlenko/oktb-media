@@ -25,7 +25,6 @@ const newsInfo = {
   mutations: {
     CHANGE_FILTER(state, payload) {
       state.filter = payload;
-      //сделай фильтр тому что пришло
     },
   },
 

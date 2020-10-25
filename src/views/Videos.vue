@@ -2,47 +2,55 @@
   <div>
     <div class="title d-flex align-items-center justify-content-start">
       <div class="green"></div>
-        <div class="container">
-          <h2>Видео</h2>
-        </div>
+      <div class="container">
+        <h2>Видео</h2>
+      </div>
     </div>
     <!-- МЕСТО ДЛЯ ПОИСКА -->
+    <Search />
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-12"
-        v-for="(video,index) in Videos" :key='index'>
+        <div
+          class="col-lg-6 col-12"
+          v-for="(video, index) in corrVideo"
+          :key="index"
+        >
           <VideoItem
-          :img=video.picture
-          :uploadDate=video.date
-          :title=video.Title
-          :path='/nVideo/'
-          :index=index
+            :img="video.picture"
+            :uploadDate="video.date"
+            :title="video.Title"
+            :path="/nVideo/"
+            :index="index"
           />
-        </div> 
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import VideoItem from '@/components/Video-self'
-import {mapState} from 'vuex'
+import VideoItem from '@/components/Video-self';
+import Search from '@/components/Search';
+import { mapState, mapGetters } from 'vuex';
 export default {
   name: 'videos',
   components: {
-    VideoItem
+    VideoItem,
+    Search,
   },
   computed: {
     ...mapState({
-      Videos: state => state.Videos.videos
-    })
-  }
-}
+      Videos: state => state.Videos.videos,
+    }),
+    ...mapGetters({
+      corrVideo: 'Videos/filterVideo',
+    }),
+  },
+};
 </script>
 
-<style lang='scss' scope>
-
-.title{
+<style lang="scss" scope>
+.title {
   h2 {
     font-weight: bold;
     font-size: 80px;
@@ -51,5 +59,4 @@ export default {
     color: #1c1642;
   }
 }
-
 </style>

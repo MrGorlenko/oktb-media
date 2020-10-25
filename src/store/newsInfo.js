@@ -1,6 +1,9 @@
-function filterNews(NewsArticle, filter) {
+import axios from 'axios';
+
+function filterNews(dataFromApi, filter) {
   let _array = [];
-  NewsArticle.map(news => {
+  dataFromApi.map(news => {
+    //console.log(news);
     if (
       news.author.toLowerCase().includes(filter.toLowerCase()) ||
       news.title.toLowerCase().includes(filter.toLowerCase()) ||
@@ -8,6 +11,7 @@ function filterNews(NewsArticle, filter) {
       news.date.toLowerCase().includes(filter.toLowerCase())
     ) {
       _array.push(news);
+      //console.log(_array);
     }
   });
   return _array;
@@ -17,23 +21,33 @@ const newsInfo = {
 
   state: {
     filter: '',
-    NewsArticle: [
-
-    ],
+    NewsArticle: [],
+    dataFromApi: [],
   },
 
   mutations: {
     CHANGE_FILTER(state, payload) {
       state.filter = payload;
     },
+
+    SET_INFO(state, payload) {
+      state.dataFromApi = payload;
+      console.log(payload);
+    },
   },
 
-  actions: {},
+  actions: {
+    setParmInfo(context) {
+      return axios
+        .get('http://localhost:8000/api/news')
+        .then(response => context.commit('SET_INFO', response.data));
+    },
+  },
 
   getters: {
     filterNews(state) {
-      if (state.NewsArticle.length) {
-        return filterNews(state.NewsArticle, state.filter);
+      if (state.dataFromApi.length) {
+        return filterNews(state.dataFromApi, state.filter);
       }
     },
   },

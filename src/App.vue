@@ -1,30 +1,39 @@
 <template>
   <div id="app">
-  <Header/>  
-  <BurgerMenu/>
-  <router-view/> 
-  <Footer/>
+    <Header />
+    <BurgerMenu />
+    <router-view />
+    <Footer />
   </div>
 </template>
 
-
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import BurgerMenu from '@/components/Burger_menu'
+import { mapActions } from 'vuex';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import BurgerMenu from '@/components/Burger_menu';
 export default {
-  components:{
-    Header, Footer,
-    BurgerMenu
-  }
-}
+  components: {
+    Header,
+    Footer,
+    BurgerMenu,
+  },
+  methods: {
+    ...mapActions({
+      setPar: 'newsInfo/setParmInfo',
+    }),
+  },
+  created() {
+    this.setPar();
+    //console.log('q');
+  },
+};
 </script>
 
 <style lang="scss">
-
 @import '@/scss/variables';
 
-.link-to-all{
+.link-to-all {
   background-color: $base-green;
   color: #fff;
   padding: 16px 24px;
@@ -37,7 +46,7 @@ export default {
 
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  a{
+  a {
     color: #fff;
   }
 }
@@ -63,71 +72,70 @@ export default {
   }
 }
 
-
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
-button{
+button {
   border: none;
   cursor: pointer;
   outline: none !important;
 }
 
-.w-48{
+.w-48 {
   width: 48%;
 }
 
-.w-90{
+.w-90 {
   width: 90%;
 }
 
-.w-98{
+.w-98 {
   width: 98%;
 }
 
-@media (min-width: 1200px){
-  .container-xl{
+@media (min-width: 1200px) {
+  .container-xl {
     max-width: 1440px !important;
   }
 }
 
-@media (min-width: 992px){
-  .w-lg-100{
+@media (min-width: 992px) {
+  .w-lg-100 {
     width: 100% !important;
   }
-  .w-lg-48{
+  .w-lg-48 {
     width: 48% !important;
   }
-  .h-lg-100{
+  .h-lg-100 {
     height: 100% !important;
   }
-  .col-lg-5-8{
+  .col-lg-5-8 {
     flex: 0 0 48% !important;
     max-width: 48% !important;
   }
 }
 
 @media (max-width: 992px) {
-  .w-mob-100{
-    width: 100% !important; 
+  .w-mob-100 {
+    width: 100% !important;
   }
-  .w-mob-98{
+  .w-mob-98 {
     width: 98% !important;
   }
-  .w-mob-50{
+  .w-mob-50 {
     width: 50% !important;
   }
 }
 
-@media (max-width: 576px){
-  .link-to-all{
-  float: initial;
-  margin: auto;
-  margin-top: 25px;
-  a{
-    color: #fff;
-  }
+@media (max-width: 576px) {
+  .link-to-all {
+    float: initial;
+    margin: auto;
+    margin-top: 25px;
+    a {
+      color: #fff;
+    }
   }
 }
 </style>

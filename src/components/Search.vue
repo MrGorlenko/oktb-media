@@ -94,7 +94,7 @@ export default {
   methods: {
     searchNews() {
       this.$store.commit('newsInfo/CHANGE_FILTER', this.search);
-      this.$store.commit('Videos/CHANGE__FILTER', this.search);
+      //this.$store.commit('Videos/CHANGE__FILTER', this.search);
     },
   },
   mounted() {

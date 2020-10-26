@@ -1,13 +1,13 @@
 <template>
   <div class="NewsArticle distance">
     <div class="author-info">
-      <p>By {{ filterNews[id].author }}</p>
+      <p>By {{ fillNew[id].author }}</p>
 
-      <p>Updated in {{ filterNews[id].date }}</p>
+      <p>Updated in {{ fillNew[id].date }}</p>
     </div>
-    <img class="distance" v-bind:src="filterNews[id].img" alt="q" />
+    <img class="distance" v-bind:src="fillNew[id].img" alt="q" />
     <div class="green-line"></div>
-    <p class="base-p">{{ filterNews[id].text }}</p>
+    <p class="base-p">{{ fillNew[id].text }}</p>
     <hr class="distance grey-line" />
     <div class="share d-flex justify-content-start align-items-center">
       <span>Поделиться:</span>
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'NewsArtic',
@@ -87,6 +87,9 @@ export default {
     ...mapState({
       info: state => state.newsInfo.NewsArticle,
       news: state => state.newsInfo.dataFromApi,
+    }),
+    ...mapGetters({
+      fillNew: 'newsInfo/filterNews',
     }),
   },
 };

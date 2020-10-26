@@ -12,7 +12,6 @@
 <script>
 import Search from '@/components/Search';
 import NewsCard from '@/components/News-Card';
-
 export default {
   name: 'News',
   components: {
@@ -27,12 +26,22 @@ export default {
 @import '../scss/variables';
 .news {
   background-color: $base-bg-news;
-  padding-bottom: 10px;
+  // padding-bottom: 10px;
 }
-
-@media (max-width: 376px) {
+@media (max-width: 576px) {
   .news {
     background-color: #ffffff;
+    input{
+      margin-top: 35px;
+      // margin-bottom: 35px;
+    }
+    .input__wrap{
+      position: relative;
+      &::before{
+        top: 53px;
+        z-index: 3;
+      }
+    }
   }
 }
 </style>

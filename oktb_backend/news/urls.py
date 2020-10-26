@@ -1,9 +1,9 @@
 from django.urls import path
 from rest_framework import routers
 
-from .views import ArticleViewSet
+from .views import NewsViewSet
 
 router = routers.DefaultRouter()
-router.register('', ArticleViewSet)
+router.register('', NewsViewSet)
 
 urlpatterns = router.urls

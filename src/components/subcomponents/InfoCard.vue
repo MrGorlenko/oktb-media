@@ -1,13 +1,13 @@
 <template>
   <div class="w-100 card__wrapp d-flex flex-column-reverse flex-sm-row justify-content-around align-items-center mb-3">
-    <div class="article__item d-flex justify-content-between flex-column col-xl-7" >
+    <div class="article__item col-lg-7 d-flex flex-column justify-content-around h-100" >
       <p class="w-100 art__card mb-1">{{title}}</p>
       <div class="wrap mb-3">
         <span class="w-100 art__content">{{author}}</span>
         <span class="w-100 art__content">{{date}}</span>
       </div>
       <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
-       <router-link 
+       <router-link
         :to="path + index"
         :key="index"
         >
@@ -40,6 +40,14 @@ export default {
 
 <style lang="scss">
 @import '../../scss/variables';
+.art__img--news img {
+  max-width: 356px;
+  max-height: 248px;
+  border-radius: 15px;
+}
+.article__item{
+  min-height: 248px;
+}
 @media (max-width:576px) {
   .art__img--news>img{
   width:280px;
@@ -48,7 +56,6 @@ export default {
   padding: 0;
   border-radius: 0;
   border-left: 4px solid $base-green;
-
   }
 }
 </style>

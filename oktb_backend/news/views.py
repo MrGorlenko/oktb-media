@@ -4,6 +4,6 @@ from .models import News
 from .serializers import NewsSerializer
 
 
-class ArticleViewSet(ModelViewSet):
+class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer

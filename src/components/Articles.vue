@@ -3,12 +3,12 @@
     <ul
       class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
     >
-      <li v-for="(theme, index) in themes" :key="index">
+      <li v-for="(theme, index) in tThemes" :key="index">
         <p
           class="articles__item w-100 h-100 "
           :class="{ 'active-button': index == 0 }"
         >
-          {{ theme.theme }}
+          {{ theme.name }}
         </p>
       </li>
     </ul>
@@ -17,22 +17,18 @@
       ref="mySwiper"
       :options="swiperOptions"
     >
-      <swiper-slide v-for="(theme, index) in themes" :key="index">
+      <swiper-slide v-for="(theme, index) in tThemes" :key="index">
         <p
           :class="{ 'active-button': index == 0 }"
           class="articles__item w-100 d-flex h-100 justify-content-center align-items-center"
         >
-          {{ theme.theme }}
+          {{ theme.name }}
         </p>
       </swiper-slide>
     </swiper>
-    <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
-      <div v-for="(article, index) in articles" :key="index" class="themesTwo">
-        <div
-          v-if="article.theme == theme.theme"
-          :class="{ 'd-none': jindex != 0 }"
-          class="art-cat"
-        >
+    <div v-for="(theme, jindex) in tThemes" :key="theme.theme" class="themes">
+      <div v-for="(article, index) in tArticles" :key="index" class="themesTwo">
+        <div :class="{ 'd-none': jindex != 0 }" class="art-cat">
           <ArticleCard
             :title="article.title"
             :content="article.content"
@@ -61,6 +57,8 @@ export default {
     ...mapState({
       articles: state => state.articlesInfo.Articles,
       themes: state => state.articlesInfo.Themes,
+      tArticles: state => state.articlesInfo.tArticles,
+      tThemes: state => state.articlesInfo.tThemes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

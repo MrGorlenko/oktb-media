@@ -21,6 +21,7 @@ urlpatterns = [
     path('api/', include([
         path('', include('articles.urls'), name='articles'),
         path('news', include('news.urls'), name='news'),
-        path('leaders', include('leaders.urls'), name='leaders')
+        path('leaders', include('leaders.urls'), name='leaders'),
+        path('videos', include('videos.urls'), name='videos'),
     ])),
 ]

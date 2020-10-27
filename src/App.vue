@@ -20,12 +20,15 @@ export default {
   },
   methods: {
     ...mapActions({
+      // 3. При помощи mapActions обращаемся к нашему действию
       setPar: 'newsInfo/setParmInfo',
       serArcticThem: 'articlesInfo/setArcticThemes',
       serArcticArctic: 'articlesInfo/setArcticArctic',
     }),
   },
   created() {
+    // 4. Когда наш компонент начнет создаваться мы запускаем всю "ХИМИЮ" которую писали
+
     this.setPar();
     this.serArcticThem();
     this.serArcticArctic();

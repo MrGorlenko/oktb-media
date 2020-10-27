@@ -29,18 +29,22 @@ const newsInfo = {
     CHANGE_FILTER(state, payload) {
       state.filter = payload;
     },
-
+    // 2. Создаем мутацию
     SET_INFO(state, payload) {
       state.dataFromApi = payload;
       //console.log(payload);
     },
   },
-
+  // 1. Создаем действие по которому получаем данные по API
   actions: {
     setParmInfo(context) {
-      return axios
-        .get('http://localhost:8000/api/news')
-        .then(response => context.commit('SET_INFO', response.data));
+      return (
+        axios
+          // 1.1 Путь
+          .get('http://localhost:8000/api/news')
+          // 1.2 После получения ответа (response) запускаем мутацию (SET_INFO)
+          .then(response => context.commit('SET_INFO', response.data))
+      );
     },
   },
 

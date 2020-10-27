@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const leadersInfo = {
   namespaced: true,
 
@@ -87,10 +89,22 @@ const leadersInfo = {
         active: false,
       },
     ],
+    tLeaders: [],
   },
-  mutations: {},
+  mutations: {
+    SET_LEADERS(state, payload) {
+      state.tLeaders = payload;
+      console.log(state.tLeaders);
+    },
+  },
 
-  actions: {},
+  actions: {
+    setLeaders(context) {
+      return axios.get('http://localhost:8000/api/leaders').then(response => {
+        context.commit('SET_LEADERS', response.data);
+      });
+    },
+  },
 
   getters: {},
 };

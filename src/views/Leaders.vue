@@ -129,7 +129,7 @@ export default {
   computed: {
     ...mapState({
       leadersCategories: state => state.leadersInfo.categories,
-      leaders: state => state.leadersInfo.leaders,
+      leaders: state => state.leadersInfo.tLeaders,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

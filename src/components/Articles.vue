@@ -27,7 +27,7 @@
       </swiper-slide>
     </swiper>
     <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
-      <div v-for="(article,index) in articles" :key="index" class="themesTwo">
+      <div v-for="(article, index) in articles" :key="index" class="themesTwo">
         <div
           v-if="article.theme == theme.theme"
           :class="{ 'd-none': jindex != 0 }"
@@ -39,8 +39,8 @@
             :date="article.date"
             :author="article.author"
             :img="article.img"
-            :path='/nArticle/'
-            :index=index
+            :path="/nArticle/"
+            :index="index"
           />
         </div>
       </div>
@@ -59,8 +59,8 @@ export default {
 
   computed: {
     ...mapState({
-      articles: state => state.articlesInfo.Articles,
-      themes: state => state.articlesInfo.Themes,
+      articles: state => state.articlesInfo.tArticles,
+      themes: state => state.articlesInfo.tThemes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

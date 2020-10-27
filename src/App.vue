@@ -22,16 +22,16 @@ export default {
     ...mapActions({
       // 3. При помощи mapActions обращаемся к нашему действию
       setPar: 'newsInfo/setParmInfo',
-      serArcticThem: 'articlesInfo/setArcticThemes',
-      serArcticArctic: 'articlesInfo/setArcticArctic',
+      setArcticThem: 'articlesInfo/setArcticThemes',
+      setArcticArctic: 'articlesInfo/setArcticArctic',
+      setLeadersInfo: 'leadersInfo/setLeaders',
     }),
   },
   created() {
-    // 4. Когда наш компонент начнет создаваться мы запускаем всю "ХИМИЮ" которую писали
-
-    this.setPar();
-    this.serArcticThem();
-    this.serArcticArctic();
+    // this.setPar();
+    this.setArcticThem();
+    this.setArcticArctic();
+    // this.setLeadersInfo();
     //console.log('q');
   },
 };

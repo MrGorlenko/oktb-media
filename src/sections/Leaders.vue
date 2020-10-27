@@ -41,7 +41,7 @@
       </div>
       <div class="w-100 people d-lg-flex d-none flex-wrap">
         <div
-          v-for="leader in leaders"
+          v-for="leader in lLeaders"
           :key="leader.name"
           class="human col-3"
           :class="{ 'd-none': !leader.top }"
@@ -62,7 +62,7 @@
 
       <swiper class="d-lg-none d-block" ref="mySwiper" :options="swiperOptions">
         <swiper-slide
-          v-for="leader in leaders"
+          v-for="leader in lLeaders"
           :key="leader.name"
           class="human"
         >
@@ -161,6 +161,7 @@ export default {
     ...mapState({
       leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
+      lLeaders: state => state.leadersInfo.tLeaders,
     }),
   },
   directives: {
@@ -278,7 +279,6 @@ export default {
       text-decoration: none;
     }
   }
-
 }
 
 @media (max-width: 1550px) {

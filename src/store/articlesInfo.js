@@ -196,7 +196,7 @@ const articlesInfo = {
   mutations: {
     SET_THEMES(state, payload) {
       state.tThemes = payload;
-      console.log(state.tThemes);
+      //console.log(state.tThemes);
     },
     SET_ARTICLES(state, payload) {
       state.tArticles = payload;
@@ -206,14 +206,14 @@ const articlesInfo = {
 
   actions: {
     setArcticThemes(context) {
-      return axios
-        .get('http://localhost:8000/api/themes')
-        .then(response => context.commit('SET_THEMES', response.data));
+      return axios.get('http://localhost:8000/api/themes').then(response => {
+        context.commit('SET_THEMES', response.data);
+      });
     },
     setArcticArctic(context) {
-      return axios
-        .get('http://localhost:8000/api/articles')
-        .then(response => context.commit('SET_ARTICLES', response.data));
+      return axios.get('http://localhost:8000/api/articles').then(response => {
+        context.commit('SET_ARTICLES', response.data);
+      });
     },
   },
 

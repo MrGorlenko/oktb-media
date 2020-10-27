@@ -69,7 +69,6 @@ export default {
   }, */
   computed: {
     ...mapState({
-      info: state => state.newsInfo.NewsArticle,
       news: state => state.newsInfo.dataFromApi,
     }),
   },

@@ -11,7 +11,7 @@
       <ul
         class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
       >
-        <li v-for="(theme, index) in themes" :key="index">
+        <li v-for="(theme, index) in tThemes" :key="index">
           <p
             class="articles__item w-100 h-100 "
             :class="{ 'active-button': index == 0 }"
@@ -26,7 +26,7 @@
         ref="mySwiper"
         :options="swiperOptions"
       >
-        <swiper-slide v-for="(theme, index) in themes" :key="index">
+        <swiper-slide v-for="(theme, index) in tThemes" :key="index">
           <p
             :class="{ 'active-button': index == 0 }"
             class="articles__item w-100 d-flex h-100 justify-content-center align-items-center"
@@ -36,17 +36,20 @@
         </swiper-slide>
       </swiper>
 
-      <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
+      <div v-for="(theme, jindex) in tThemes" :key="theme.name" class="themes">
+        <!--  УБРАТЬ slice ПОСЛЕ ИСПРАВЛЕНИЯ БЕКА -->
         <div
-          v-for="(article, index) in articles"
-          :key="article.title"
+          v-for="(article, index) in tArticles.slice(0, 4)"
+          :key="article.name"
           class="themesTwo"
         >
-          <div
+          <!--  ПРОВЕРИТЬ ДАННЫЕ НА УСЛОВИЯ!!! В article.theme КОТОРЫЙ ИЗ БЕКА РАВЕН ЦИФРЕ  -->
+          <!--  <div
             v-if="article.theme == theme.theme && article.hot == true"
             :class="{ 'd-none': jindex != 0 }"
             class="art-cat"
-          >
+          > -->
+          <div :class="{ 'd-none': jindex != 0 }" class="art-cat">
             <ArticleCard
               :title="article.title"
               :content="article.content"
@@ -114,8 +117,10 @@ export default {
   },
   computed: {
     ...mapState({
-      articles: state => state.articlesInfo.tArticles,
-      themes: state => state.articlesInfo.tThemes,
+      articles: state => state.articlesInfo.Articles,
+      themes: state => state.articlesInfo.Themes,
+      tArticles: state => state.articlesInfo.tArticles,
+      tThemes: state => state.articlesInfo.tThemes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

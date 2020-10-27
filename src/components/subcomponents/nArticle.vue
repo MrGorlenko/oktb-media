@@ -1,16 +1,16 @@
 <template>
   <div class="NewsArticle distance">
     <div class="author-info">
-      <p class="author__theme">{{ info[id].theme }}</p>
-      <p class="author__title mt-1">{{ info[id].title }}</p>
+      <p class="author__theme">{{ tArticles[id].theme }}</p>
+      <p class="author__title mt-1">{{ tArticles[id].title }}</p>
 
       <p class="mt-3" style="color: rgba(130, 130, 130, 1)">
-        {{ dateConvert(info[id].date) }}
+        {{ tArticles[id].date }}
       </p>
     </div>
     <img class="distance" v-bind:src="info[id].img" alt="q" />
     <div class="green-line"></div>
-    <p class="base-p">{{ info[id].content }}</p>
+    <p class="base-p">{{ tArticles[id].content }}</p>
     <hr class="distance grey-line" />
     <div class="share d-flex justify-content-start align-items-center">
       <span>Поделиться:</span>
@@ -87,8 +87,9 @@ export default {
   },
   computed: {
     ...mapState({
-      info: state => state.articlesInfo.tArticles,
-      themes: state => state.articlesInfo.tThemes,
+      info: state => state.articlesInfo.Articles,
+      themes: state => state.articlesInfo.Themes,
+      tArticles: state => state.articlesInfo.tArticles,
     }),
   },
 };

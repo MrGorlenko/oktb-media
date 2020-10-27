@@ -59,8 +59,8 @@ export default {
 
   computed: {
     ...mapState({
-      articles: state => state.articlesInfo.tArticles,
-      themes: state => state.articlesInfo.tThemes,
+      articles: state => state.articlesInfo.Articles,
+      themes: state => state.articlesInfo.Themes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

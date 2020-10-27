@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     ...mapActions({
-      // 3. При помощи mapActions обращаемся к нашему действию
       setPar: 'newsInfo/setParmInfo',
       setArcticThem: 'articlesInfo/setArcticThemes',
       setArcticArctic: 'articlesInfo/setArcticArctic',
@@ -28,10 +27,10 @@ export default {
     }),
   },
   created() {
-    // this.setPar();
+    this.setPar();
     this.setArcticThem();
     this.setArcticArctic();
-    // this.setLeadersInfo();
+    this.setLeadersInfo();
     //console.log('q');
   },
 };

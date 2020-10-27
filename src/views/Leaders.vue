@@ -42,12 +42,13 @@
           <div class="select">
             <div class="w-100">
               <button
-                v-for="(category, index) in leadersCategories"
+                v-for="(category, index) in tLeaders"
                 :key="category.type"
                 v-bind:class="{ active: index == 0 }"
                 class="w-100 mb-3"
               >
-                {{ category.label }}
+                {{ index }}
+                <!--  {{ category.label }} -->
               </button>
             </div>
           </div>
@@ -55,16 +56,17 @@
         <div class="col-lg-9 col-12">
           <div class="row">
             <div
-              v-for="(category, index) in leadersCategories"
-              :key="category.type"
+              v-for="(category, index) in tLeaders"
+              :key="category.id"
               class="d-none  w-100 cat justify-content-between flex-wrap"
               v-bind:class="{ 'd-flex': index == 0 }"
             >
               <div
                 class="leaderItem"
-                v-for="leader in leaders"
+                v-for="leader in tLeaders"
                 :key="leader.name"
               >
+                <!-- ПОПРАВИТЬ ДАННЫЕ -->
                 <div
                   class="human"
                   @click="openModal(leader)"
@@ -130,6 +132,7 @@ export default {
     ...mapState({
       leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
+      tLeaders: state => state.leadersInfo.tLeaders,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

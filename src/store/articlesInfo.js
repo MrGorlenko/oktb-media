@@ -196,11 +196,11 @@ const articlesInfo = {
   mutations: {
     SET_THEMES(state, payload) {
       state.tThemes = payload;
-      console.log(state.tThemes);
+      //console.log(state.tThemes);
     },
     SET_ARTICLES(state, payload) {
       state.tArticles = payload;
-      console.log(state.tArticles);
+      //console.log(state.tArticles);
     },
   },
 

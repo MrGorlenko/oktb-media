@@ -16,7 +16,7 @@
             class="articles__item w-100 h-100 "
             :class="{ 'active-button': index == 0 }"
           >
-            {{ theme.theme }}
+            {{ theme.name }}
           </p>
         </li>
       </ul>
@@ -31,7 +31,7 @@
             :class="{ 'active-button': index == 0 }"
             class="articles__item w-100 d-flex h-100 justify-content-center align-items-center"
           >
-            {{ theme.theme }}
+            {{ theme.name }}
           </p>
         </swiper-slide>
       </swiper>
@@ -106,10 +106,16 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  methods: {
+    dateConvert(param) {
+      let d = new Date(param);
+      return d.toLocaleDateString('ru-RU');
+    },
+  },
   computed: {
     ...mapState({
-      articles: state => state.articlesInfo.Articles,
-      themes: state => state.articlesInfo.Themes,
+      articles: state => state.articlesInfo.tArticles,
+      themes: state => state.articlesInfo.tThemes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

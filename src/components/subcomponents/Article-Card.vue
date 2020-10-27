@@ -7,16 +7,16 @@
         <div
           class="article__item d-flex justify-content-between flex-column col-xl-6"
         >
-          <span class="w-100 art__date pt-5 pt-sm-0"> {{ date }}</span>
+          <span class="w-100 art__date pt-5 pt-sm-0">
+            {{ dateConvert(date) }}</span
+          >
           <p class="w-100 art__card">{{ title }}</p>
           <p class="w-100 art__content">{{ content }}</p>
           <div class="w-100 art__item--link col-lg-6 pl-0 mt-sm-5 mt-md-1">
             <!--  -->
             <!-- <router-link :to="/nArticle/ + index" :key="index"> -->
-            <router-link
-            :to="path + index"
-            :key="index">
-            <!--  -->
+            <router-link :to="path + index" :key="index">
+              <!--  -->
               <a href="#"
                 >Узнать больше
                 <svg
@@ -51,6 +51,13 @@ export default {
   name: 'ArticlesCard',
 
   props: ['title', 'date', 'content', 'img', 'index', 'path'],
+
+  methods: {
+    dateConvert(param) {
+      let d = new Date(param);
+      return d.toLocaleDateString('ru-RU');
+    },
+  },
 };
 </script>
 

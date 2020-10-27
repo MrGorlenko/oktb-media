@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
-#/dist
 oktb_backend/env/
+#/dist
 # local env files
 .env.local
 .env.*.local
@@ -13,6 +13,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor directories and files
+.oktb_backend/env/
 .history
 .idea
 .vscode

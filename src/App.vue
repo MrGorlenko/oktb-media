@@ -21,10 +21,14 @@ export default {
   methods: {
     ...mapActions({
       setPar: 'newsInfo/setParmInfo',
+      serArcticThem: 'articlesInfo/setArcticThemes',
+      serArcticArctic: 'articlesInfo/setArcticArctic',
     }),
   },
   created() {
     this.setPar();
+    this.serArcticThem();
+    this.serArcticArctic();
     //console.log('q');
   },
 };

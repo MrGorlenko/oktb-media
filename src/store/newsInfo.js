@@ -32,7 +32,7 @@ const newsInfo = {
 
     SET_INFO(state, payload) {
       state.dataFromApi = payload;
-      console.log(payload);
+      //console.log(payload);
     },
   },
 

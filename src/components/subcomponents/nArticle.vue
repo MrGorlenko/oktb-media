@@ -5,10 +5,10 @@
       <p class="author__title mt-1">{{ info[id].title }}</p>
 
       <p class="mt-3" style="color: rgba(130, 130, 130, 1)">
-        By {{ info[id].date }}
+        {{ dateConvert(info[id].date) }}
       </p>
     </div>
-    <img class="distance" v-bind:src="'../' + info[id].img" alt="q" />
+    <img class="distance" v-bind:src="info[id].img" alt="q" />
     <div class="green-line"></div>
     <p class="base-p">{{ info[id].content }}</p>
     <hr class="distance grey-line" />
@@ -79,9 +79,16 @@ export default {
     };
   },
   components: {},
+  methods: {
+    dateConvert(param) {
+      let d = new Date(param);
+      return d.toLocaleDateString('ru-RU');
+    },
+  },
   computed: {
     ...mapState({
-      info: state => state.articlesInfo.Articles,
+      info: state => state.articlesInfo.tArticles,
+      themes: state => state.articlesInfo.tThemes,
     }),
   },
 };

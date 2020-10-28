@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 oktb_backend/env/
+*.sqlite3
 #/dist
 # local env files
 .env.local

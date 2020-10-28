@@ -24,6 +24,7 @@ export default {
       setArcticThem: 'articlesInfo/setArcticThemes',
       setArcticArctic: 'articlesInfo/setArcticArctic',
       setLeadersInfo: 'leadersInfo/setLeaders',
+      setLeadersCategorInfo: 'leadersInfo/setLeadCategory',
     }),
   },
   created() {
@@ -31,6 +32,7 @@ export default {
     this.setArcticThem();
     this.setArcticArctic();
     this.setLeadersInfo();
+    this.setLeadersCategorInfo();
     //console.log('q');
   },
 };

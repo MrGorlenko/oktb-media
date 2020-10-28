@@ -27,7 +27,7 @@ class Leader(models.Model):
     job = models.CharField(max_length=200)
     phone = models.TextField(max_length=30)
     mail = models.EmailField()
-    top = models.BooleanField()
+    top = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -45,8 +45,7 @@ class Leader(models.Model):
             img = img.resize((500, 500), Image.ANTIALIAS)
             img.save(self.img.path)
 
-        leaders = Leader.objects.filter(category__id=Leader.objects.get(id=self.id).category.id)
-        self.top = True
+        leaders = Leader.objects.all()
 
         if len(leaders) > 4:
             not_top = Leader.objects.filter(id=self.id - 4)

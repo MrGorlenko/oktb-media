@@ -42,13 +42,12 @@
           <div class="select">
             <div class="w-100">
               <button
-                v-for="(category, index) in tLeaders"
+                v-for="(category, index) in tLeadersCategories"
                 :key="category.type"
                 v-bind:class="{ active: index == 0 }"
                 class="w-100 mb-3"
               >
-                {{ index }}
-                <!--  {{ category.label }} -->
+                {{ category.label }}
               </button>
             </div>
           </div>
@@ -66,12 +65,10 @@
                 v-for="leader in tLeaders"
                 :key="leader.name"
               >
-                <!-- ПОПРАВИТЬ ДАННЫЕ -->
-                <div
-                  class="human"
-                  @click="openModal(leader)"
-                  v-if="leader.category == category.type"
-                >
+                <!-- ПОПРАВИТЬ ЛОГИКУ     
+                   v-if="category.label == !leader.category"
+                -->
+                <div class="human" @click="openModal(leader)">
                   <img class="photo" v-bind:src="leader.img" alt="" />
                   <div class="green-filter "></div>
                   <div class="info d-flex flex-column ">
@@ -130,8 +127,11 @@ export default {
   },
   computed: {
     ...mapState({
-      leadersCategories: state => state.leadersInfo.categories,
+      /*  leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
+ */
+      tLeadersCategories: state => state.leadersInfo.tCategory,
+
       tLeaders: state => state.leadersInfo.tLeaders,
     }),
     swiper() {
@@ -148,7 +148,7 @@ export default {
       }
     });
 
-    let len = this.leadersCategories.length;
+    let len = this.tLeadersCategories.length;
     $('.select button').each(function(index) {
       $(this).click(function() {
         $(this).addClass('active');

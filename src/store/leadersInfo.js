@@ -4,7 +4,7 @@ const leadersInfo = {
   namespaced: true,
 
   state: {
-    leaders: [
+    /*  leaders: [
       {
         name: 'Nickname1',
         link: 'url-link-to-her-page',
@@ -72,7 +72,7 @@ const leadersInfo = {
         mail: 'natalya.vorobeva@oktb',
       },
     ],
-    categories: [
+      categories: [
       {
         type: 'leader',
         label: 'Лидеры мнений',
@@ -88,13 +88,20 @@ const leadersInfo = {
         label: 'Акробаты',
         active: false,
       },
-    ],
+    ], */
+
     tLeaders: [],
+    tCategory: [],
   },
+
   mutations: {
     SET_LEADERS(state, payload) {
       state.tLeaders = payload;
       console.log(state.tLeaders);
+    },
+    SET_LEADERS_CATEGORY(state, payload) {
+      state.tCategory = payload;
+      console.log(state.tCategory);
     },
   },
 
@@ -103,6 +110,14 @@ const leadersInfo = {
       return axios.get('http://localhost:8000/api/leaders').then(response => {
         context.commit('SET_LEADERS', response.data);
       });
+    },
+
+    setLeadCategory(context) {
+      return axios
+        .get('http://localhost:8000/api/leaders-category')
+        .then(response => {
+          context.commit('SET_LEADERS_CATEGORY', response.data);
+        });
     },
   },
 

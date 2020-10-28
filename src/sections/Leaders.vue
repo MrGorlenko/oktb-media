@@ -1,5 +1,5 @@
 <template>
-  <div class="leaders" v-if="leaders.length > 0">
+  <div class="leaders" v-if="tLeaders.length > 0">
     <modal :leader="leader" v-if="modalShow" @closeModal="closeModal">
       <div
         class="popup d-flex align-items-center justify-content-center"
@@ -159,8 +159,10 @@ export default {
       return this.$refs.mySwiper.$swiper;
     },
     ...mapState({
-      leadersCategories: state => state.leadersInfo.categories,
+      /*       leadersCategories: state => state.leadersInfo.categories,
       leaders: state => state.leadersInfo.leaders,
+ */
+      tLeadersCategories: state => state.leadersInfo.tCategory,
       tLeaders: state => state.leadersInfo.tLeaders,
     }),
   },

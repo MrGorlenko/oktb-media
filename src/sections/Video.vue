@@ -15,17 +15,17 @@
 
           <div class="col-lg-6 col-6 green"></div>
           <div
-            v-for="(video, index) in videos"
+            v-for="(video, index) in videos.slice().reverse()"
             :key="index"
             class="col-lg-5-8 h-auto pt-3 col-12 video-wrapper"
           >
             <VideoItem
-              :img="video.picture"
+              :img="video.img"
               :uploadDate="video.date"
-              :title="video.Title"
+              :title="video.title"
               :path="/nVideo/"
               :index="index"
-              v-if="index <= 4"
+              v-if="index <= 3"
             />
           </div>
         </div>
@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     ...mapState({
-      videos: state => state.Videos.videos,
+      videos: state => state.Videos.videosAPI,
     }),
   },
 };

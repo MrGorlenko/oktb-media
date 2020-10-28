@@ -3,13 +3,13 @@
     <div class="container-fluid">
       <div class="box d-flex flex-column align-items-end">
         <div class="aboutVideo">
-          <h2>{{ Video[id].Title }}</h2>
+          <h2>{{ Video[id].title }}</h2>
           <p>{{ Video[id].date }}</p>
         </div>
         <div class="video-card">
           <iframe
             class="youtube w-100"
-            :src="Video[id].embedVideo"
+            :src="Video[id].video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     ...mapState({
-      Video: state => state.Videos.videos,
+      Video: state => state.Videos.videosAPI,
     }),
   },
 };

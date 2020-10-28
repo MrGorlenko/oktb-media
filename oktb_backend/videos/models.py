@@ -1,5 +1,6 @@
 from PIL import Image
 from django.db import models
+import re
 
 
 class Video(models.Model):
@@ -24,3 +25,8 @@ class Video(models.Model):
 
             img = img.resize((500, 500), Image.ANTIALIAS)
             img.save(self.img.path)
+
+        self.video = self.video.replace("watch?v=", 'embed/')
+        self.video = re.sub(r'&.+', '', self.video)
+
+        super(Video, self).save()

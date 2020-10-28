@@ -1,3 +1,5 @@
+import axios from "axios";
+
 function filterVideo(videos, filter) {
   let _arr = [];
   videos.map(video => {
@@ -57,19 +59,33 @@ const Videos = {
         embedVideo: 'https://www.youtube.com/embed/GmgJmIHkhVI',
       },
     ],
+    videosAPI: [],
   },
   mutations: {
     CHANGE__FILTER(state, payload) {
       state.filter = payload;
     },
+    SET_VIDEOS(state, payload) {
+      state.videosAPI = payload;
+      console.log(payload)
+      console.log(state.videosAPI)
+    },
   },
 
-  actions: {},
+  actions: {
+    setVideos(context) {
+      return (
+        axios
+          .get('http://localhost:8000/api/videos')
+          .then(response => context.commit('SET_VIDEOS', response.data))
+      );
+    },
+  },
 
   getters: {
     filterVideo(state) {
-      if (state.videos.length) {
-        return filterVideo(state.videos, state.filter);
+      if (state.videosAPI.length) {
+        return filterVideo(state.videosAPI, state.filter);
       }
     },
   },

@@ -16,9 +16,9 @@
           :key="index"
         >
           <VideoItem
-            :img="video.picture"
+            :img="video.img"
             :uploadDate="video.date"
-            :title="video.Title"
+            :title="video.title"
             :path="/nVideo/"
             :index="index"
           />
@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState({
-      Videos: state => state.Videos.videos,
+      Videos: state => state.Videos.videosAPI,
     }),
     ...mapGetters({
       corrVideo: 'Videos/filterVideo',

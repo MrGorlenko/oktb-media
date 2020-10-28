@@ -21,6 +21,7 @@ export default {
   methods: {
     ...mapActions({
       setPar: 'newsInfo/setParmInfo',
+      setVideos: 'Videos/setVideos',
       setArcticThem: 'articlesInfo/setArcticThemes',
       setArcticArctic: 'articlesInfo/setArcticArctic',
       setLeadersInfo: 'leadersInfo/setLeaders',
@@ -31,6 +32,7 @@ export default {
     this.setArcticThem();
     this.setArcticArctic();
     this.setLeadersInfo();
+    this.setVideos();
     //console.log('q');
   },
 };

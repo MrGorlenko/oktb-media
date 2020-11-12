@@ -8,26 +8,20 @@
         </div>
       </div>
       <div class="row justify-content-between">
-        <ul
-          class="articles__items col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
-        >
-          <li 
-          v-for='(theme, i) in ThemeArticles' 
-          :key="theme.title" 
-          >
-            <p v-if='theme.isActive' class='active-button articles__item w-100 h-100'>{{theme.title}}</p>
-            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 h-100'>{{theme.title}}</p>
-          </li>
-        </ul>
-        <!-- шаг 3 - внедряем в вёрстку сам компонент, прописываем swiperOptions как метод options -->
-        <swiper class='articles__items slider d-lg-none d-block' ref="mySwiper" :options="swiperOptions" >
+        <swiper class='articles__items slider d-lg-block d-block' ref="mySwiper" :options="swiperOptions" >
           <!--  шаг 4 - вот это сам слайд, его экземпляр. в него контент -->
-          <swiper-slide 
-          v-for='(theme, i) in ThemeArticles' 
-          :key="theme.title">
-            <p v-if='theme.isActive' class='active-button articles__item w-100 p-0 d-flex h-100 justify-content-center align-items-center'>{{theme.title}}</p>
-            <p v-on:click='activateTheme($event, i)' v-else class='articles__item w-100 p-0 d-flex h-100 justify-content-center align-items-center'>{{theme.title}}</p>
-          </swiper-slide>
+          <ul class="articles__items col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between">
+            <swiper-slide style="justify-content: space-between; display: flex;">
+              <li
+                v-for='(theme, i) in ThemeArticles'
+                :key="theme.title"
+                :theme=ThemeArticles>
+                <p v-if='theme.isActive' class='articles__item item w-100 h-100'>{{theme.title}}</p>
+                <p v-on:click='activateTheme($event, i)' v-else class=' articles__item w-100 h-100'>{{theme.title}}</p>
+              </li>
+              <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+            </swiper-slide>
+          </ul>
         </swiper>
       </div>
         <div  class="article__card--wrap">
@@ -36,7 +30,7 @@
             <span class="card__subject offset-lg-2">{{themeDefault}}</span>
             <span class="card__date offset-lg-2">{{dateDefault}}</span>
             <p class="card__text offset-lg-2 mb-lg-3">{{contentDefault}}</p>
-        </div>
+          </div>
 
         <img
           class="articles__img offset-lg-6"
@@ -61,12 +55,11 @@ export default {
   components: {
     // Шаг 2 - подключаем компонент
     ArticlesCard,
-    Swiper,
+     Swiper,
     SwiperSlide
   },
   data() {
     return {
-
       ThemeArticles: [
         {
           title: 'Наука',
@@ -110,18 +103,16 @@ export default {
       themeDefault: 'Наука',
       dateDefault: '15 февраля 2020',
       contentDefault: 'Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука Наука',
-      
       // Шаг 8 - это сами опции слайдера, их большое количество, всё есть в документации. Тут типа видно 4 слайда
       // и расстояние между ними - 15 пикселей
       swiperOptions: {
-        slidesPerView: 4,
-        spaceBetween: 15
+        pagination: { }
       }
     };
   },
-  // Шаг 5 - запускаем тот самый метод comtuted
+  // Шаг 5 - запускаем тот самый метод computed
   computed: {
-      swiper() {
+    swiper() {
         return this.$refs.mySwiper.$swiper
       }
   },
@@ -132,7 +123,7 @@ export default {
   // Шаг 7 - запуск и инициализация слайдера. slideTo метод принимает в себя 3 аргумента - какой слайд первый по индексу
   // , с какой сторостью листается, идет ли в обратную сторону (false, если не идёт)
   mounted() {
-   this.swiper.slideTo(0, 1000, false)
+    this.swiper.slideTo(0, 1000, false)
   },
   methods: {
     activateTheme(event, i) {
@@ -140,13 +131,13 @@ export default {
       this.themeDefault = this.ThemeArticles[i].title;
       this.dateDefault = this.ArticleItems[i].date;
       this.contentDefault = this.ArticleItems[i].content;
-      for (let j=i+1; j<4; j++) {
+      for (let j = i + 1; j < 4; j++) {
         this.ThemeArticles[j].isActive = false;
       }
-      for (let j=i-1; j>-1; j--) {
+      for (let j = i - 1; j > -1; j--) {
         this.ThemeArticles[j].isActive = false;
       }
-    }
+    },
   }
 };
 </script>
@@ -173,7 +164,7 @@ export default {
 }
 
 .articles__title {
-  font-family: 'San Francisco' sans-serif;
+  font-family: 'San Francisco', sans-serif;
   font-size: 80px;
   font-style: normal;
   font-weight: 700;

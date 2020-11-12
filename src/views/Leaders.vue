@@ -41,12 +41,10 @@
         <div class="col-lg-3 col-12 pl-lg-0">
           <div class="select">
             <div class="w-100">
-              <button
-                v-for="(category, index) in leadersCategories"
-                :key="category.type"
-                v-bind:class="{ active: index == 0 }"
-                class="w-100 mb-3"
-              >
+              <button  v-for="(category, index) in leadersCategories"
+                       :key="category.type"
+                       v-bind:class="{ active: index == 0 }"
+                       class="w-100 mb-3">
                 {{ category.label }}
               </button>
             </div>
@@ -57,7 +55,7 @@
             <div
               v-for="(category, index) in leadersCategories"
               :key="category.type"
-              class="d-none  w-100 cat justify-content-between flex-wrap"
+              class="d-none w-100 cat justify-content-between flex-wrap"
               v-bind:class="{ 'd-flex': index == 0 }"
             >
               <div
@@ -92,7 +90,7 @@
 
 <script>
 import Modal from '@/components/Modal';
-import $ from 'jquery';
+//import $ from 'jquery';
 import { mapState } from 'vuex';
 // import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css';
@@ -112,6 +110,8 @@ export default {
         loop: true,
         initialSlide: 1,
       },
+
+
     };
   },
   components: {
@@ -146,56 +146,28 @@ export default {
     });
 
     let len = this.leadersCategories.length;
-    $('.select button').each(function(index) {
-      $(this).click(function() {
-        $(this).addClass('active');
-        $(this)
-          .siblings()
-          .removeClass('active');
-        console.log(
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-        );
-        $(this)
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .children('.col-lg-9')
-          .children('.row')
-          .children('.cat')
-          .eq(index)
-          .removeClass('d-none')
-          .addClass('d-flex');
-        for (let j = 1; j < len; j++) {
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-lg-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index + j)
-            .removeClass('d-flex')
-            .addClass('d-none');
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-lg-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index - j)
-            .removeClass('d-flex')
-            .addClass('d-none');
-        }
-      });
-    });
+    const tabs = document.querySelectorAll(' .select button');
+    const contents = document.querySelectorAll('.cat');
+      tabs.forEach((tab, value) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(el => {
+            el.classList.remove('active');
+          })
+          tab.classList.add('active')
+          contents[value].classList.add('d-none', 'd-flex')
+          for (let j = 1; j < len; j++) {
+            if (contents[value + j]){
+              contents[value + j].classList.remove('d-flex');
+              contents[value + j].classList.add('d-none')
+            }
+            if(contents[value - j]) {
+              contents[value - j].classList.remove('d-flex');
+              contents[value - j].classList.add('d-none')
+            }
+          }
+        })
+      })
+
   },
 };
 </script>
@@ -259,6 +231,10 @@ $distance: 250px;
       border-radius: 8px;
     }
   }
+}
+
+.active-tab {
+  display: flex;
 }
 
 .human {

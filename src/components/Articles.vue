@@ -1,46 +1,41 @@
 <template>
   <div class="articles">
-    <ul
-      class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex d-none justify-content-between"
-    >
-      <li v-for="(theme, index) in themes" :key="index">
-        <p
-          class="articles__item w-100 h-100 "
-          :class="{ 'active-button': index == 0 }"
-        >
-          {{ theme.theme }}
-        </p>
-      </li>
-    </ul>
     <swiper
-      class="switcher articles__items slider d-lg-none d-block"
+      class="switcher articles__items slider d-lg-block
+       d-block"
       ref="mySwiper"
       :options="swiperOptions"
     >
-      <swiper-slide v-for="(theme, index) in themes" :key="index">
-        <p
-          :class="{ 'active-button': index == 0 }"
-          class="articles__item w-100 d-flex h-100 justify-content-center align-items-center"
-        >
-          {{ theme.theme }}
-        </p>
-      </swiper-slide>
+      <ul
+          class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex justify-content-between"
+      >
+        <swiper-slide style="justify-content: space-between; display: flex;">
+          <li v-for="(theme, index) in themes" :key="index"
+              >
+            <p class="articles__item item w-100 h-100"
+               :class="{ 'activeButton': index == 0 }">
+              {{ theme.theme }}
+            </p>
+          </li>
+        </swiper-slide>
+      </ul>
     </swiper>
     <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
-      <div v-for="(article,index) in articles" :key="index" class="themesTwo">
-        <div
-          v-if="article.theme == theme.theme"
-          :class="{ 'd-none': jindex != 0 }"
-          class="art-cat"
-        >
+      <div
+          v-for="(article, index) in articles"
+          :key="article.index"
+          class="themesTwo">
+        <div  v-if="article.theme === theme.theme && article.hot === true"
+              :class="{ 'd-none': jindex != 0 }"
+              class="art-cat">
           <ArticleCard
-            :title="article.title"
-            :content="article.content"
-            :date="article.date"
-            :author="article.author"
-            :img="article.img"
-            :path='/nArticle/'
-            :index=index
+              :title="article.title"
+              :content="article.content"
+              :date="article.date"
+              :author="article.author"
+              :img="article.img"
+              :path="/nArticle/"
+              :index="index"
           />
         </div>
       </div>
@@ -50,13 +45,27 @@
 
 <script>
 import ArticleCard from '@/components/subcomponents/Article-Card';
-import $ from 'jquery';
+//import Paginate from 'vuejs-paginate';
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css';
 import { mapState } from 'vuex';
+
 export default {
   name: 'ArticlesComponent',
 
+  directives: {
+    swiper: directive,
+  },
+  components: {
+    ArticleCard,
+    Swiper,
+    SwiperSlide
+  },
+  data() {
+    return {
+      swiperOptions: {}
+    }
+  },
   computed: {
     ...mapState({
       articles: state => state.articlesInfo.Articles,
@@ -64,118 +73,49 @@ export default {
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;
-    },
+    }
   },
-  directives: {
-    swiper: directive,
-  },
-  components: {
-    ArticleCard,
-    Swiper,
-    SwiperSlide,
-  },
-  data() {
-    return {
-      swiperOptions: {
-        slidesPerView: 4,
-        spaceBetween: 15,
-      },
-    };
-  },
+  methods: {  },
   mounted() {
+    const tabs = document.querySelectorAll('ul li .item');
+    const contents = document.querySelectorAll('.art-cat');
     let len = this.themes.length;
-    // switcher
-    $('.switcher li').each(function(i) {
-      $(this).click(function() {
-        $(this)
-          .children('p')
-          .addClass('active-button');
-        $(this)
-          .siblings()
-          .children('p')
-          .removeClass('active-button');
-        $(this)
-          .parent()
-          .parent()
-          .children('.themes')
-          .eq(i)
-          .children('.themesTwo')
-          .children('.art-cat')
-          .removeClass('d-none');
-        for (let j = 1; j < len; j++) {
-          $(this)
-            .parent()
-            .parent()
-            .children('.themes')
-            .eq(i + j)
-            .children('.themesTwo')
-            .children('.art-cat')
-            .addClass('d-none');
-          $(this)
-            .parent()
-            .parent()
-            .children('.themes')
-            .eq(i - j)
-            .children('.themesTwo')
-            .children('.art-cat')
-            .addClass('d-none');
+    tabs.forEach((tab, value) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(el => {
+          el.classList.remove('activeButton');
+        })
+        tab.classList.add('activeButton')
+        contents[value].classList.remove('d-none')
+        for (let j = value + 1; j < len; j++) {
+          if(contents[value + j]) {
+            contents[value + j].classList.add('d-none')
+          }
+          if (contents[value - j]) {
+            contents[value - j].classList.add('d-none')
+          }
         }
-      });
-    });
-    $('.swiper-slide').each(function(i) {
-      $(this).click(function() {
-        $(this)
-          .children('p')
-          .addClass('active-button');
-        $(this)
-          .siblings()
-          .children('p')
-          .removeClass('active-button');
-        $(this)
-          .parent()
-          .parent()
-          .parent()
-          .children('.themes')
-          .eq(i)
-          .children('.themesTwo')
-          .children('.art-cat')
-          .removeClass('d-none');
-        for (let j = 1; j < len; j++) {
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .children('.themes')
-            .eq(i + j)
-            .children('.themesTwo')
-            .children('.art-cat')
-            .addClass('d-none');
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .children('.themes')
-            .eq(i - j)
-            .children('.themesTwo')
-            .children('.art-cat')
-            .addClass('d-none');
-        }
-      });
-    });
-  },
-};
+
+        console.log(value)
+      })
+    })
+  }
+}
 </script>
 
 <style lang="scss">
 @import '../scss/variables';
 $distance: 250px;
 
+
 .articles__items {
   font-size: 16px;
   line-height: 32px;
   letter-spacing: 1px;
 }
-
+.activeButton {
+  display: block;
+}
 .green {
   width: $distance;
   height: 8px;
@@ -184,17 +124,19 @@ $distance: 250px;
   background-color: $base-green;
 }
 
-.active-button {
+.activeButton {
   color: #fff;
   background-color: rgba(102, 209, 131, 1);
 }
 
+.pagination {
+  padding: 6px 4px;
+}
 .articles__item {
   text-transform: uppercase;
   text-align: center;
   list-style: none;
   box-sizing: border-box;
-  padding: 6px 4px;
   height: 48px;
   width: 112px;
 

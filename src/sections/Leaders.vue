@@ -41,7 +41,7 @@
       </div>
       <div class="w-100 people d-lg-flex d-none flex-wrap">
         <div
-          v-for="leader in leaders"
+          v-for="leader in tLeaders"
           :key="leader.name"
           class="human col-3"
           :class="{ 'd-none': !leader.top }"
@@ -159,8 +159,9 @@ export default {
       return this.$refs.mySwiper.$swiper;
     },
     ...mapState({
-      leadersCategories: state => state.leadersInfo.categories,
+      tLeadersCategories: state => state.leadersInfo.tCategory,
       leaders: state => state.leadersInfo.leaders,
+      tLeaders: state => state.leadersInfo.tLeaders,
     }),
   },
   directives: {

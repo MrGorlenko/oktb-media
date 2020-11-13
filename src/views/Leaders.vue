@@ -41,10 +41,12 @@
         <div class="col-lg-3 col-12 pl-lg-0">
           <div class="select">
             <div class="w-100">
-              <button  v-for="(category, index) in leadersCategories"
-                       :key="category.type"
-                       v-bind:class="{ active: index == 0 }"
-                       class="w-100 mb-3">
+              <button
+                  v-for="(category, index) in tLeadersCategories"
+                  :key="category.type"
+                  v-bind:class="{ active: index == 0 }"
+                  class="w-100 mb-3"
+              >
                 {{ category.label }}
               </button>
             </div>
@@ -53,21 +55,20 @@
         <div class="col-lg-9 col-12">
           <div class="row">
             <div
-              v-for="(category, index) in leadersCategories"
-              :key="category.type"
-              class="d-none w-100 cat justify-content-between flex-wrap"
-              v-bind:class="{ 'd-flex': index == 0 }"
+                v-for="(category, index) in tLeaders"
+                :key="category.id"
+                class="d-none  w-100 cat justify-content-between flex-wrap"
+                v-bind:class="{ 'd-flex': index == 0 }"
             >
               <div
-                class="leaderItem"
-                v-for="leader in leaders"
-                :key="leader.name"
+                  class="leaderItem"
+                  v-for="leader in tLeaders"
+                  :key="leader.name"
               >
-                <div
-                  class="human"
-                  @click="openModal(leader)"
-                  v-if="leader.category == category.type"
-                >
+                <!-- ПОПРАВИТЬ ЛОГИКУ
+                   v-if="category.label == !leader.category"
+                -->
+                <div class="human" @click="openModal(leader)">
                   <img class="photo" v-bind:src="leader.img" alt="" />
                   <div class="green-filter "></div>
                   <div class="info d-flex flex-column ">
@@ -128,8 +129,9 @@ export default {
   },
   computed: {
     ...mapState({
-      leadersCategories: state => state.leadersInfo.categories,
+      tLeadersCategories: state => state.leadersInfo.tCategory,
       leaders: state => state.leadersInfo.leaders,
+      tLeaders: state => state.leadersInfo.tLeaders,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

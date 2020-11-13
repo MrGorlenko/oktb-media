@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const leadersInfo = {
   namespaced: true,
 
@@ -87,10 +89,34 @@ const leadersInfo = {
         active: false,
       },
     ],
+    tLeaders: [],
+    tCategory: [],
   },
-  mutations: {},
+  mutations: {
+    SET_LEADERS(state, payload) {
+      state.tLeaders = payload;
+      console.log(state.tLeaders);
+    },
+    SET_LEADERS_CATEGORY(state, payload) {
+      state.tCategory = payload;
+      console.log(state.tCategory);
+    },
+  },
 
-  actions: {},
+  actions: {
+    setLeaders(context) {
+      return axios.get('http://localhost:8000/api/leaders').then(response => {
+        context.commit('SET_LEADERS', response.data);
+      });
+    },
+    setLeadCategory(context) {
+      return axios
+          .get('http://localhost:8000/api/leaders-category')
+          .then(response => {
+            context.commit('SET_LEADERS_CATEGORY', response.data);
+          });
+    },
+  },
 
   getters: {},
 };

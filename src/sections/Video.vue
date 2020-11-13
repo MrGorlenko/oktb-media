@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     ...mapState({
-      videos: state => state.Videos.videos,
+      videos: state => state.Videos.videosAPI,
     }),
   },
 };

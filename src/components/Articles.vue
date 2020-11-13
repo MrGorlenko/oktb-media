@@ -10,7 +10,7 @@
           class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex justify-content-between"
       >
         <swiper-slide style="justify-content: space-between; display: flex;">
-          <li v-for="(theme, index) in themes" :key="index"
+          <li v-for="(theme, index) in tThemes" :key="index"
               >
             <p class="articles__item item w-100 h-100"
                :class="{ 'activeButton': index == 0 }">
@@ -20,9 +20,9 @@
         </swiper-slide>
       </ul>
     </swiper>
-    <div v-for="(theme, jindex) in themes" :key="theme.theme" class="themes">
+    <div v-for="(theme, jindex) in tThemes" :key="theme.theme" class="themes">
       <div
-          v-for="(article, index) in articles"
+          v-for="(article, index) in tArticles"
           :key="article.index"
           class="themesTwo">
         <div  v-if="article.theme === theme.theme && article.hot === true"
@@ -70,6 +70,8 @@ export default {
     ...mapState({
       articles: state => state.articlesInfo.Articles,
       themes: state => state.articlesInfo.Themes,
+      tArticles: state => state.articlesInfo.tArticles,
+      tThemes: state => state.articlesInfo.tThemes,
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState({
-      Videos: state => state.Videos.videos,
+      Videos: state => state.Videos.videosAPI,
     }),
     ...mapGetters({
       corrVideo: 'Videos/filterVideo',

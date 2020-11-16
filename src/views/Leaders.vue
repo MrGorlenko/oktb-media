@@ -92,7 +92,6 @@
 
 <script>
 import Modal from '@/components/Modal';
-import $ from 'jquery';
 import { mapState } from 'vuex';
 // import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css';
@@ -147,56 +146,27 @@ export default {
     });
 
     let len = this.tLeadersCategories.length;
-    $('.select button').each(function(index) {
-      $(this).click(function() {
-        $(this).addClass('active');
-        $(this)
-          .siblings()
-          .removeClass('active');
-        console.log(
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-        );
-        $(this)
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .children('.col-lg-9')
-          .children('.row')
-          .children('.cat')
-          .eq(index)
-          .removeClass('d-none')
-          .addClass('d-flex');
-        for (let j = 1; j < len; j++) {
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-lg-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index + j)
-            .removeClass('d-flex')
-            .addClass('d-none');
-          $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .children('.col-lg-9')
-            .children('.row')
-            .children('.cat')
-            .eq(index - j)
-            .removeClass('d-flex')
-            .addClass('d-none');
-        }
-      });
-    });
+    const tabs = document.querySelectorAll(' .select button');
+    const contents = document.querySelectorAll('.cat');
+      tabs.forEach((tab, value) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(el => {
+            el.classList.remove('active');
+          })
+          tab.classList.add('active')
+          contents[value].classList.add('d-none', 'd-flex')
+          for (let j = 1; j < len; j++) {
+            if (contents[value + j]){
+              contents[value + j].classList.remove('d-flex');
+              contents[value + j].classList.add('d-none')
+            }
+            if(contents[value - j]) {
+              contents[value - j].classList.remove('d-flex');
+              contents[value - j].classList.add('d-none')
+            }
+          }
+        })
+      })
   },
 };
 </script>

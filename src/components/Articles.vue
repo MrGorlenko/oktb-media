@@ -8,6 +8,7 @@
           class="articles__items switcher col-lg-4 offset-lg-2 d-lg-flex justify-content-between"
         >
           <swiper-slide style="justify-content: space-between; display: flex;">
+          
           <li v-for="(theme, index) in tThemes" :key="index">
             <p class="articles__item item w-100 h-100"
                :class="{ 'activeButton': index == 0 }">
@@ -17,7 +18,7 @@
           </swiper-slide>
         </ul>
       </swiper>
-      
+
     <div v-for="(theme, jindex) in tThemes" :key="theme.theme" class="themes">
       <div v-for="(article, index) in tArticles" :key="index" class="themesTwo">
         <div :class="{ 'd-none': jindex != 0 }" class="art-cat">

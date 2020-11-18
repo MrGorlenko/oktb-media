@@ -27,19 +27,15 @@
       </swiper>
 
       <div v-for="(theme, jindex) in tThemes" :key="theme.name" class="themes">
-        <!--  УБРАТЬ slice ПОСЛЕ ИСПРАВЛЕНИЯ БЕКА -->
+
         <div
-          v-for="(article, index) in tArticles.slice(0, 4)"
+          v-for="(article, index) in tArticles"
           :key="article.name"
           class="themesTwo"
+          
         >
-          <!--  ПРОВЕРИТЬ ДАННЫЕ НА УСЛОВИЯ!!! В article.theme КОТОРЫЙ ИЗ БЕКА РАВЕН ЦИФРЕ  -->
-          <!--  <div
-            v-if="article.theme == theme.theme && article.hot == true"
-            :class="{ 'd-none': jindex != 0 }"
-            class="art-cat"
-          > -->
-          <div :class="{ 'd-none': jindex != 0 }" class="art-cat">
+          <div :class="{ 'd-none': jindex != 0 }" class="art-cat"
+          v-if="article.theme == theme.name">
             <ArticleCard
               :title="article.title"
               :content="article.content"

@@ -20,7 +20,7 @@
       </swiper>
 
     <div v-for="(theme, jindex) in tThemes" :key="theme.theme" class="themes">
-      <div v-for="(article, index) in tArticles" :key="index" class="themesTwo">
+      <div  v-for="(article, index) in tArticles" :key="index" class="themesTwo">
         <div :class="{ 'd-none': jindex != 0 }" class="art-cat">
           <ArticleCard
             :title="article.title"
